@@ -1,0 +1,2 @@
+include ':app', ':libddd'
+rootProject.name='My Application'
