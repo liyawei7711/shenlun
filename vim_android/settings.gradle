@@ -1,2 +1,0 @@
-include ':vim', ':imagepicker', ':office'
-//include ':app', ':pull_to_refresh_library', ':library-indicator'
