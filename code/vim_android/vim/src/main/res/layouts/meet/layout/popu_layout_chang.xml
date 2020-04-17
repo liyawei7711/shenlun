@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="right"
+    android:orientation="vertical"
+    android:paddingRight="10dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/sanjiao" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/shape_dialog_logic_back"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_avg"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="等分布局"
+            android:textColor="@color/black333"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/back_gray" />
+
+        <TextView
+            android:id="@+id/tv_big_small"
+            android:layout_width="wrap_content"
+            android:layout_height="49dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:gravity="center_vertical"
+            android:text="大小布局"
+            android:textColor="@color/black333"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

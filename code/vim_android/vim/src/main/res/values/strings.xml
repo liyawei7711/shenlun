@@ -1,0 +1,380 @@
+<resources>
+    <string name="app_name">即时通</string>
+    <string name="notification_running_background_text">密信正在运行</string>
+
+    <!-- 公共 -->
+    <string name="common_timeout">请求超时，请稍后重试</string>
+    <string name="confirm">确认</string>
+    <string name="makesure">确定</string>
+    <string name="notice">提醒</string>
+    <string name="notice_txt_1">是否留在</string>
+    <string name="cancel">取消</string>
+    <string name="reqing">正在请求...</string>
+    <string name="reqsuccess">请求成功...</string>
+    <string name="dealsuccess">操作成功...</string>
+    <string name="error">出错啦~</string>
+    <string name="upload">上传失败</string>
+    <string name="network_disconnect">网络已断开</string>
+    <string name="network_error">请检查网络是否正常</string>
+    <string name="copyright"></string>
+    <string name="input_sample">输入样例：</string>
+
+    <!--登录页-->
+    <string name="account">用户名</string>
+    <string name="auth_hint_account">请输入用户名</string>
+    <string name="password">密码</string>
+    <string name="password_re">重复密码</string>
+    <string name="hint_auth_password">请输入密码</string>
+    <string name="hint_auth_password_re">请再次输入密码</string>
+    <string name="login">登录</string>
+    <string name="change_ok">确定修改</string>
+    <string name="login_name_empty">用户名不能为空</string>
+    <string name="login_password_empty">密码不能为空</string>
+    <string name="login_error">登录失败！用户名或者密码错误！</string>
+    <string name="login_fail">登录超时,请稍后重试！</string>
+
+    <!--设置ip页-->
+    <string name="default_server_ip">192.168.2.84</string>
+    <string name="activity_input_url_address_hint">请输入服务器地址</string>
+    <string name="activity_input_url_path_hint">请输入服务器端口</string>
+    <string name="activity_input_url_address_end">请输入网络配置</string>
+    <string name="activity_input_url_address_empty">请输入正确的服务器地址</string>
+    <string name="activity_input_url_path_empty">请输入正确的端口号</string>
+    <string name="setip_by_scan">扫码设置IP</string>
+    <string name="scan_error">扫描失败，请重试</string>
+    <string name="qr_code_error">二维码内容不正确，请重试</string>
+
+
+    <!--创建密码-->
+    <string name="activity_create_pw_hint">请输入密码</string>
+    <string name="activity_create_pw_again_hint">请再次输入密码</string>
+    <string name="activity_create_confirm_pw">创建密码</string>
+    <string name="activity_create_confirm_again_pw">确认密码</string>
+    <string name="activity_create_tip">请输入密码</string>
+    <string name="activity_create_tip_equal">两次密码不一样，请重新输入</string>
+    <string name="activity_create_update_error">密码更新失败</string>
+
+    <!-- 首页 -->
+    <string name="title_notification">通知</string>
+    <string name="title_conference">会商</string>
+    <string name="title_contacts">联系人</string>
+    <string name="title_setting">设置</string>
+
+    <!--通知页-->
+    <string name="fragment_notice_invite_type_title">会商邀请</string>
+    <string name="fragment_notice_invite_watch_type_title">观摩邀请</string>
+    <string name="fragment_notice_kickout_type_title">请出会商</string>
+    <string name="fragment_notice_description" formatted="false">邀请您参加</string>
+    <string name="fragment_notice_description_watch" formatted="false">邀请您观摩</string>
+    <string name="title_conference_notification">会商通知</string>
+
+    <!--设置页-->
+    <string name="fragment_setting_disturb">电话免打扰</string>
+    <string name="fragment_setting_about">关于</string>
+    <string name="fragment_setting_clear_cache">清除缓存</string>
+    <string name="fragment_setting_clear_notification">（清除所有通知消息）</string>
+    <string name="fragment_setting_logout">退出登录</string>
+
+    <!--关于-->
+    <string name="about">关于</string>
+    <string name="QR_code">扫描二维码获取终端版本</string>
+    <string name="activity_about_update">软件更新</string>
+    <string name="activity_about_already_new">已是最新版本</string>
+    <string name="activity_about_has_new">请点击更新</string>
+
+    <!--会议-->
+    <string name="invisitor">%1$s邀请您参加%2$s\n(点击接受将退出本次会商)</string>
+    <string name="invisitor_talking">%1$s邀请您参加%2$s\n(点击接受将退出本次对讲)</string>
+    <string name="invisitor_talking_watch">%1$s邀请您观摩%2$s\n(点击接受将退出本次对讲)</string>
+    <string name="invisitor_watch">%1$s邀请您观摩%2$s\n(点击接受将退出本次会商)</string>
+
+    <string name="invisitor_record_watch">%1$s邀请您观摩%2$s\n(点击接受将退出本次回放)</string>
+    <string name="invisitor_record">%1$s邀请您参加%2$s\n(点击接受将退出本次回放)</string>
+
+
+    <string name="unline">本次会商已结束</string>
+    <string name="out_of_conference">您已经被请出会商</string>
+    <string name="conference_title_left">我的会商</string>
+    <string name="conference_title_right">历史会商</string>
+    <string name="conference_title_all">所有会商</string>
+    <!--对讲-->
+    <string name="talking">%1$s邀请您参加%2$s\n(点击接受将退出本次对讲)</string>
+    <string name="talking_conference">%1$s邀请您参加视频对讲(点击接受将退出本次会商)</string>
+    <string name="talking_videoplay">%1$s邀请您参加视频对讲(点击接受将退出本次回放)</string>
+
+
+    <!--引导-->
+    <string name="experience_right_now">立即体验</string>
+
+
+    <!--升级提示关 -->
+    <string name="update_title_force">版本升级</string>
+    <string name="update_title_choose">版本升级</string>
+    <string name="update_sd_card_not_ready">下载失败，请确认SD卡是否可用</string>
+    <string name="update_download_begin">开始下载</string>
+    <string name="update_downloading">下载中&#8230;</string>
+    <string name="update_download_finish">下载完成，点击安装</string>
+    <string name="update_download_error">下载失败</string>
+    <string name="update_download_percent">已下载 %1$s</string>
+    <string name="update_download_latest_version">当前已是最新版本</string>
+    <string name="update_checking">正在检查&#8230;</string>
+    <string name="update_download_not_wifi_tip">当前为非WIFI网络，是否下载？</string>
+    <string name="update_plugin_progress">正在下载 %1$s/%2$s</string>
+    <string name="network_invalide">网络连接出现问题，请检查网络</string>
+    <string name="no_data">暂无数据</string>
+    <string name="network_timeout">网络不稳定，请稍后再试</string>
+    <string name="network_error_common">系统错误</string>
+
+    <string name="conference_finished">会话已结束</string>
+
+    <!--聊天信息-->
+    <string name="chat_info_title">聊天信息</string>
+    <string name="create_conference">创建会商</string>
+    <string name="video_chat">视频对讲</string>
+    <string name="clear_chat_record">清除聊天记录</string>
+    <string name="capture">采集</string>
+    <string name="player">播放</string>
+    <string name="player_faile">查看失败，对方无响应</string>
+    <string name="capture_stop">关闭采集</string>
+    <string name="img">图片</string>
+    <string name="yuehoujifen">阅后即焚</string>
+    <string name="audio">音频</string>
+    <string name="person_share">人员分享</string>
+    <string name="person_share_from">来自%s的人员分享</string>
+    <string name="person_share_device_from">来自%s的设备分享</string>
+    <string name="selected_share_img">请选择要分享的图片</string>
+    <string name="device_share">设备分享</string>
+    <string name="zhiling_diaodu">的指令调度</string>
+    <string name="zhiling_diaodu_title">指令调度</string>
+
+
+    <string name="chat_video_content">视频聊天</string>
+    <string name="chat_voice_content">语音聊天</string>
+    <string name="chat_address">位置</string>
+    <string name="chat_group_video">会议</string>
+    <string name="chat_jinji">SOS</string>
+    <string name="chat_link">链接</string>
+
+
+
+    <string name="video">视频</string>
+    <string name="talk">语音</string>
+    <string name="chongcaiyang">重采样</string>
+    <string name="close_txt">关闭</string>
+    <string name="open_txt">打开</string>
+    <string name="send">发送</string>
+    <string name="seach_with_emptyh"> 搜索</string>
+    <string name="has_no_data">暂无消息</string>
+    <string name="search_zhiding_content">搜索指定内容</string>
+    <string name="person_txt_content">人员</string>
+    <string name="group_txt_content">群组</string>
+    <string name="content_txt_content">内容</string>
+    <string name="tongxunlu">通讯录</string>
+    <string name="offline_map_txt">离线地图下载</string>
+    <string name="call_record">通话记录</string>
+    <string name="quhuisheng">去回声</string>
+    <string name="zidongzengyi">自动增益</string>
+    <string name="jiangzao">降噪</string>
+    <string name="login_new">登录</string>
+    <string name="config_server">设置服务器</string>
+    <string name="config_cm_id">安全设置</string>
+    <string name="home_tab_meeting">消息</string>
+    <string name="home_tab_contacts">联系人</string>
+    <string name="home_tab_my">我的</string>
+    <string name="create_meeting">创建会议</string>
+    <string name="create_order_meeting">创建预约会议</string>
+    <string name="join_meeting">加入会议</string>
+    <string name="present_meeting">当前会议</string>
+    <string name="meeting_starting">正在进行</string>
+    <string name="present_order">预约</string>
+    <string name="meeting_finish">已结束</string>
+    <string name="meet_name_title">会议名称</string>
+    <string name="meet_name">会议名称 %1$s</string>
+    <string name="meet_detail">会议详情</string>
+    <string name="meet_time">会议时间</string>
+    <string name="meet_duration">会议时长(时)</string>
+    <string name="add_meet_people">添加参会人</string>
+    <string name="meet_people">参会人</string>
+    <string name="meet_name_hint">请输入会议名称</string>
+    <string name="meet_detail_hint">请输入会议详情</string>
+    <string name="meet_time_hint">请输入会议时间</string>
+    <string name="meet_time_duration">请输入会议时长</string>
+    <string name="meet_id_hint">请输入会议号</string>
+    <string name="save">保存</string>
+    <string name="join_meet">加入会议</string>
+    <string name="join_voice_meet">仅音频入会</string>
+    <string name="start_meet">开始会议</string>
+    <string name="delete_meet">删除会议</string>
+    <string name="master">主持人</string>
+    <string name="master_set">设为主持人</string>
+    <string name="add_meet_person">添加参会人</string>
+    <string name="notice_file">文件</string>
+    <string name="show_online">仅显示在线</string>
+    <string name="show_all">显示全部</string>
+    <string name="frequent_contacts">常用联系人</string>
+    <string name="join">进入</string>
+    <string name="start">开始</string>
+    <string name="meet_id">会议号</string>
+    <string name="already_join">已入会（%1$d）</string>
+    <string name="no_join">未入会（%1$d）</string>
+    <!--服务-->
+    <string name="service_in_operation">正在运行中...</string>
+    <!--通话记录-->
+    <string name="empty_call_record">清空通话记录</string>
+    <string name="immediate_accession">立即加入>></string>
+    <string name="jingyan">禁言</string>
+    <string name="zhujiangren">设为主讲人</string>
+    <string name="kick_out">强制离开</string>
+
+    <!--新增-->
+    <string name="file_is_bigger_than">文档大于50M</string>
+    <string name="is_upload_ing">正在上传</string>
+    <string name="file_upload_false">文件上传失败</string>
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+    <string name="second">秒</string>
+    <string name="time_long">时长:</string>
+    <string name="finger_up_to_cancal_send">手指上滑，取消发送</string>
+    <string name="releasing_finger_to_cancal_send">松开手指，取消发送</string>
+    <string name="time_too_short">时间太短</string>
+    <string name="video_record_tip">长按拍摄</string>
+    <string name="video_record_local_video">视频播放</string>
+
+    <string name="user_detail_do_not_touch">消息免打扰</string>
+    <string name="user_detail_set_top">置顶聊天</string>
+    <string name="user_detail_clear">清空消息记录</string>
+    <string name="user_detail_modify_group_head">修改群头像</string>
+
+    <string name="user_detail_group_user_count">全部成员</string>
+    <string name="user_detail_group_name">群组名称</string>
+    <string name="user_detail_group_notice">群公告</string>
+
+    <string name="user_detail_group_del">删除并退出</string>
+    <string name="user_detail_add_user_title">发起群聊</string>
+    <string name="main_chat_push_video">发起视频推送</string>
+
+    <string name="user_detail_del_user_title">聊天成员</string>
+    <string name="user_detail_perple">人</string>
+    <string name="user_detail_del_perple">删除</string>
+    <string name="user_detail_zhuanfa_perple">转发</string>
+    <string name="my_detail_voice_set">使用听筒播放语音</string>
+    <string name="my_detail_change_password">修改密码</string>
+    <string name="request_loading">正在加载,请稍后</string>
+    <string name="request_load_over">加载成功</string>
+    <string name="request_load_failed">加载失败</string>
+    <string name="msgtop_request_load_success">消息置顶设置成功</string>
+    <string name="nodistur_request_load_success">消息免打扰设置成功</string>
+    <string name="message_clear_success">聊天记录清除成功</string>
+    <string name="look_big_image">查看大图</string>
+    <string name="select_image_for_send">图片</string>
+    <string name="select_image_for_upload">选择图片</string>
+    <string name="chat_group_create_meet">%1$s发起了会议</string>
+    <string name="chat_group_meet_over">视频会议已经结束</string>
+    <string name="chat_group_not_contains_self">群已解散或您已不在该群中</string>
+    <string name="dialog_chat_send_location_title">位置</string>
+    <string name="dialog_chat_send_location_current">发送位置</string>
+    <string name="dialog_chat_send_location_always">发送实时位置</string>
+    <string name="press_speak">按住说话</string>
+    <string name="user_detail_clear_data_group_content">确定删除群的聊天记录吗?</string>
+    <string name="user_detail_clear_data_single_content">确定删除和%1$s的聊天记录吗?</string>
+    <string name="user_detail_group_del_content">删除并退出后,将不再接收此群聊信息</string>
+    <string name="group_business_cards">群名片</string>
+    <string name="group_announcement">群公告</string>
+    <string name="upload_head_success">头像上传成功</string>
+    <string name="upload_head_failed">头像上传失败</string>
+    <string name="upload_address_pic_failed">位置发送失败</string>
+
+    <string name="single_chat_video_voice_refuse_other">对方已拒绝</string>
+    <string name="single_chat_video_voice_refuse">已拒绝</string>
+    <string name="single_chat_video_voice_cancle_other">对方已取消</string>
+    <string name="single_chat_video_voice_cancle">已取消</string>
+    <string name="single_chat_video_voice_connection">聊天时长 %1$s</string>
+    <string name="group_name">群聊名称</string>
+    <string name="modify_group_name_success">群名修改成功</string>
+    <string name="modify_group_announce_success">群公告修改成功</string>
+    <string name="group_owner_can_modify_groupname">只有群主才可以编辑群名称</string>
+    <string name="custom_tip_network_error">数据异常,请稍后再试...</string>
+    <string name="modify_group_announcement_group_owner_tip">只有群主可以编辑</string>
+    <string name="date_sunday">周日</string>
+    <string name="date_monday">周一</string>
+    <string name="date_tuesday">周二</string>
+    <string name="date_wednesday">周三</string>
+    <string name="date_thursday">周四</string>
+    <string name="date_friday">周五</string>
+    <string name="date_saturday">周六</string>
+    <string name="date_before_dawn">凌晨</string>
+    <string name="date_morning">早上</string>
+    <string name="date_noon">中午</string>
+    <string name="date_afternoon">下午</string>
+    <string name="date_night">晚上</string>
+    <string name="date_yesterday">昨天</string>
+    <string name="date_format_1">M月d日 </string>
+    <string name="date_format_2">yyyy年M月d日 </string>
+
+    //我的页面
+    <string name="activity_setting_set">设置</string>
+    <string name="activity_setting_security">安全设置</string>
+    <string name="activity_setting_chat">聊天设置</string>
+    <string name="activity_setting_system">系统设置</string>
+    <string name="activity_setting_call">通话设置</string>
+    <string name="activity_setting_clear_data">清理缓存</string>
+    <string name="activity_chat_setting_notification">消息通知声音</string>
+    <string name="activity_chat_setting_del">清空聊天记录</string>
+    <string name="activity_chat_setting_del_tip">请确认是否清空聊天记录</string>
+
+    <!-- 视频查看-->
+    <string name="stop_capture_success">采集结束</string>
+    <string name="jieping_success">截屏成功</string>
+    <string name="local_size_max">存储空间达到阈值</string>
+    <string name="cameraindex_notice">当前为前置摄像头，闪光灯不可用</string>
+    <string name="out_camera">无外置摄像头</string>
+    <string name="capture_success">采集成功</string>
+    <string name="capture_false">采集失败</string>
+    <string name="home_popwindow_btn1">发起群聊</string>
+    <string name="home_popwindow_btn2">视频推送</string>
+    <string name="home_popwindow_btn3">视频会议</string>
+    <string name="home_popwindow_btn4">语音会议</string>
+
+    <string name="video_watch_false">视频查看失败</string>
+    <string name="duifang_close">对方已关闭</string>
+    <string name="has_connected_false">请开启悬浮层权限以免部分功能受限</string>
+    <string name="video_diaodu_watching">正在被查看...</string>
+    <string name="meet_diaodu_ing">正在会议...</string>
+    <string name="video_diaodu_ing">正在视频...</string>
+    <string name="logout_security">是否选择安全退出?\n\n安全退出将删除所有本地缓存内容以及记录!</string>
+    <string name="logout_security_dialog_left">普通退出</string>
+    <string name="logout_security_dialog_right">安全退出</string>
+
+    <!--权限-->
+    <string name="has_power_float">你还没有悬浮框权限，请开启</string>
+    <string name="has_power_no">存在不被允许的权限，可能会影响部分功能的使用</string>
+
+    <string name="city_beijing">北京</string>
+
+    <string name="string_name_yuehoujifeng">阅后即焚</string>
+    <string name="string_name_paishe">拍摄</string>
+    <string name="string_name_send_file">发送文件</string>
+    <string name="string_name_click_2_see">点击查看</string>
+    <string name="string_name_yuehoujifeng_tip">数据已被销毁</string>
+    <string name="string_name_yuehoujifeng_tip_error">数据加载失败</string>
+    <string name="string_name_yuehoujifeng_un_support">该类型数据不支持阅后即焚!</string>
+
+
+    <string name="string_name_yuehoujifeng_has_send">阅后即焚消息已发送!</string>
+    <string name="string_name_change_head_pic">更换头像</string>
+    <string name="string_name_daohang_baidu">百度导航</string>
+    <string name="string_name_daohang_baidu_uninstall">您尚未安装百度地图</string>
+    <string name="string_name_daohang_gaode">高德导航</string>
+    <string name="string_name_daohang_gaode_uninstall">您尚未安装高德地图</string>
+    <string name="string_name_daohang_tengxun">腾讯导航</string>
+    <string name="string_name_daohang_tengxun_uninstall">您尚未安装腾讯地图</string>
+    <string name="string_name_daohang_google">google导航</string>
+    <string name="string_name_daohang_google_uninstall">您尚未安装谷歌地图</string>
+    <string name="string_name_create_group_tip">建群需至少选择一位好友!</string>
+    <string name="string_name_relogin">服务器正在重新连接</string>
+    <string name="string_name_without_network">请检查网络连接是否正常，退出重新登录</string>
+    <string name="string_name_login_error">您已断线,请重新登录...</string>
+
+
+
+</resources>

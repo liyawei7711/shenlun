@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/basecolor"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/chat_title_bar"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/color_30313C"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/chat_title_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="15dp"
+            android:layout_toRightOf="@id/view_left"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:drawablePadding="15dp"
+            android:drawableLeft="@drawable/selector_navi_back_white"
+            android:text="@string/dialog_chat_send_location_title"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+
+        <ImageView
+            android:id="@+id/send_location_search"
+            android:layout_width="44dp"
+            android:scaleType="center"
+            android:src="@drawable/top_search"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/send_location_send_btn"
+            android:layout_width="40dp"
+            android:layout_marginRight="11dp"
+            android:scaleType="center"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="@string/send"
+            android:background="@drawable/shape_choosed_confirm"
+            android:layout_height="28dp" />
+    </LinearLayout>
+
+    <View style="@style/Line_H_Drak" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/am_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/transparent"
+            android:paddingBottom="25dp"
+            android:src="@drawable/icon_mark" />
+
+        <ImageView
+            android:id="@+id/am_location"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/app_white_color"
+            android:padding="5dp"
+            android:src="@drawable/ico_location"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/am_search"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_above="@id/am_location"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/app_white_color"
+            android:padding="7dp"
+            android:src="@drawable/ico_search"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <View style="@style/Line_H_Drak" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/am_rv"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        />
+</LinearLayout>

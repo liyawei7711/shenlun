@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#22a5ff</color>
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+    <color name="colorAccent_capture">#3a4048</color>
+
+    <color name="text539bf0">#539bf0</color>
+
+    <color name="gray4e535b">#4e535b</color>
+    <color name="back_gray">#dddddd</color>
+    <color name="back_feeeee">#feeeee</color>
+
+
+    <color name="white">#ffffff</color>
+    <color name="purple">#605fbc</color>
+    <color name="blue_278CF8">#278CF8</color>
+    <color name="purple_dark">#601fbc</color>
+    <color name="transparent">#00000000</color>
+    <color name="black">#000000</color>
+    <color name="black333">#333333</color>
+    <color name="black666">#666666</color>
+    <color name="black999">#999999</color>
+    <color name="blackbbb">#bbbbbb</color>
+    <color name="blackccc">#cccccc</color>
+    <color name="blackddd">#ddd</color>
+
+    <color name="green_online">#00ffcc</color>
+    <color name="green">#4AA76A</color>
+    <color name="yellow">#D48D3E</color>
+    <color name="purple_connecting">#cc66ff</color>
+    <color name="red_disconnect">#ff6600</color>
+
+    <color name="red">#f24b4b</color>
+
+    <color name="blue">#4D48AE</color>
+    <color name="blue_2E67FE">#2E67FE</color>
+    <color name="blue_3280FE">#3280FE</color>
+    <color name="blue_004CF9">#004CF9</color>
+    <color name="blue_send">#6666FF</color>
+    <color name="blue_board">#9FB8E7</color>
+    <color name="blue2">#007aff</color>
+    <color name="text_deep_gray">#868686</color>
+    <color name="color_CDF2DB">#CDF2DB</color>
+    <color name="color_27C463">#27C463</color>
+    <color name="color_FFA94C">#FFA94C</color>
+    <color name="color_FEECD9">#FEECD9</color>
+    <color name="color_FFA23B">#FFA23B</color>
+    <color name="color_EDEDED">#EDEDED</color>
+    <color name="color_2E67FE">#2E67FE</color>
+    <color name="color_7F2CA3FF">#7F2CA3FF</color>
+    <color name="color_CED0D5">#CED0D5</color>
+    <color name="color_hint">#8491AC</color>
+    <color name="color_EBF3FE">#EBF3FE</color>
+    <color name="color_FF5959">#FF5959</color>
+    <color name="color_9AAAC9">#9AAAC9</color>
+    <color name="color_444A61">#444A61</color>
+    <color name="color_C5C7D3">#C5C7D3</color>
+    <color name="color_F7F7F7">#F7F7F7</color>
+    <color name="color_00FFEA">#00FFEA</color>
+    <color name="color_30313C">#30313C</color>
+    <color name="color_F2F2F2">#F2F2F2</color>
+    <color name="color_858585">#858585</color>
+    <color name="color_EAEAEA">#EAEAEA</color>
+    <color name="color_F24B4B">#F24B4B</color>
+    <color name="color_DCDCDC">#DCDCDC</color>
+    <color name="color_595A63">#595A63</color>
+
+    <!-- 背景色-->
+    <color name="basecolor">#f5f5f5</color>
+
+    <!--文字标准灰色-->
+    <color name="app_txt_gray">#666666</color>
+
+    <!--app副色-->
+    <color name="app_sub_color">#ee6432</color>
+
+    <!--文字标准浅灰色-->
+    <color name="app_txt_gray_light">#999999</color>
+
+    <!--文字标准黑色-->
+    <color name="app_txt_black">#333333</color>
+
+    <!--app主白色-->
+    <color name="app_white_color">#ffffff</color>
+
+    <color name="color_B1B1B1">#B1B1B1</color>
+    <color name="color_CC000000">#80000000</color>
+    <color name="color_55A2FD">#55A2FD</color>
+
+
+</resources>

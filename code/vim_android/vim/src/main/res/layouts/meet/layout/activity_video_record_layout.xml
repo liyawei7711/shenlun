@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/video_record_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <TextureView
+            android:id="@+id/ttv_capture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal" />
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/chat_video_record_back"
+            android:layout_width="wrap_content"
+            android:background="@drawable/selector_chat_video_record_back"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/chat_video_record_change"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:background="@drawable/selector_chat_video_record_change"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/video_record_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <LinearLayout
+            android:id="@+id/video_recording_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/video_record_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/video_record_tip"
+                android:textColor="@color/white" />
+
+            <huaiye.com.vim.common.views.CircleButtonView
+                android:id="@+id/video_record_btn"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+        <FrameLayout
+            android:id="@+id/video_record_over_layout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="50dp"
+            android:visibility="gone"
+            android:paddingRight="50dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/chat_record_video_over_back"
+                android:layout_width="60dp"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/selector_chat_video_record_over_back"
+                android:layout_height="60dp" />
+
+            <ImageView
+                android:id="@+id/chat_record_video_over_send"
+                android:layout_width="60dp"
+                android:background="@drawable/selector_chat_video_record_over_send"
+                android:layout_gravity="right|center_vertical"
+                android:layout_height="60dp" />
+
+
+        </FrameLayout>
+
+
+    </FrameLayout>
+
+
+</FrameLayout>

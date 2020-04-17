@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text="@string/group_name"
+        android:gravity="center_vertical"
+        android:paddingTop="18dp"
+        android:paddingBottom="8dp"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/modify_group_name"
+        android:layout_width="match_parent"
+        android:maxLength="15"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

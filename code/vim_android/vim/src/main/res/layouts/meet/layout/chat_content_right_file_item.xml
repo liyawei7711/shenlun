@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/right_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textSize="13sp"
+        android:textColor="@color/black999"
+        android:text="xxxx"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/chat_head"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/default_image_personal"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/chat_head"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/right_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right"
+                android:textSize="15sp"
+                android:visibility="gone"
+                android:textColor="@color/black666"
+                android:text="xxxx"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/right_content_file_lin"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/chat_box_blue"
+
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginRight="8dp"
+                        android:id="@+id/right_content_file"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:textColor="#ff333333"
+                        tools:text=""/>
+                    <ImageView
+                        android:layout_marginRight="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_organization"
+                        />
+                </LinearLayout>
+                <ProgressBar
+                    android:id="@+id/chat_download_file"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>

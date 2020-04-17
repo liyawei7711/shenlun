@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:paddingEnd="3dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingStart="3dp">
+
+        <RadioGroup
+            android:id="@+id/rg_home_menu"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_checked_bg"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbtn_home_current"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_home_navi_left"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="@string/conference_title_left"
+                android:textColor="@color/selector_home_textcolor" />
+
+            <RadioButton
+                android:id="@+id/rbtn_home_history"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_home_navi_right"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/conference_title_right"
+                android:textColor="@color/selector_home_textcolor" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/rg_home_menu_admin"
+            android:layout_width="270dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_checked_bg"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbtn_home_current_admin"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_home_navi_left"
+                android:button="@null"
+                android:checked="true"
+                android:layout_marginRight="-1px"
+                android:gravity="center"
+                android:text="@string/conference_title_left"
+                android:textColor="@color/selector_home_textcolor" />
+
+            <RadioButton
+                android:id="@+id/rbtn_home_history_admin"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_home_navi_middle"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/conference_title_right"
+                android:textColor="@color/selector_home_textcolor" />
+
+            <RadioButton
+                android:id="@+id/rbtn_home_all"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="-1px"
+                android:background="@drawable/selector_home_navi_right"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/conference_title_all"
+                android:textColor="@color/selector_home_textcolor" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/selector_meet_add" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/top_shaixuan" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:id="@+id/meet_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <View
+            android:id="@+id/view_cover"
+            android:background="#44000000"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+
+</LinearLayout>

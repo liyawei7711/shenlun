@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/message_history_bg"
+    android:layout_width="match_parent"
+    android:layout_height="71dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/fl_header"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="13dp">
+
+            <ImageView
+                android:id="@+id/left_Image"
+                android:layout_width="45dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/default_image_personal"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/view_point"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/shape_red_circle"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="8sp"
+                android:visibility="gone" />
+        </FrameLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text=""
+                android:textColor="@color/black333"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/item_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_name"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/black999"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="13dp">
+
+            <ImageView
+                android:id="@+id/message_history_miandarao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/time"
+                android:layout_alignRight="@+id/time"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/miandarao" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:text="xxxx" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="70dp"
+        android:background="@color/back_gray" />
+</RelativeLayout>

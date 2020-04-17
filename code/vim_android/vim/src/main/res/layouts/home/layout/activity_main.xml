@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <RadioGroup
+        android:id="@+id/rg_menu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <huaiye.com.vim.common.views.AppRadioButton
+            android:id="@+id/rbtn_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:drawableTop="@drawable/selector_main_home"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/home_tab_meeting"
+            android:textColor="@color/selector_main_textcolor"
+            android:textSize="15sp"
+            app:unReadCircleRadius="8.5dp"
+            app:unReadCircleRightOffset="25dp"
+            app:unReadCircleTopOffset="1.5dp"
+            app:unReadTextSize="10dp" />
+
+        <huaiye.com.vim.common.views.AppRadioButton
+            android:id="@+id/rbtn_contacts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:clickable="true"
+            android:focusable="true"
+            android:drawableTop="@drawable/selector_main_contacts"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/home_tab_contacts"
+            android:textColor="@color/selector_main_textcolor"
+            android:textSize="15sp"
+            app:unReadCircleRadius="8.5dp"
+            app:unReadCircleRightOffset="25dp"
+            app:unReadCircleTopOffset="1.5dp"
+            app:unReadTextSize="10dp" />
+
+        <huaiye.com.vim.common.views.AppRadioButton
+            android:id="@+id/rbtn_settings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:clickable="true"
+            android:focusable="true"
+            android:drawableTop="@drawable/selector_main_settings"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/home_tab_my"
+            android:textColor="@color/selector_main_textcolor"
+            android:textSize="15sp"
+            app:unReadCircleRadius="8.5dp"
+            app:unReadCircleRightOffset="25dp"
+            app:unReadCircleTopOffset="1.5dp"
+            app:unReadTextSize="10dp" />
+
+    </RadioGroup>
+
+</LinearLayout>
