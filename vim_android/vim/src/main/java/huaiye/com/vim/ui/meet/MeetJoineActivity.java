@@ -43,7 +43,7 @@ public class MeetJoineActivity extends AppBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getNavigate().setTitlText("加入会议")
+        getNavigate().setTitlText(getString(R.string.join_meeting))
                 .setRightIcon(R.drawable.nav_btn_scanning)
                 .setRightClickListener(new View.OnClickListener() {
                     @Override
@@ -135,13 +135,13 @@ public class MeetJoineActivity extends AppBaseActivity {
 
     public void joinMeet(int type) {
         if (TextUtils.isEmpty(join_meet_name.getText().toString())) {
-            showToast("会议号不能为空");
+            showToast(getString(R.string.join_meeting_notice1));
             return;
         }
         try {
             Integer.parseInt(join_meet_name.getText().toString());
         } catch (Exception e) {
-            showToast("会议号有误，请重新输入");
+            showToast(getString(R.string.join_meeting_notice2));
             return;
         }
         requestDatas(type);

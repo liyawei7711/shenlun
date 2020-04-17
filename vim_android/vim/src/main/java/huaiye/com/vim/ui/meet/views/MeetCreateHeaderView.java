@@ -25,6 +25,7 @@ import java.util.Locale;
 
 import huaiye.com.vim.R;
 import huaiye.com.vim.common.AppBaseActivity;
+import huaiye.com.vim.common.AppUtils;
 import huaiye.com.vim.common.ErrorMsg;
 import huaiye.com.vim.common.views.pickers.CustomDatePicker;
 import huaiye.com.vim.common.views.pickers.SelectItemDialog;
@@ -150,7 +151,7 @@ public class MeetCreateHeaderView extends RelativeLayout implements View.OnClick
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (TextUtils.isEmpty(charSequence)) {
-                    tv_hint2.setHint("请输入会议时长");
+                    tv_hint2.setHint(getString(R.string.meet_time_duration));
                 } else {
                     tv_hint2.setHint("");
                 }
@@ -299,7 +300,7 @@ public class MeetCreateHeaderView extends RelativeLayout implements View.OnClick
      *//*if (need_record.getVisibility() == GONE) {
             intent.putExtra("titleName", "创建群组");
         } else {
-            intent.putExtra("titleName", ll_order.getVisibility() == View.VISIBLE ? "创建预约会议" : "创建即时会议");
+            intent.putExtra("titleName", ll_order.getVisibility() == View.VISIBLE ? getString(R.string.create_order_meeting) : "创建即时会议");
         }*//*
         ((Activity) getContext()).startActivityForResult(intent, 1000);
         needAddSelfMain = false;
@@ -313,7 +314,7 @@ public class MeetCreateHeaderView extends RelativeLayout implements View.OnClick
                 new ModelCallback<Boolean>() {
                     @Override
                     public void onSuccess(Boolean aBoolean) {
-                        activity.showToast("创建成功");
+                        activity.showToast(AppUtils.getString(R.string.meet_create_success));
                         activity.setResult(RESULT_OK);
                         activity.finish();
                         isReq = false;

@@ -92,7 +92,7 @@ public class ZhuanFaChooseActivity extends AppBaseActivity {
     protected void initActionBar() {
         EventBus.getDefault().register(this);
         getNavigate().setVisibility(View.VISIBLE);
-        getNavigate().setTitlText("联系人")
+        getNavigate().setTitlText(getString(R.string.user_notice1))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -189,7 +189,6 @@ public class ZhuanFaChooseActivity extends AppBaseActivity {
     }
 
     private void requestContacts() {
-        Log.i(this.getClass().getName(), "requestContacts");
 
         /* -1表示不分页，即获取所有联系人 */
         ModelApis.Contacts().requestBuddyContacts(-1, 0, 0, new ModelCallback<ContactsBean>() {

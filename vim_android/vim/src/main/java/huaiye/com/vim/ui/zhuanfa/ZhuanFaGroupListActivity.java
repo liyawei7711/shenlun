@@ -89,7 +89,7 @@ public class ZhuanFaGroupListActivity extends AppBaseActivity {
 
     private void initNavigateView() {
         getNavigate().setVisibility(View.VISIBLE);
-        getNavigate().setTitlText("群组")
+        getNavigate().setTitlText(getString(R.string.group_txt_content))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -138,7 +138,6 @@ public class ZhuanFaGroupListActivity extends AppBaseActivity {
     }
 
     private void requestGroupContacts() {
-        Log.i(this.getClass().getName(), "requestGroupContacts");
         /* -1表示不分页，即获取所有联系人 */
         if (null != VIMApp.getInstance().mDomainInfoList && VIMApp.getInstance().mDomainInfoList.size() > 0) {
             refresh_view.setRefreshing(true);

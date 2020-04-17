@@ -72,7 +72,7 @@ public class MeetPlaybackActivity extends AppBaseActivity {
                     public void onError(VideoParams param, SdkCallback.ErrorInfo errorInfo) {
                         super.onError(param, errorInfo);
                         if (errorInfo.getCode() == 1010100003) {
-                            showToast("无会议记录");
+                            showToast(getString(R.string.meet_notice22));
                         } else {
                             showToast(ErrorMsg.getMsg(ErrorMsg.start_play_err_code));
                         }
@@ -98,7 +98,7 @@ public class MeetPlaybackActivity extends AppBaseActivity {
                             case VIDEO_STATUS:
                                 if (MediaStatus.VideoStatus.isStopped(msg)
                                         && !MediaStatus.VideoStatus.isActionFromUser(msg)) {
-                                    showToast("播放完成");
+                                    showToast(getString(R.string.play_end));
                                     delayFinish();
                                 }
                                 break;

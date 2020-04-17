@@ -13,7 +13,7 @@
         android:layout_marginTop="20dp"
         android:textSize="13sp"
         android:textColor="@color/black999"
-        android:text="xxxx"/>
+        android:text=""/>
 
     <TextView
         android:id="@+id/chat_content_custom_meet_item"
@@ -23,7 +23,7 @@
         android:layout_marginTop="28dp"
         android:textSize="13sp"
         android:textColor="@color/black999"
-        android:text="骄傲和撒娇是滴哈是的哈首单还是"/>
+        android:text=""/>
 
 
 </LinearLayout>

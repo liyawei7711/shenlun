@@ -45,7 +45,7 @@
                 android:button="@null"
                 android:drawablePadding="5dp"
                 android:drawableTop="@drawable/selector_jiguangbi"
-                android:text="荧光笔"
+                android:text="@string/label_txt86"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 tools:ignore="HardcodedText" />
@@ -59,7 +59,7 @@
                 android:checked="true"
                 android:drawablePadding="5dp"
                 android:drawableTop="@drawable/selector_gangbi"
-                android:text="钢笔"
+                android:text="@string/label_txt87"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 tools:ignore="HardcodedText" />
@@ -72,7 +72,7 @@
                 android:button="@null"
                 android:drawablePadding="5dp"
                 android:drawableTop="@drawable/selector_yanse"
-                android:text="颜色"
+                android:text="@string/label_txt88"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 tools:ignore="HardcodedText" />
@@ -85,7 +85,7 @@
                 android:button="@null"
                 android:drawablePadding="5dp"
                 android:drawableTop="@drawable/selector_xiangpica"
-                android:text="橡皮擦"
+                android:text="@string/label_txt89"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 tools:ignore="HardcodedText" />
@@ -98,7 +98,7 @@
                 android:button="@null"
                 android:drawablePadding="5dp"
                 android:drawableTop="@drawable/selector_qingchu"
-                android:text="清除"
+                android:text="@string/label_txt90"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 tools:ignore="HardcodedText" />

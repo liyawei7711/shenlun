@@ -28,6 +28,6 @@
         android:background="@drawable/shape_white_concer"
         android:textColor="@color/blue2"
         android:layout_margin="10dp"
-        android:text="取消"
+        android:text="@string/cancel"
         />
 </LinearLayout>

@@ -26,7 +26,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
-            android:text="等分布局"
+            android:text="@string/meet_dengfen_layout"
             android:textColor="@color/black333"
             android:textSize="15sp" />
 
@@ -42,7 +42,7 @@
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
             android:gravity="center_vertical"
-            android:text="大小布局"
+            android:text="@string/meet_daxiao_layout"
             android:textColor="@color/black333"
             android:textSize="15sp" />
 

@@ -207,7 +207,7 @@
                     android:paddingRight="15dp"
                     android:drawableRight="@drawable/bt_next_press"
                     android:layout_marginLeft="15dp"
-                    android:text="本地销毁"
+                    android:text="@string/label_txt68"
                     android:textColor="@color/black333"
                     android:textSize="16sp" />
 
@@ -296,7 +296,7 @@
                     android:gravity="center_vertical"
 
                     android:layout_centerVertical="true"
-                    android:text="一键上传日志"
+                    android:text="@string/label_txt69"
                     android:textColor="@color/black333"
                     android:textSize="16sp" />
 
@@ -318,7 +318,7 @@
                 android:visibility="gone"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="传输方式"
+                android:text="@string/label_txt44"
                 android:textColor="@color/black999"
                 android:textSize="14sp" />
 
@@ -339,7 +339,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="TCP"
+                    android:text="@string/label_txt45"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -356,7 +356,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="UDP"
+                    android:text="@string/label_txt46"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 

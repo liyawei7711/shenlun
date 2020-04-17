@@ -16,7 +16,7 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingTop="2dp"
-        android:text="已入会"
+        android:text="@string/has_join_notice"
         android:textColor="@color/purple_dark" />
 
     <LinearLayout
@@ -65,7 +65,7 @@
             android:ellipsize="marquee"
             android:gravity="center_vertical"
             android:singleLine="true"
-            android:text="人员列表"
+            android:text="@string/label_txt91"
             android:textColor="@color/black333"
             android:textSize="15sp" />
 

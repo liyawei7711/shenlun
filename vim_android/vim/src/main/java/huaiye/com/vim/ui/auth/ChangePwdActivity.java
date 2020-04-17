@@ -68,7 +68,7 @@ public class ChangePwdActivity extends AppBaseActivity {
     @Override
     protected void initActionBar() {
         if (isQiangZhi) {
-            getNavigate().setTitlText("修改密码")
+            getNavigate().setTitlText(getString(R.string.my_detail_change_password))
                     .hideLeftIcon()
                     .setLeftClickListener(new View.OnClickListener() {
                         @Override
@@ -77,7 +77,7 @@ public class ChangePwdActivity extends AppBaseActivity {
                         }
                     });
         } else {
-            getNavigate().setTitlText("修改密码")
+            getNavigate().setTitlText(getString(R.string.my_detail_change_password))
                     .setLeftClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -122,7 +122,7 @@ public class ChangePwdActivity extends AppBaseActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (TextUtils.isEmpty(charSequence)) {
-                    tv_hint1.setHint("请输入原密码");
+                    tv_hint1.setHint(getString(R.string.my_old_password));
                 } else {
                     tv_hint1.setHint("");
                 }
@@ -141,7 +141,7 @@ public class ChangePwdActivity extends AppBaseActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (TextUtils.isEmpty(charSequence)) {
-                    tv_hint2.setHint("请输入新密码");
+                    tv_hint2.setHint(getString(R.string.my_new_password));
                 } else {
                     tv_hint2.setHint("");
                 }
@@ -160,7 +160,7 @@ public class ChangePwdActivity extends AppBaseActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (TextUtils.isEmpty(charSequence)) {
-                    tv_hint3.setHint("请再次输入密码");
+                    tv_hint3.setHint(getString(R.string.hint_auth_password_re));
                 } else {
                     tv_hint3.setHint("");
                 }
@@ -181,37 +181,37 @@ public class ChangePwdActivity extends AppBaseActivity {
     void updatePwd() {
 
         if (TextUtils.isEmpty(edt_old_pwd.getText())) {
-            showToast("原密码不能为空");
+            showToast(getString(R.string.login_old_password_empty));
             return;
         }
         if (TextUtils.isEmpty(edt_new_pwd.getText())) {
-            showToast("新密码不能为空");
+            showToast(getString(R.string.login_new_password_empty));
             return;
         }
         if (TextUtils.isEmpty(edt_re_new_pwd.getText())) {
-            showToast("重复新密码不能为空");
+            showToast(getString(R.string.login_replay_password_empty));
             return;
         }
         if (!edt_re_new_pwd.getText().toString().equals(edt_new_pwd.getText().toString())) {
-            showToast("两次新密码不一致");
+            showToast(getString(R.string.login_double_password));
             return;
         }
         if (edt_re_new_pwd.getText().toString().length() < 6) {
-            showToast("密码不能小于6位");
+            showToast(getString(R.string.login_password_length));
             return;
         }
         if (edt_re_new_pwd.getText().toString().length() > 20) {
-            showToast("密码不能大于20位");
+            showToast(getString(R.string.login_password_length2));
             return;
         }
 
         if (edt_old_pwd.getText().toString().equals(edt_new_pwd.getText().toString())) {
-            showToast("新密码不能与原密码相同");
+            showToast(getString(R.string.login_old_new_password));
             return;
         }
 
         if (!AppUtils.isRightPwd(edt_re_new_pwd.getText().toString())) {
-            showToast("密码中必须包含大小写字母、数字");
+            showToast(getString(R.string.login_password_3));
             return;
         }
 
@@ -224,7 +224,7 @@ public class ChangePwdActivity extends AppBaseActivity {
                     public void onSuccess(ChangePwd authUser) {
                         if (authUser.nResultCode == 0) {
                             AppDatas.Auth().put("Password", "");
-                            showToast("密码已修改");
+                            showToast(getString(R.string.login_haschange_password));
 
                             if (isQiangZhi) {
                                 SP.putBoolean(STRING_KEY_resetpwd, true);
@@ -243,7 +243,7 @@ public class ChangePwdActivity extends AppBaseActivity {
 //                            startActivity(intent);
 
                         } else if(authUser.nResultCode == 1010100005) {
-                            showToast("原始密码错误");
+                            showToast(getString(R.string.common_notice66));
                             tv_sure.setEnabled(true);
                         } else {
                             showToast(authUser.strResultDescribe);
@@ -255,7 +255,7 @@ public class ChangePwdActivity extends AppBaseActivity {
                     public void onFailure(HTTPResponse httpResponse) {
                         super.onFailure(httpResponse);
                         tv_sure.setEnabled(true);
-                        showToast("请求失败");
+                        showToast(getString(R.string.req_error));
                     }
                 });
 

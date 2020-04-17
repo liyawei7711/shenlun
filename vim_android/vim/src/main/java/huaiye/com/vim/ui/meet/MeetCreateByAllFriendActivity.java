@@ -90,11 +90,11 @@ public class MeetCreateByAllFriendActivity extends AppBaseActivity implements Me
             }
         });
         if (nMeetType == 1) {
-            navigateView.setRightText("发起会议");
-            navigateView.setTitlText("创建会议");
+            navigateView.setRightText(getString(R.string.meet_notice8));
+            navigateView.setTitlText(getString(R.string.meet_notice9));
         } else {
-            navigateView.setRightText("确定");
-            navigateView.setTitlText("创建预约会议");
+            navigateView.setRightText(getString(R.string.makesure));
+            navigateView.setTitlText(getString(R.string.create_order_meeting));
         }
         navigateView.setRightTextColor(ContextCompat.getColor(this, R.color.blue_2E67FE));
         navigateView.setRightClickListener(new View.OnClickListener() {
@@ -161,7 +161,7 @@ public class MeetCreateByAllFriendActivity extends AppBaseActivity implements Me
 
         header = new MeetCreateHeaderView(this, true, nMeetType == 1 ? false : true);
         adapter.addHeaderView(header);
-        header.setMeetName(AppDatas.Auth().getUserName() + "的会议");
+        header.setMeetName(AppDatas.Auth().getUserName() + getString(R.string.meet_notice10));
 
         new RecycleTouchUtils().initTouch(new RecycleTouchUtils.ITouchEvent() {
             @Override
@@ -188,7 +188,7 @@ public class MeetCreateByAllFriendActivity extends AppBaseActivity implements Me
 
     private void createMeet(int voiceIntercom) {
         if (TextUtils.isEmpty(header.getMeetName())) {
-            showToast("会议名称不能为空");
+            showToast(getString(R.string.meet_notice11));
             return;
         }
         AppUtils.closeKeyboard(header.getNameView());
@@ -201,31 +201,31 @@ public class MeetCreateByAllFriendActivity extends AppBaseActivity implements Me
 
         if (nMeetType == 2) {
             if (TextUtils.isEmpty(header.getMeetStartTime())) {
-                showToast("请选择开会时间");
+                showToast(getString(R.string.meet_notice12));
                 return;
             }
             if (header.getMeetLong() <= 0) {
-                showToast("请输入会议时长");
+                showToast(getString(R.string.meet_time_duration));
                 return;
             }
             if (header.getMeetLong() > 24 * 60 * 60) {
-                showToast("会议时长不能大于24小时");
+                showToast(getString(R.string.meet_notice13));
                 return;
             }
         }
         if (ChoosedContactsNew.get().getContacts() == null ||
                 ChoosedContactsNew.get().getContacts().size() <= 1) {
-            showToast("请邀请参会人");
+            showToast(getString(R.string.meet_notice14));
             return;
         }
 
         if (MbeConfigParaValue != -1 && adapter.getDatasCount() > MbeConfigParaValue) {
-            showToast("参会人员上限为" + MbeConfigParaValue + "人");
+            showToast(getString(R.string.meet_notice15, MbeConfigParaValue));
             return;
         }
         if (nMeetType == 1) {
             //创建即时会议
-            mZeusLoadView.loadingText("正在创建").setLoading();
+            mZeusLoadView.loadingText(getString(R.string.common_notice27)).setLoading();
             getNavigate().setRightEnable(false);
             ParamsCreateMeet params = SdkParamsCenter.Meet.CreateMeet();
             if (header.needAddSelfMain) {
@@ -305,7 +305,7 @@ public class MeetCreateByAllFriendActivity extends AppBaseActivity implements Me
                             AppFrequentlyConstants.get().AddContacts(ChoosedContactsNew.get().getContacts());
                             ChoosedContactsNew.get().clear();
 
-                            showToast("创建成功");
+                            showToast(getString(R.string.meet_create_success));
                             pushNotify(info.nMeetingID, info.strMeetingDomainCode);
                             finish();
                         }
@@ -313,7 +313,7 @@ public class MeetCreateByAllFriendActivity extends AppBaseActivity implements Me
                         @Override
                         public void onError(ErrorInfo errorInfo) {
                             if (errorInfo.getCode() == 1720410011) {
-                                showToast("会议时间必须大于当前时间");
+                                showToast(getString(R.string.meet_notice16));
                             } else {
                                 showToast(ErrorMsg.getMsg(ErrorMsg.create_meet_err_code));
                             }
@@ -332,7 +332,6 @@ public class MeetCreateByAllFriendActivity extends AppBaseActivity implements Me
         super.afterOnLineUser(value);
         /*data.clear();
         data.addAll(ChoosedContacts.get().getContacts(null, false));*/
-        Log.d("VIMApp", "afterOnLineUser");
         adapter.setDatas(ChoosedContactsNew.get().getContacts());
         adapter.notifyDataSetChanged();
         header.needAddSelfMain = false;

@@ -23,7 +23,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="参会者"
+                android:text="@string/label_txt92"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
@@ -61,7 +61,7 @@
             android:drawablePadding="7dp"
             android:drawableRight="@drawable/tp_shouqi"
             android:gravity="center"
-            android:text="当前布局"
+            android:text="@string/label_txt93"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
@@ -76,7 +76,7 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/shape_stroke_red_rel"
             android:gravity="center"
-            android:text="确定"
+            android:text="@string/makesure"
             android:textColor="@color/white" />
 
         <TextView
@@ -88,7 +88,7 @@
             android:layout_toLeftOf="@id/tv_change_video"
             android:background="@drawable/shape_stroke_drak_rel"
             android:gravity="center"
-            android:text="取消"
+            android:text="@string/cancel"
             android:textColor="@color/white" />
 
         <include

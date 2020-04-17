@@ -49,7 +49,7 @@ public class AboutActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText(AppUtils.getString(R.string.about))
+        getNavigate().setTitlText(getString(R.string.about))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

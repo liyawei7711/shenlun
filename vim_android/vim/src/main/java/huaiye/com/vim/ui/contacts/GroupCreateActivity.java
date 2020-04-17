@@ -52,14 +52,14 @@ public class GroupCreateActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText("创建群组")
+        getNavigate().setTitlText(getString(R.string.group_notice12))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         onBackPressed();
                     }
                 })
-                .setRightText("创建")
+                .setRightText(getString(R.string.group_notice13))
                 .setRightTextColor(Color.RED)
                 .setRightClickListener(new View.OnClickListener() {
                     @Override

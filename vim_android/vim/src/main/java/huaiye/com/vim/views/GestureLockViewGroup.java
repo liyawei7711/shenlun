@@ -30,7 +30,6 @@ import huaiye.com.vim.R;
  */
 public class GestureLockViewGroup extends RelativeLayout {
 
-    private static final String TAG = "GestureLockViewGroup";
     /**
      * 保存所有的GestureLockView
      */
@@ -156,7 +155,6 @@ public class GestureLockViewGroup extends RelativeLayout {
         // mPaint.setStrokeWidth(20);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
-        // mPaint.setColor(Color.parseColor("#aaffffff"));
         mPath = new Path();
     }
 
@@ -227,10 +225,6 @@ public class GestureLockViewGroup extends RelativeLayout {
                 addView(mGestureLockViews[i], lockerParams);
             }
 
-            Log.e(TAG, "mWidth = " + mWidth + " ,  mGestureViewWidth = "
-                    + mGestureLockViewWidth + " , mMarginBetweenLockView = "
-                    + mMarginBetweenLockView);
-
         }
     }
 
@@ -290,8 +284,6 @@ public class GestureLockViewGroup extends RelativeLayout {
                     }
                 }
 
-                Log.e(TAG, "mUnMatchExceedBoundary = " + mTryTimes);
-                Log.e(TAG, "mChoose = " + mChoose);
                 // 将终点设置位置为起点，即取消指引线
                 mTmpTarget.x = mLastPathX;
                 mTmpTarget.y = mLastPathY;

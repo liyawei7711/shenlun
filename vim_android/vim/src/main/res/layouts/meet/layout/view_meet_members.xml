@@ -17,7 +17,7 @@
         android:layout_height="40dp"
         android:background="@color/red"
         android:gravity="center"
-        android:text="请出会商"
+        android:text="@string/fragment_notice_kickout_type_title"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:visibility="gone" />

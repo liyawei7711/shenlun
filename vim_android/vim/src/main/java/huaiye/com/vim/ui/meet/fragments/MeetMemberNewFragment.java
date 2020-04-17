@@ -98,7 +98,6 @@ public class MeetMemberNewFragment extends AppBaseFragment {
             multiPlayerHelper = new MultiPlayerHelper(multiViewLayout);
         }
         isResumed = true;
-        Log.d("test", "MeetMemberNewFragment onResume");
         refreshUser(mCGetMeetingInfoRsp, mDataList);
     }
 
@@ -106,7 +105,6 @@ public class MeetMemberNewFragment extends AppBaseFragment {
     public void onPause() {
         super.onPause();
         isResumed = false;
-        Log.d("test", "MeetMemberNewFragment onPause");
     }
 
     @Override
@@ -124,7 +122,6 @@ public class MeetMemberNewFragment extends AppBaseFragment {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Log.d("test", "MeetMemberNewFragment onConfigurationChanged");
     }
 
     public void refreshUser(CGetMeetingInfoRsp infoRsp, ArrayList<CGetMeetingInfoRsp.UserInfo> list) {

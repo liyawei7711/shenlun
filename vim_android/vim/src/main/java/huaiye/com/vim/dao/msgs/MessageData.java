@@ -12,6 +12,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import huaiye.com.vim.R;
+import huaiye.com.vim.VIMApp;
+import huaiye.com.vim.common.AppUtils;
 import huaiye.com.vim.dao.AppDatas;
 import ttyy.com.datasdao.annos.Column;
 
@@ -76,8 +78,8 @@ public class MessageData {
 
         data.nMessageType = AUTH_KICKOUT;
         data.nMillions = System.currentTimeMillis();
-        data.strTitle = "登录踢出";
-        data.strContent = "你在另一台设备上登录";
+        data.strTitle = AppUtils.getString(R.string.login_kitout);
+        data.strContent = AppUtils.getString(R.string.login_other);
 
         data.strMessageJson = gson.toJson(message);
         data.key = "authkickout" + message.strUserID + "@" + message.strMacAddr;
@@ -90,8 +92,8 @@ public class MessageData {
 
         data.nMessageType = MEET_KICKOUT;
         data.nMillions = System.currentTimeMillis();
-        data.strTitle = "会议踢出";
-        data.strContent = "你被踢出了会议[" + message.strMeetingName + "]";
+        data.strTitle = AppUtils.getString(R.string.meet_kitout);
+        data.strContent = AppUtils.getString(R.string.meet_kitout_bei)+"[" + message.strMeetingName + "]";
 
         data.strMessageJson = gson.toJson(message);
         data.key = "meetkickout" + message.nMeetingID + "@" + message.strMeetingName;
@@ -107,8 +109,8 @@ public class MessageData {
             data.nMessageType = TALK_INVITE;
         }
         data.nMillions = millions;
-        data.strTitle = "对讲邀请";
-        data.strContent = "您未接听" + message.strFromUserName + "于" + message.strTalkbackStartTime + "的来电";
+        data.strTitle = AppUtils.getString(R.string.talk_invistor);
+        data.strContent = AppUtils.getString(R.string.talk_accept_error) + message.strFromUserName + AppUtils.getString(R.string.talk_accept_at_error) + message.strTalkbackStartTime + AppUtils.getString(R.string.talk_accept_from_error);
         data.strMessageJson = gson.toJson(message);
         data.key = "talkinvite" + message.nTalkbackID + "@" + message.strTalkbackDomainCode;
 
@@ -122,16 +124,16 @@ public class MessageData {
         if (message.nMeetingType == 0) {
             data.nMessageType = MEET_INVITE_JISHI;
             data.strTitle = message.strMeetingName;
-            data.strContent = "您未参加" + message.strInviteUserName + "于" + message.strMeetingStartTime + "召开的会议";
+            data.strContent = AppUtils.getString(R.string.meet_accept_error) + message.strInviteUserName + "于" + message.strMeetingStartTime + AppUtils.getString(R.string.meet_accept_join_error);
         } else {
             if (message.nMeetingStatus == 8) {
                 data.nMessageType = MEET_INVITE_QUXIAO;
                 data.strTitle = message.strMeetingName;
-                data.strContent = message.strInviteUserName + "预约您于" + message.strMeetingStartTime + "参加的会议取消";
+                data.strContent = message.strInviteUserName + AppUtils.getString(R.string.meet_accept_yuyue_error) + message.strMeetingStartTime + AppUtils.getString(R.string.meet_accept_yuyue_cancel_error);
             } else {
                 data.nMessageType = MEET_INVITE_YUYUE;
                 data.strTitle = message.strMeetingName;
-                data.strContent = message.strInviteUserName + "预约您参加于" + message.strMeetingStartTime + "召开的会议";
+                data.strContent = message.strInviteUserName + AppUtils.getString(R.string.meet_accept_yuyue_attend_error) + message.strMeetingStartTime + AppUtils.getString(R.string.meet_accept_join_error);
             }
         }
 
@@ -170,10 +172,10 @@ public class MessageData {
                 return timeSdf.format(timeDate);
             case 1:
 
-                return "昨天 " + timeSdf.format(timeDate);
+                return AppUtils.getString(R.string.date_yesterday_yingwen) + timeSdf.format(timeDate);
             case 2:
 
-                return "前天 " + timeSdf.format(timeDate);
+                return AppUtils.getString(R.string.date_before_qiantian_yingwen) + timeSdf.format(timeDate);
             default:
 
                 return dateSdf.format(timeDate);

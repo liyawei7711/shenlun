@@ -11,6 +11,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import huaiye.com.vim.R;
+import huaiye.com.vim.common.AppUtils;
 import huaiye.com.vim.common.recycle.LiteViewHolder;
 import huaiye.com.vim.ui.meet.basemodel.SelectedModel;
 
@@ -46,12 +47,12 @@ public class MemberLayoutHolder extends LiteViewHolder {
         }
 
         if (position == 0) {
-            tvTitle.setText("已上墙");
+            tvTitle.setText(AppUtils.getString(R.string.yishangqiang_notice));
             tvTitle.setVisibility(View.VISIBLE);
         } else {
             if (bean.bean.inVideo() != ((SelectedModel<CGetMeetingInfoRsp.UserInfo>) datas.get(position - 1)).bean.inVideo()
                     && ((SelectedModel<CGetMeetingInfoRsp.UserInfo>) datas.get(position - 1)).bean.nCombineStatus == 1) {
-                tvTitle.setText("未上墙");
+                tvTitle.setText(AppUtils.getString(R.string.weishangqiang_notice));
                 tvTitle.setVisibility(View.VISIBLE);
             } else {
                 tvTitle.setVisibility(View.GONE);

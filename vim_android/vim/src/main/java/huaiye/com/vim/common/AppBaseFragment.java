@@ -68,7 +68,25 @@ public class AppBaseFragment extends Fragment {
         return contentView;
     }
 
-    protected void showChatMoreStylePopupWindow(View anchor) {
+    public void setIsSoS(boolean isSoS) {
+        if (null == mChatMoreStylePopupWindow) {
+            mChatMoreStylePopupWindow = new ChatMoreStylePopupWindow(getActivity());
+            mChatMoreStylePopupWindow.initView();
+            mChatMoreStylePopupWindow.setOutsideTouchable(true);
+        }
+        mChatMoreStylePopupWindow.setSOS(isSoS);
+    }
+
+    public void changeMenu(boolean isStatus) {
+        if (null == mChatMoreStylePopupWindow) {
+            mChatMoreStylePopupWindow = new ChatMoreStylePopupWindow(getActivity());
+            mChatMoreStylePopupWindow.initView();
+            mChatMoreStylePopupWindow.setOutsideTouchable(true);
+        }
+        mChatMoreStylePopupWindow.changeMenu(isStatus);
+    }
+
+    public void showChatMoreStylePopupWindow(View anchor) {
         if (null == mChatMoreStylePopupWindow) {
             mChatMoreStylePopupWindow = new ChatMoreStylePopupWindow(getActivity());
             mChatMoreStylePopupWindow.initView();

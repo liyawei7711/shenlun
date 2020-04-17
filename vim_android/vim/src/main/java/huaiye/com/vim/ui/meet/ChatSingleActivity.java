@@ -1,6 +1,7 @@
 package huaiye.com.vim.ui.meet;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -85,7 +86,6 @@ import huaiye.com.vim.ui.contacts.UserDetailActivity;
 import huaiye.com.vim.ui.fenxiang.SharePopupLeaveWindow;
 import huaiye.com.vim.ui.meet.adapter.ChatContentAdapter;
 import huaiye.com.vim.ui.meet.adapter.ChatMoreFunctionAdapter;
-import huaiye.com.vim.ui.meet.presenter.ChatPresent;
 import huaiye.com.vim.ui.sendBaiduLocation.function.activity.MapActivity;
 import huaiye.com.vim.ui.talk.TalkActivity;
 import huaiye.com.vim.ui.talk.TalkVoiceActivity;
@@ -183,8 +183,6 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
     int imageSize = 1;
     int indexCount = 1;
 
-    ChatPresent chatPresent;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -207,7 +205,6 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
 
     @Override
     public void doInitDelay() {
-        chatPresent = new ChatPresent();
 
         mMeetID = getIntent().getStringExtra("mMeetID");
         mMeetName = getIntent().getStringExtra("mMeetName");
@@ -271,21 +268,23 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
     private void initView() {
         mChatContentAdapter = new ChatContentAdapter(this, false, null, null, sessionUserList);
         mChatContentAdapter.setUserInfo(nUser.strUserID, nUser.strDomainCode);
-        chat_recycler.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
-            @Override
-            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-                if (bottom < oldBottom) {
-                    chat_recycler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            chat_recycler.scrollToPosition(mChatContentAdapter.getItemCount() - 1);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            chat_recycler.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+                @Override
+                public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                    if (bottom < oldBottom) {
+                        chat_recycler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                chat_recycler.scrollToPosition(mChatContentAdapter.getItemCount() - 1);
 
-                        }
-                    }, 100);
+                            }
+                        }, 100);
 
+                    }
                 }
-            }
-        });
+            });
+        }
 
         refresh_view.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -367,7 +366,7 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
 
             @Override
             public void onFocusRight() {
-                showToast("右面按钮被点击了");
+                showToast(getString(R.string.chat_group_notice1));
 
             }
 
@@ -568,7 +567,7 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
 
                     @Override
                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                        showToast("对方未开启加密,无法发送");
+                        showToast(getString(R.string.send_notice3));
                     }
                 });
     }
@@ -653,9 +652,9 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
                     @Override
                     public void onError(ErrorInfo errorInfo) {
                         if (null != errorInfo && SDKInnerMessageCode.NOT_LOGIN == errorInfo.getCode()) {
-                            needLoad(AppUtils.getString(R.string.string_name_login_error));
+                            needLoad(getString(R.string.string_name_login_error));
                         }
-                        showToast("发送失败" + errorInfo.getMessage());
+                        showToast(getString(R.string.send_notice1) + errorInfo.getMessage());
                     }
                 }
         );
@@ -668,7 +667,7 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    showToast(AppUtils.getString(R.string.string_name_yuehoujifeng_has_send));
+                    showToast(getString(R.string.string_name_yuehoujifeng_has_send));
                 }
             });
         }
@@ -681,7 +680,6 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
         huaiye.com.vim.dao.msgs.ChatUtil.get().saveChangeMsg(vimMessageBean, true);
 
         loadMore();
-        Logger.debug("singleMsg 发送成功");
     }
 
     private String getSessionId() {
@@ -796,7 +794,7 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
             intent.putExtra("isGroup", false);
             startActivityForResult(intent, REQUEST_CODE_CHOOSE_FILE);
         } else {
-            showToast(AppUtils.getString(R.string.string_name_yuehoujifeng_un_support));
+            showToast(getString(R.string.string_name_yuehoujifeng_un_support));
         }
 
     }
@@ -816,7 +814,7 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
             intent.putExtra("isGroup", false);
             startActivityForResult(intent, AppUtils.REQUEST_CODE_SEND_LOCATION);
         } else {
-            showToast(AppUtils.getString(R.string.string_name_yuehoujifeng_un_support));
+            showToast(getString(R.string.string_name_yuehoujifeng_un_support));
         }
 
     }
@@ -824,7 +822,7 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
     //发送图片
     public void onImageClicked() {
         ImagePicker.getInstance()
-                .setTitle(AppUtils.getString(R.string.select_image_for_send))//设置标题
+                .setTitle(getString(R.string.select_image_for_send))//设置标题
                 .showCamera(true)//设置是否显示拍照按钮
                 .showImage(true)//设置是否展示图片
                 .showVideo(false)//设置是否展示视频
@@ -839,11 +837,11 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
     @OnClick(R.id.chat_title_bar_voice_chat_btn)
     public void onVoiceClicked() {
         if (nUser == null) {
-            showToast("获取人员详情失败，无法对讲");
+            showToast(getString(R.string.status_notice7));
             return;
         }
         if (nUser.strUserID.equals(String.valueOf(AppDatas.Auth().getUserID()))) {
-            showToast("不能与自己通话");
+            showToast(getString(R.string.status_notice14));
             return;
         }
         CStartTalkbackReq.ToUser toUser = new CStartTalkbackReq.ToUser();
@@ -866,11 +864,11 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
     @OnClick(R.id.chat_title_bar_video_chat_btn)
     public void onVideoClicked() {
         if (nUser == null) {
-            showToast("获取人员详情失败，无法通话");
+            showToast(getString(R.string.status_notice15));
             return;
         }
         if (nUser.strUserID.equals(String.valueOf(AppDatas.Auth().getUserID()))) {
-            showToast("不能与自己通话");
+            showToast(getString(R.string.status_notice14));
             return;
         }
         CStartTalkbackReq.ToUser toUser = new CStartTalkbackReq.ToUser();
@@ -945,9 +943,9 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
                 for (String image : imagePaths) {
                     final File file = new File(image);
                     if (file.length() > 1028 * 1028 * 50) {
-                        showToast("文档大于50M");
-                        mapImg.put(image, "文档大于50M");
-                        mapLocal.put(image, "文档大于50M");
+                        showToast(getString(R.string.send_notice2));
+                        mapImg.put(image, getString(R.string.send_notice2));
+                        mapLocal.put(image, getString(R.string.send_notice2));
                         if (mapImg.size() == imageSize) {
                             sendImageFile();
                         }
@@ -964,9 +962,9 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
 
                                     @Override
                                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                        mapImg.put(image, "对方未开启加密,无法发送");
-                                        mapLocal.put(image, "对方未开启加密,无法发送");
-                                        showToast("对方未开启加密,无法发送");
+                                        mapImg.put(image, getString(R.string.send_notice3));
+                                        mapLocal.put(image, getString(R.string.send_notice3));
+                                        showToast(getString(R.string.send_notice3));
                                         if (mapImg.size() == imageSize) {
                                             sendImageFile();
                                         }
@@ -1043,15 +1041,15 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
             @Override
             public void onFailure(HTTPResponse httpResponse) {
                 super.onFailure(httpResponse);
-                mapImg.put(fileOld.getAbsolutePath(), "文件上传失败");
-                mapLocal.put(fileOld.getAbsolutePath(), "文件上传失败");
+                mapImg.put(fileOld.getAbsolutePath(), getString(R.string.file_upload_false));
+                mapLocal.put(fileOld.getAbsolutePath(), getString(R.string.file_upload_false));
                 if (mapImg.size() == imageSize) {
                     sendImageFile();
                 }
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        showToast("文件上传失败");
+                        showToast(getString(R.string.file_upload_false));
                     }
                 });
             }
@@ -1187,16 +1185,16 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
     @Override
     public void onFinishedRecord(String audioPath, final int time) {
         if (TextUtils.isEmpty(audioPath)) {
-            showToast("音频录制失败");
+            showToast(getString(R.string.media_txt_2));
             return;
         }
         final File file = new File(audioPath);
-        if (!file.exists()) {
-            showToast("音频录制失败");
+        if(!file.exists()) {
+            showToast(getString(R.string.media_txt_2));
             return;
         }
-        if (file.length() <= 0) {
-            showToast("音频录制失败");
+        if(file.length() <= 0) {
+            showToast(getString(R.string.media_txt_2));
             return;
         }
         mZeusLoadView.loadingText(AppUtils.getString(R.string.is_upload_ing)).setLoading();
@@ -1212,7 +1210,7 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("对方未开启加密,无法发送");
+                            showToast(getString(R.string.send_notice3));
                             if (mZeusLoadView != null && mZeusLoadView.isShowing())
                                 mZeusLoadView.dismiss();
                         }
@@ -1239,7 +1237,7 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
                             mZeusLoadView.dismiss();
 
                         if (TextUtils.isEmpty(upload.file1_name)) {
-                            showToast(AppUtils.getString(R.string.file_upload_false));
+                            showToast(getString(R.string.file_upload_false));
                             return;
                         }
 
@@ -1272,7 +1270,7 @@ public class ChatSingleActivity extends AppBaseActivity implements ChatMoreFunct
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        showToast(AppUtils.getString(R.string.file_upload_false));
+                        showToast(getString(R.string.file_upload_false));
                     }
                 });
             }

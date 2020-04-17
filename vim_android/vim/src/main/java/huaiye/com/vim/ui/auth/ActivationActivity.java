@@ -54,7 +54,7 @@ public class ActivationActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText("激活设备")
+        getNavigate().setTitlText(getString(R.string.device_notice1))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -91,7 +91,7 @@ public class ActivationActivity extends AppBaseActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (TextUtils.isEmpty(charSequence)) {
-                    tv_hint1.setHint("请输入串号");
+                    tv_hint1.setHint(getString(R.string.device_notice2));
                 } else {
                     tv_hint1.setHint("");
                 }
@@ -114,7 +114,7 @@ public class ActivationActivity extends AppBaseActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (TextUtils.isEmpty(charSequence)) {
-                    tv_hint2.setHint("请输入密码");
+                    tv_hint2.setHint(getString(R.string.hint_auth_password));
                 } else {
                     tv_hint2.setHint("");
                 }
@@ -143,11 +143,11 @@ public class ActivationActivity extends AppBaseActivity {
 
     void updatePwd() {
         if (TextUtils.isEmpty(edt_dev_id.getText())) {
-            showToast("串号不能为空");
+            showToast(getString(R.string.device_notice3));
             return;
         }
         if (TextUtils.isEmpty(edt_new_pwd.getText())) {
-            showToast("密码不能为空");
+            showToast(getString(R.string.login_password_empty));
             return;
         }
         String strDevId = edt_dev_id.getText().toString();

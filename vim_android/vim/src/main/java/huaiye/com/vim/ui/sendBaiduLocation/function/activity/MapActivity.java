@@ -243,7 +243,7 @@ public class MapActivity extends AppBaseActivity {
      */
     public void initUserLocation() {
 
-        mProgressDialog = ProgressDialog.show(this, null, "正在定位,请稍后");
+        mProgressDialog = ProgressDialog.show(this, null, getString(R.string.common_notice43));
         mProgressDialog.setCancelable(true);
         //开启定位
         mMapPositioning = MapPositioning.getInstance();
@@ -280,7 +280,7 @@ public class MapActivity extends AppBaseActivity {
                 PoiInfo userPoi = new PoiInfo();
                 userPoi.location = latLng;
                 userPoi.address = location.getAddrStr() + location.getLocationDescribe();
-                userPoi.name = "[位置]";
+                userPoi.name = getString(R.string.common_notice44);
                 mMapAdapter.setmUserPoiInfo(userPoi);
 
                 mGeoCoder.reverseGeoCode(new ReverseGeoCodeOption().location(latLng));
@@ -306,7 +306,7 @@ public class MapActivity extends AppBaseActivity {
             PoiInfo userPoi = new PoiInfo();
             userPoi.location = latLng;
             userPoi.address = address;
-            userPoi.name = "[位置]";
+            userPoi.name = getString(R.string.common_notice44);
             mMapAdapter.setmUserPoiInfo(userPoi);
             mGeoCoder.reverseGeoCode(new ReverseGeoCodeOption().location(latLng));
             setNewLatLngZoom(latLng);
@@ -365,7 +365,7 @@ public class MapActivity extends AppBaseActivity {
                 PoiInfo userPoi = new PoiInfo();
                 userPoi.location = result.getLocation();
                 userPoi.address = result.getSematicDescription();
-                userPoi.name = "[位置]";
+                userPoi.name = getString(R.string.common_notice44);
                 mMapAdapter.setmUserPoiInfo(userPoi);
 
                 //获取反向地理编码结果
@@ -486,7 +486,7 @@ public class MapActivity extends AppBaseActivity {
 
                                             @Override
                                             public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                                showToast("对方未开启加密,无法发送");
+                                                showToast(getString(R.string.send_notice3));
                                                 runOnUiThread(new Runnable() {
                                                     @Override
                                                     public void run() {

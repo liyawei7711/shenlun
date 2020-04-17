@@ -3,15 +3,21 @@ package huaiye.com.vim.ui.guide;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 import com.ttyy.commonanno.anno.BindLayout;
+import com.ttyy.commonanno.anno.BindView;
+import com.ttyy.commonanno.anno.OnClick;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import huaiye.com.vim.R;
 import huaiye.com.vim.common.AppBaseActivity;
@@ -36,11 +42,29 @@ public class WelcomeActivity extends AppBaseActivity {
             Manifest.permission.ACCESS_COARSE_LOCATION
     };
 
+    @BindView(R.id.iv_imge)
+    View iv_imge;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getNavigate().setVisibility(View.GONE);
-        checkPermission();
+
+        Resources resources = getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+        config.locale = Locale.ENGLISH;
+        config.locale = Locale.US;
+        resources.updateConfiguration(config, dm);
+
+        new RxUtils<>().doDelay(1000, new RxUtils.IMainDelay() {
+            @Override
+            public void onMainDelay() {
+                iv_imge.setVisibility(View.GONE);
+
+                checkPermission();
+            }
+        }, "WelcomeActivity1");
 //        AuthApi.get().uploadLog(false);
     }
 
@@ -97,6 +121,11 @@ public class WelcomeActivity extends AppBaseActivity {
         }
     }
 
+    @OnClick(R.id.tv_next)
+    public void onClick(View view) {
+        gotoNext();
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         boolean isAllAgree = true;
@@ -107,7 +136,7 @@ public class WelcomeActivity extends AppBaseActivity {
         }
 
         if (!isAllAgree) {
-            showToast("存在不被允许的权限，可能会影响部分功能的使用");
+            showToast(getString(R.string.notice_txt_1));
             checkPermission();
         } else {
             gotoNext();
@@ -214,7 +243,15 @@ public class WelcomeActivity extends AppBaseActivity {
         }*/
     }
 
+    boolean isJump = false;
+
     private void startLogin() {
+
+        if (isJump) {
+            return;
+        }
+        isJump = true;
+        
         final boolean hasActived = SP.getBoolean("actived", false);
         new RxUtils().doDelay(1500, new RxUtils.IMainDelay() {
             @Override

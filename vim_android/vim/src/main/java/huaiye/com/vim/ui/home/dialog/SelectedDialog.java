@@ -17,6 +17,7 @@ import huaiye.com.vim.R;
 import huaiye.com.vim.common.AppBaseActivity;
 import huaiye.com.vim.common.views.pickers.CustomDatePicker;
 
+import static huaiye.com.vim.common.AppUtils.getString;
 import static huaiye.com.vim.common.AppBaseActivity.showToast;
 
 /**
@@ -164,7 +165,7 @@ public class SelectedDialog extends Dialog implements View.OnClickListener {
             if (!TextUtils.isEmpty(tv_end_time.getText().toString()) && tv_end_time.getTag(R.id.end_time) != null) {
                 long timeEnd = (long) tv_end_time.getTag(R.id.end_time);
                 if (time > timeEnd) {
-                    showToast("结束时间不能小于开始时间");
+                    showToast(getString(R.string.common_notice4));
                     return true;
                 }
             } else {
@@ -176,7 +177,7 @@ public class SelectedDialog extends Dialog implements View.OnClickListener {
             if (!TextUtils.isEmpty(tv_start_time.getText().toString()) && tv_start_time.getTag(R.id.start_time) != null) {
                 long timeStart = (long) tv_start_time.getTag(R.id.start_time);
                 if (time < timeStart) {
-                    showToast("结束时间不能小于开始时间");
+                    showToast(getString(R.string.common_notice4));
                     return true;
                 }
             } else {

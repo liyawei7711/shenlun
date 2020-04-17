@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="xxxx"
+        android:text=""
         android:textColor="@color/black999"
         android:textSize="13sp" />
 
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="xxxx"
+                android:text=""
                 android:textColor="@color/black666"
                 android:textSize="15sp"
                 android:visibility="gone" />

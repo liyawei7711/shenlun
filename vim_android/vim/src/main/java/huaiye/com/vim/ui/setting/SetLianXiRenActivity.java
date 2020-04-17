@@ -45,7 +45,7 @@ public class SetLianXiRenActivity extends AppBaseActivity implements SetLianXiRe
     @Override
     protected void initActionBar() {
         getNavigate().setVisibility(View.VISIBLE);
-        getNavigate().setTitlText("紧急联系人")
+        getNavigate().setTitlText(getString(R.string.common_notice47))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -152,7 +152,7 @@ public class SetLianXiRenActivity extends AppBaseActivity implements SetLianXiRe
     public void onItemClick(User item) {
         if (UserDetailUserListAdapter.TYPE_ADD.equals(item.strUserID)) {
             Intent intent = new Intent(getSelf(), ContactsAddOrDelActivity.class);
-            intent.putExtra("titleName", AppUtils.getResourceString(R.string.user_detail_add_user_title));
+            intent.putExtra("titleName", getString(R.string.common_notice47));
             intent.putExtra("isSelectUser", true);
             intent.putExtra("isJinJiMore", true);
             intent.putExtra("max", 2);

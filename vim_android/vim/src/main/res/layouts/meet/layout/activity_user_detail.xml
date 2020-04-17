@@ -61,7 +61,7 @@
                 android:lines="1"
                 android:ellipsize="end"
                 android:maxWidth="100dp"
-                android:text="6人"
+                android:text=""
                 android:layout_height="49dp" />
         </RelativeLayout>
 

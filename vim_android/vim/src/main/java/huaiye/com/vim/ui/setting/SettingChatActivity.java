@@ -31,7 +31,7 @@ public class SettingChatActivity extends AppBaseActivity {
     boolean isSOS;
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText(AppUtils.getString(R.string.activity_setting_chat))
+        getNavigate().setTitlText(getString(R.string.activity_setting_chat))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

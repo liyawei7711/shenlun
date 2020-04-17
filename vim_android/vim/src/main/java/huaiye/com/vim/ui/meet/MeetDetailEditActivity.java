@@ -120,7 +120,7 @@ public class MeetDetailEditActivity extends AppBaseActivity {
      */
     void editMeet() {
         if (TextUtils.isEmpty(meet_detail_name.getText().toString())) {
-            showToast("会议名称不能为空");
+            showToast(getString(R.string.meet_notice11));
             return;
         }
         /*if (TextUtils.isEmpty(meet_detail_content.getText().toString())) {
@@ -128,7 +128,7 @@ public class MeetDetailEditActivity extends AppBaseActivity {
             return;
         }*/
         if (TextUtils.isEmpty(meet_detail_time.getText().toString())) {
-            showToast("请选择开会时间");
+            showToast(getString(R.string.meet_notice12));
             return;
         }
         int inviteSelf = 0;
@@ -157,15 +157,13 @@ public class MeetDetailEditActivity extends AppBaseActivity {
                     @Override
                     public void onSuccess(CSetPredetermineMeetingRsp cStartMeetingRsp) {
                         pushNotify(false);
-                        showToast("修改成功");
+                        showToast(getString(R.string.common_notice31));
                         setResult(CommonConstant.ACTIVITY_RESULT_SUCCESS);
                         finish();
                     }
 
                     @Override
                     public void onError(ErrorInfo errorInfo) {
-                        Log.d("VIMApp", "error msg = " + errorInfo.getMessage());
-                        Log.d("VIMApp", "error code = " + errorInfo.getCode());
                         showToast(ErrorMsg.getMsg(ErrorMsg.update_meet_err_code));
                     }
                 });
@@ -182,7 +180,7 @@ public class MeetDetailEditActivity extends AppBaseActivity {
                             @Override
                             public void onSuccess(CSendNotifyPredetermineMeetingRsp cGetMeetingInfoRsp) {
                                 if (value)
-                                    showToast("通知成功");
+                                    showToast(getString(R.string.common_notice29));
                             }
 
                             @Override

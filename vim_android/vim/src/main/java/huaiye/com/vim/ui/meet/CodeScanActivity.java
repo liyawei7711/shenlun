@@ -36,7 +36,7 @@ public class CodeScanActivity extends AppBaseActivity {
     @Override
     protected void initActionBar() {
         getNavigate()
-                .setTitlText("扫描二维码")
+                .setTitlText(getString(R.string.common_notice19))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

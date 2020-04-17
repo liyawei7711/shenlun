@@ -46,7 +46,7 @@ public class SettingAddressActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText("设置")
+        getNavigate().setTitlText(getString(R.string.title_setting))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -84,19 +84,19 @@ public class SettingAddressActivity extends AppBaseActivity {
 
         if (TextUtils.isEmpty(edt_address_ip.getText())
                 || TextUtils.isEmpty(edt_address_port.getText())) {
-            showToast("IP / Port 不能为空");
+            showToast(getString(R.string.setting_notice1));
             return;
         }
         if (!AppUtils.isIpAddress(edt_address_ip.getText().toString().replaceAll(" ", ""))) {
-            showToast("请输入正确的IP地址");
+            showToast(getString(R.string.setting_notice2));
             return;
         }
         if (edt_address_port.getText().toString().length() != 4) {
-            showToast("Port 为四位数字");
+            showToast(getString(R.string.setting_notice3));
             return;
         }
         if (AppUtils.is9 && TextUtils.isEmpty(edt_address_end.getText())) {
-            showToast("请输入网络配置");
+            showToast(getString(R.string.setting_notice4));
             return;
         }
         String ip = edt_address_ip.getText().toString().replaceAll(" ", "");

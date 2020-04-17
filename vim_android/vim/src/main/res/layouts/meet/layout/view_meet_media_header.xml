@@ -78,6 +78,6 @@
         android:gravity="center"
         android:textSize="14sp"
         android:textColor="@color/color_FF5959"
-        android:text="结束"/>
+        android:text="@string/label_txt109"/>
 
 </RelativeLayout>

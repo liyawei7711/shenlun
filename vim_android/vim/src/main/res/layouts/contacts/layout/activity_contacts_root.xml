@@ -85,7 +85,7 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:paddingTop="6dp"
-            android:text="确定"
+            android:text="@string/makesure"
             android:textColor="@color/white"
             android:textSize="14sp" />
 

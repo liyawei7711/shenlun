@@ -30,7 +30,7 @@
             android:drawablePadding="10dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="创建即时会商"
+            android:text="@string/label_txt102"
             android:textColor="@color/black333"
             android:textSize="15sp" />
 
@@ -51,7 +51,7 @@
             android:drawablePadding="10dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="创建预约会商"
+            android:text="@string/label_txt103"
             android:textColor="@color/black333"
             android:textSize="15sp" />
 
@@ -73,7 +73,7 @@
             android:drawablePadding="10dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="加入会商"
+            android:text="@string/label_txt104"
             android:textColor="@color/black333"
             android:textSize="15sp" />
 

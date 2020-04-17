@@ -87,7 +87,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
     @Override
     protected void initActionBar() {
         EventBus.getDefault().register(this);
-        getNavigate().setTitlText("管理模式")
+        getNavigate().setTitlText(getString(R.string.title_notice2))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -191,10 +191,10 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
 
     public void quitMeet() {
 
-        final LogicDialog dialog = getLogicDialog().setMessageText("确定解散会议?");
+        final LogicDialog dialog = getLogicDialog().setMessageText(getString(R.string.meet__cancel_req));
 
-        dialog.setConfirmText("取消");
-        dialog.setCancelText("解散");
+        dialog.setConfirmText(getString(R.string.cancel));
+        dialog.setCancelText(getString(R.string.jiesan));
 
         dialog.setConfirmClickListener(new View.OnClickListener() {
             @Override
@@ -246,7 +246,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                                         ChoosedContacts.get().clear();
                                         ChoosedContacts.get().setOnMeetUsersInfo(data);
                                         Intent intent = new Intent(getSelf(), ContactsChoiceByAllFriendActivity.class);
-                                        intent.putExtra("titleName", "邀请参会");
+                                        intent.putExtra("titleName", getString(R.string.title_notice3));
                                         intent.putExtra("isSelectUser", true);
                                         intent.putExtra("needAddSelf", false);
                                         startActivityForResult(intent, 1000);
@@ -345,16 +345,17 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                             cuntCount++;
                             cuntCountSuccess++;
                             if (count == cuntCount) {
-                                showToast("已邀请选中人员");
+                                showToast(getString(R.string.meet_yiyaoqing));
                                 requestDatas();
                             }
                         } else {
+
                             if(nEncryptIMEnable) {
                                 EventBus.getDefault().post(new MessageEvent(AppUtils.EVENT_INIT_FAILED, -4, "error"));
                                 finish();
                                 return;
                             }
-                            showToast("已邀请选中人员");
+                            showToast(getString(R.string.meet_yiyaoqing));
                             requestDatas();
                         }
                     }
@@ -364,7 +365,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                         if (HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
                             cuntCount++;
                             if (count == cuntCount && cuntCountSuccess > 0) {
-                                showToast("已邀请选中人员");
+                                showToast(getString(R.string.meet_yiyaoqing));
                             } else {
                                 showToast(ErrorMsg.getMsg(ErrorMsg.invite_user_err_code));
                             }
@@ -385,7 +386,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
     private void onekeyJinYan() {
         ArrayList<CMeetingSpeakSetReq.User> users = new ArrayList<>();
         int type = 1;
-        if (iv_one_key_jinyan.getText().toString().equals("一键禁言")) {
+        if (iv_one_key_jinyan.getText().toString().equals(getString(R.string.meet_yijianjinyan))) {
             type = 0;
         }
 
@@ -399,17 +400,17 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                     @Override
                     public void onSuccess(CMeetingSpeakSetRsp cMeetingSpeakSetRsp) {
                         if (finalType == 0) {
-                            showToast("全体禁言成功");
+                            showToast(getString(R.string.meet_quantijinyan));
                             for (CGetMeetingInfoRsp.UserInfo temp : listUser) {
                                 temp.nMuteStatus = 1;
                             }
-                            iv_one_key_jinyan.setText("一键解禁");
+                            iv_one_key_jinyan.setText(getString(R.string.meet_yijianjiejin));
                         } else {
-                            showToast("全体解禁成功");
+                            showToast(getString(R.string.meet_quantijiejin));
                             for (CGetMeetingInfoRsp.UserInfo temp : listUser) {
                                 temp.nMuteStatus = 0;
                             }
-                            iv_one_key_jinyan.setText("一键禁言");
+                            iv_one_key_jinyan.setText(getString(R.string.meet_yijianjinyan));
                         }
                         adapter.notifyDataSetChanged();
                     }
@@ -447,7 +448,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                     public void onSuccess(CMeetingSpeakSetRsp cMeetingSpeakSetRsp) {
                         if (userInfo.isSpeakerMute()) {
                         } else {
-                            showToast("禁言成功");
+                            showToast(getString(R.string.meet_jinyanchenggong));
                         }
                         userInfo.nMuteStatus = userInfo.isSpeakerMute() ? 0 : 1;
                         adapter.notifyDataSetChanged();
@@ -477,7 +478,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                 .addKickoutUser(user), new SdkCallback<CkickMeetingUserRsp>() {
             @Override
             public void onSuccess(CkickMeetingUserRsp ckickMeetingUserRsp) {
-                showToast("踢出成功");
+                showToast(getString(R.string.meet_tichuchenggong));
                 listUser.remove(info);
                 adapter.notifyDataSetChanged();
                 requestDatas();
@@ -514,7 +515,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("邀请失败");
+                            showToast(getString(R.string.meet_invitor_error));
                         }
                     });
         } else {
@@ -535,7 +536,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                 .addUsers(user), new SdkCallback<CInviteUserMeetingRsp>() {
             @Override
             public void onSuccess(CInviteUserMeetingRsp cInviteUserMeetingRsp) {
-                showToast("邀请成功");
+                showToast(getString(R.string.meet_invitor_success));
 //                if (getActivity() != null) {
 //                    ((MeetActivity) getActivity()).hideAll();
 //                }
@@ -582,7 +583,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(CNotifyMeetingStatusInfo info) {
         if (info.nMeetingStatus == 2) {
-            showToast("会议已结束");
+            showToast(getString(R.string.meet_has_end));
             onBackPressed();
         } else {
             requestDatas();

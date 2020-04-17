@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="25dp"
-        android:text="参会人姓名"
+        android:text="@string/label_txt780"
         android:textColor="@color/black333"
         android:textSize="14sp" />
 
@@ -52,7 +52,7 @@
         android:layout_marginRight="25dp"
         android:background="@null"
         android:gravity="center_vertical"
-        android:hint="输入会商中显示的名字"
+        android:hint="@string/label_txt81"
         android:textColor="@color/black333"
         android:textColorHint="@color/blackddd"
         android:textSize="16sp"/>

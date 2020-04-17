@@ -43,7 +43,7 @@ public class ModifyGroupAnnouncementActivity extends AppBaseActivity {
     @Override
     protected void initActionBar() {
         if (isGroupOwner) {
-            getNavigate().setTitlText(AppUtils.getString(R.string.group_announcement))
+            getNavigate().setTitlText(getString(R.string.group_announcement))
                     .setLeftClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -61,7 +61,7 @@ public class ModifyGroupAnnouncementActivity extends AppBaseActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                showToast(AppUtils.getString(R.string.modify_group_announce_success));
+                                                showToast(getString(R.string.modify_group_announce_success));
                                                 EventBus.getDefault().post(new MessageEvent(AppUtils.EVENT_MODIFY_GROUP_ANNOUNCEMENT_SUCCESS, strAnnouncement));
                                                 finish();
                                             }
@@ -87,7 +87,7 @@ public class ModifyGroupAnnouncementActivity extends AppBaseActivity {
             getNavigate().getRightTextView().setBackgroundResource(R.drawable.shape_choosed_confirm);
             getNavigate().setRightText(AppUtils.getString(R.string.save));
         } else {
-            getNavigate().setTitlText(AppUtils.getString(R.string.group_announcement))
+            getNavigate().setTitlText(getString(R.string.group_announcement))
                     .setLeftClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

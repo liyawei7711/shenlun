@@ -98,7 +98,7 @@ public class MeetDetailActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        /*getNavigate().setTitlText("会议详情")
+        /*getNavigate().setTitlText(getString(R.string.meet_detail))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -120,7 +120,7 @@ public class MeetDetailActivity extends AppBaseActivity {
 
     @Override
     public void doInitDelay() {
-        mZeusLoadView.loadingText("正在加载").setLoading();
+        mZeusLoadView.loadingText(getString(R.string.common_notice28)).setLoading();
         meet_recycler.setLayoutManager(new LinearLayoutManager(this));
         adapter = new EXTRecyclerAdapter<User>(R.layout.item_meetcreate_member) {
             @Override
@@ -203,7 +203,7 @@ public class MeetDetailActivity extends AppBaseActivity {
         } else {
             //删除会议
             final LogicDialog logicDialog = new LogicDialog(this);
-            logicDialog.setMessageText("是否删除会议？");
+            logicDialog.setMessageText(getString(R.string.meet_notice17));
             logicDialog.setConfirmClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -213,7 +213,7 @@ public class MeetDetailActivity extends AppBaseActivity {
                                     .setStrDomainCode(strMeetDomainCode), new SdkCallback<CDelMeetingInfoRsp>() {
                                 @Override
                                 public void onSuccess(CDelMeetingInfoRsp info) {
-                                    showToast("删除成功");
+                                    showToast(getString(R.string.common_notice2));
                                     finish();
                                 }
 
@@ -231,7 +231,7 @@ public class MeetDetailActivity extends AppBaseActivity {
             }).show();
         }
         /*if (info.nRecordID == 0) {
-            showToast("该会议无会议记录");
+            showToast(getString(R.string.meet_notice22));
             return;
         }
         Intent intent = new Intent(this, MeetPlaybackActivity.class);
@@ -255,7 +255,7 @@ public class MeetDetailActivity extends AppBaseActivity {
         } else {
             //开始预约会议
             if (!isMaster) {
-                showToast("只有会议主持人才能开始会议");
+                showToast(getString(R.string.meet_notice18));
                 return;
             }
             startOrderMeet();
@@ -269,8 +269,8 @@ public class MeetDetailActivity extends AppBaseActivity {
         }
         //开始预约会议
         int inviteSelf = 0;
-        for(CGetMeetingInfoRsp.UserInfo user : info.listUser){
-            if(user.strUserID.equals(String.valueOf(AppDatas.Auth().getUserID()))){
+        for (CGetMeetingInfoRsp.UserInfo user : info.listUser) {
+            if (user.strUserID.equals(String.valueOf(AppDatas.Auth().getUserID()))) {
                 inviteSelf = 1;
                 break;
             }
@@ -290,13 +290,13 @@ public class MeetDetailActivity extends AppBaseActivity {
                 .setAppointmentMeeting(params, new SdkCallback<CSetPredetermineMeetingRsp>() {
                     @Override
                     public void onSuccess(CSetPredetermineMeetingRsp info) {
-                        showToast("开始会议成功");
+                        showToast(getString(R.string.meet_notice19));
                     }
 
                     @Override
                     public void onError(ErrorInfo errorInfo) {
                         if (errorInfo.getCode() == 1720410011) {
-                            showToast("会议时间必须大于当前时间");
+                            showToast(getString(R.string.meet_notice16));
                         } else {
                             showToast(ErrorMsg.getMsg(ErrorMsg.create_meet_err_code));
                         }
@@ -306,23 +306,19 @@ public class MeetDetailActivity extends AppBaseActivity {
 
     private void shareMeeting() {
         if (info == null) {
-            showToast("会议不存在");
+            showToast(getString(R.string.meet_has_not));
             return;
         }
         String copy = AppDatas.Auth().getUserName()
-                + "邀请你于"
-                + info.strStartTime
-                + "参加"
-                + info.strMeetingName
-                + "，请按时参加。点击链接即可跳转: "
-                + "http://" + AppDatas.Constants().getAddressIP()
+                + getString(R.string.meet_notice20, info.strStartTime, info.strMeetingName) +
+                "http://" + AppDatas.Constants().getAddressIP()
                 + ":"
                 + AppDatas.Constants().getAddressPort()
                 + "/mchtml/geturl.html?scherm=huaiyemc://?meetId="
                 + nMeetID
                 + "&end";
         AppUtils.copyAndPass(this, copy);
-        showToast("复制到剪切板，请分享");
+        showToast(getString(R.string.common_notice30));
     }
 
     ArrayList<ContactData> convertToAdapter(ArrayList<CGetMeetingInfoRsp.UserInfo> contacts) {
@@ -346,8 +342,6 @@ public class MeetDetailActivity extends AppBaseActivity {
     }
 
     private void requestInfo() {
-        Log.d("VIMApp", "requestInfo nMeetID="+nMeetID);
-        Log.d("VIMApp", "requestInfo strMeetDomainCode="+strMeetDomainCode);
         HYClient.getModule(ApiMeet.class)
                 .requestMeetDetail(SdkParamsCenter.Meet.RequestMeetDetail()
                                 .setnListMode(1)
@@ -356,7 +350,6 @@ public class MeetDetailActivity extends AppBaseActivity {
                         new SdkCallback<CGetMeetingInfoRsp>() {
                             @Override
                             public void onSuccess(CGetMeetingInfoRsp cGetMeetingInfoRsp) {
-                                Log.d("VIMApp", "requestInfo onSuccess");
                                 mZeusLoadView.dismiss();
 
                                 isMaster = cGetMeetingInfoRsp.strMainUserID.equals(String.valueOf(AppAuth.get().getUserID()));
@@ -377,7 +370,6 @@ public class MeetDetailActivity extends AppBaseActivity {
 
                             @Override
                             public void onError(ErrorInfo errorInfo) {
-                                Log.d("VIMApp", "requestInfo onError");
                                 mZeusLoadView.dismiss();
 
                                 showToast(ErrorMsg.getMsg(errorInfo.getCode()));
@@ -456,7 +448,7 @@ public class MeetDetailActivity extends AppBaseActivity {
                     @Override
                     public void onSuccess(CSetPredetermineMeetingRsp cStartMeetingRsp) {
                         pushNotify(false);
-                        showToast("参会人修改成功");
+                        showToast(getString(R.string.meet_notice21));
                         adapter.setDatas(ChoosedContactsNew.get().getContacts());
                         adapter.notifyDataSetChanged();
                     }
@@ -500,7 +492,7 @@ public class MeetDetailActivity extends AppBaseActivity {
                             @Override
                             public void onSuccess(CSendNotifyPredetermineMeetingRsp cGetMeetingInfoRsp) {
                                 if (value)
-                                    showToast("通知成功");
+                                    showToast(getString(R.string.common_notice29));
                             }
 
                             @Override

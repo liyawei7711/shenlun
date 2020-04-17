@@ -48,7 +48,7 @@ public class NickJoinMeetActivity extends AppBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getNavigate().setTitlText("匿名入会")
+        getNavigate().setTitlText(getString(R.string.title_notice8))
                 .setLeftIcon(R.drawable.selector_navi_back_blue)
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
@@ -81,13 +81,13 @@ public class NickJoinMeetActivity extends AppBaseActivity {
     void onJoinClicked() {
         if (TextUtils.isEmpty(edt_meet_id.getText())
                 || TextUtils.isEmpty(edt_user_name.getText())) {
-            showToast("信息不完整");
+            showToast(getString(R.string.common_notice32));
             return;
         }
         try {
             Integer.parseInt(edt_meet_id.getText().toString());
         } catch (Exception e) {
-            showToast("会议号有误，请重新输入");
+            showToast(getString(R.string.join_meeting_notice2));
             return;
         }
         UUID deviceUuid = UUID.randomUUID();
@@ -114,13 +114,13 @@ public class NickJoinMeetActivity extends AppBaseActivity {
     void onVoiceJoinClicked() {
         if (TextUtils.isEmpty(edt_meet_id.getText())
                 || TextUtils.isEmpty(edt_user_name.getText())) {
-            showToast("信息不完整");
+            showToast(getString(R.string.common_notice32));
             return;
         }
         try {
             Integer.parseInt(edt_meet_id.getText().toString());
         } catch (Exception e) {
-            showToast("会议号有误，请重新输入");
+            showToast(getString(R.string.join_meeting_notice2));
             return;
         }
         UUID deviceUuid = UUID.randomUUID();

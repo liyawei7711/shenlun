@@ -52,6 +52,8 @@ import huaiye.com.vim.models.contacts.bean.GroupInfo;
 import huaiye.com.vim.ui.meet.ChatGroupActivityNew;
 import ttyy.com.jinnetwork.core.work.HTTPResponse;
 
+import static huaiye.com.vim.common.AppBaseActivity.showToast;
+import static huaiye.com.vim.common.AppUtils.getString;
 import static huaiye.com.vim.common.AppUtils.nEncryptIMEnable;
 
 public class ShareGroupPopupWindow extends PopupWindow {
@@ -237,7 +239,7 @@ public class ShareGroupPopupWindow extends PopupWindow {
                         public void onError(ErrorInfo errorInfo) {
                             if (sessionRsp.m_lstData.indexOf(temp) == sessionRsp.m_lstData.size() - 1) {
                                 ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                                AppBaseActivity.showToast("分享失败" + errorInfo.getMessage());
+                                showToast(AppUtils.getString(R.string.share_txt_1) + errorInfo.getMessage());
                                 dismiss();
                             }
 
@@ -268,7 +270,7 @@ public class ShareGroupPopupWindow extends PopupWindow {
             huaiye.com.vim.dao.msgs.ChatUtil.get().saveChangeMsg(vimMessageBean, true);
 
             ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-            AppBaseActivity.showToast("分享成功");
+            showToast(getString(R.string.share_txt_2));
             dismiss();
             jumpToChat();
             EventBus.getDefault().post(new CloseZhuanFa());
@@ -318,7 +320,7 @@ public class ShareGroupPopupWindow extends PopupWindow {
                         }
 
                         ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                        AppBaseActivity.showToast("分享成功");
+                        showToast(getString(R.string.share_txt_2));
                         dismiss();
                         jumpToChat();
                         EventBus.getDefault().post(new CloseZhuanFa());
@@ -327,7 +329,7 @@ public class ShareGroupPopupWindow extends PopupWindow {
                     @Override
                     public void onError(ErrorInfo errorInfo) {
                         ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                        AppBaseActivity.showToast("分享失败" + errorInfo.getMessage());
+                        showToast(AppUtils.getString(R.string.share_txt_1) + errorInfo.getMessage());
                         dismiss();
                     }
                 }
@@ -425,7 +427,7 @@ public class ShareGroupPopupWindow extends PopupWindow {
                     @Override
                     public void onFailure(HTTPResponse httpResponse) {
                         super.onFailure(httpResponse);
-                        AppBaseActivity.showToast("onFailure");
+                        showToast("onFailure");
                     }
                 });
     }

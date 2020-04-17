@@ -79,7 +79,7 @@ public class JieSuoActivity extends AppBaseActivity {
                             mGestureLockViewGroup.reset();
                             finish();
                         } else {
-                            showToast("手势密码错误");
+                            showToast(getString(R.string.notice_txt_8));
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -87,7 +87,7 @@ public class JieSuoActivity extends AppBaseActivity {
                                     count++;
                                     if (count >= 6) {
                                         AppAuth.get().clearData(JieSuoActivity.this);
-                                        showToast("手势密码多次错误，清空数据");
+                                        showToast(getString(R.string.notice_txt_7));
                                         jumpToLogin();
                                     }
                                 }

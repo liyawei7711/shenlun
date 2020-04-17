@@ -23,7 +23,6 @@ import com.ttyy.commonanno.anno.route.BindExtra;
 
 import huaiye.com.vim.R;
 import huaiye.com.vim.common.AppBaseActivity;
-import huaiye.com.vim.common.AppUtils;
 import huaiye.com.vim.dao.AppDatas;
 import huaiye.com.vim.dao.auth.AppAuth;
 import huaiye.com.vim.dao.msgs.JieSuoBean;
@@ -56,7 +55,7 @@ public class SettingActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText(AppUtils.getString(R.string.activity_setting_set))
+        getNavigate().setTitlText(getString(R.string.activity_setting_set))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -91,12 +90,12 @@ public class SettingActivity extends AppBaseActivity {
         if (jiesuo == null) {
             isReSet = false;
             zhiwen_checkbox.setChecked(false);
-            tv_shoushi_notic.setText("绘制手势密码");
+            tv_shoushi_notic.setText(getString(R.string.common_notice48));
         } else {
             isReSet = true;
             isChecked = jiesuo.isJieSuo;
             zhiwen_checkbox.setChecked(jiesuo.isJieSuo);
-            tv_shoushi_notic.setText("重置手势密码");
+            tv_shoushi_notic.setText(getString(R.string.common_notice49));
         }
 
         view_checkbox.setOnClickListener(new View.OnClickListener() {
@@ -107,8 +106,8 @@ public class SettingActivity extends AppBaseActivity {
                     return;
                 }
 
-                if(jiesuo == null) {
-                    showToast("请先绘制手势密码");
+                if (jiesuo == null) {
+                    showToast(getString(R.string.common_notice50));
                     return;
                 }
                 isChecked = !isChecked;
@@ -138,10 +137,10 @@ public class SettingActivity extends AppBaseActivity {
 
     @OnClick(R.id.activity_setting_security)
     void setSecurity() {
-        new AlertDialog.Builder(this).setTitle("解绑")
+        new AlertDialog.Builder(this).setTitle(getString(R.string.common_notice51))
                 .setIcon(android.R.drawable.sym_def_app_icon)
-                .setMessage("确定要解绑吗？")
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                .setMessage(getString(R.string.common_notice52))
+                .setPositiveButton(getString(R.string.makesure), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         HYClient.getModule(ApiEncrypt.class)
@@ -150,16 +149,16 @@ public class SettingActivity extends AppBaseActivity {
                                             @Override
                                             public void onSuccess(SdpMessageCmCtrlRsp sdpMessageCmCtrlRsp) {
                                                 HYClient.getSdkOptions().encrypt().setEncryptBind(false);
-                                                showToast("解绑成功");
+                                                showToast(getString(R.string.common_notice53));
                                             }
 
                                             @Override
                                             public void onError(ErrorInfo errorInfo) {
-                                                showToast("解绑失败");
+                                                showToast(getString(R.string.common_notice54));
                                             }
                                         });
                     }
-                }).setNegativeButton("取消", null).show();
+                }).setNegativeButton(getString(R.string.cancel), null).show();
     }
 
     @OnClick(R.id.activity_setting_chat)

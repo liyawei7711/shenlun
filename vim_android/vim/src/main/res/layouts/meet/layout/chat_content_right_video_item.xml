@@ -13,7 +13,7 @@
         android:layout_marginTop="20dp"
         android:textSize="13sp"
         android:textColor="@color/black999"
-        android:text="xxxx"/>
+        android:text=""/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:layout_marginBottom="10dp"
                 android:textSize="15sp"
                 android:textColor="@color/black666"
-                android:text="xxxx"/>
+                android:text=""/>
 
             <FrameLayout
                 android:id="@+id/right_content_video"

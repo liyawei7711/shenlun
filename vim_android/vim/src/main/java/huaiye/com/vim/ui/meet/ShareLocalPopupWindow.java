@@ -15,6 +15,8 @@ import android.widget.TextView;
 import huaiye.com.vim.R;
 import huaiye.com.vim.common.AppUtils;
 
+import static huaiye.com.vim.common.AppUtils.getString;
+
 /**
  * author: admin
  * date: 2018/02/23
@@ -99,7 +101,7 @@ public class ShareLocalPopupWindow extends PopupWindow implements View.OnClickLi
     }
 
     public void init() {
-        tv_open_white_board.setText("打开白板");
+        tv_open_white_board.setText(getString(R.string.meet_open_whiteboard));
     }
 
     public void changeStatue(String str) {

@@ -57,7 +57,6 @@ public class MeetMemberFragment extends AppBaseFragment {
         recycview.setRecyclerListener(new RecyclerView.RecyclerListener() {
             @Override
             public void onViewRecycled(RecyclerView.ViewHolder holder) {
-                Log.d("MeetMemberFragment", "onViewRecycled");
                 /*TextureView textureView = ((MeetMultipleAdapter.CustomViewHolder) holder).multiple_textureView;
                 HYClient.getHYPlayer().stopPlayEx(null, textureView);*/
             }

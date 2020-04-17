@@ -97,7 +97,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText("会议控制")
+        getNavigate().setTitlText(getString(R.string.title_notice7))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -348,10 +348,10 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                                     String text;
                                     if (cGetMeetingInfoRsp.nMuteStatus == 1) {
                                         isAllInMute = true;
-                                        text = "一键解禁";
+                                        text = getString(R.string.meet_yijianjiejin);
                                     } else {
                                         isAllInMute = false;
-                                        text = "一键禁言";
+                                        text = getString(R.string.meet_yijianjinyan);
                                     }
                                     getNavigate().setRightText(text)
                                             .setRightTextColor(ContextCompat.getColor(getContext(), R.color.blue_2E67FE))
@@ -404,7 +404,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                                 mRaiseUsers.remove(userInfo.strUserID);
                             }
                         } else {
-                            showToast("禁言成功");
+                            showToast(getString(R.string.meet_jinyanchenggong));
                         }
                         userInfo.nMuteStatus = userInfo.isSpeakerMute() ? 0 : 1;
                         mMeetingAdapter.notifyDataSetChanged();
@@ -439,14 +439,14 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                 new SdkCallback<CSetMeetingKeynoteSpeakerRsp>() {
                     @Override
                     public void onSuccess(CSetMeetingKeynoteSpeakerRsp o) {
-                        showToast("主讲人设置成功");
+                        showToast(getString(R.string.meet_notice3));
                     }
 
                     @Override
                     public void onError(ErrorInfo errorInfo) {
                         Log.d("VIMApp", "onError = " + errorInfo.getMessage());
                         Log.d("VIMApp", "onError code = " + errorInfo.getCode());
-                        showToast("主讲人设置失败");
+                        showToast(getString(R.string.meet_notice4));
                     }
                 });
     }
@@ -469,14 +469,14 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                 new SdkCallback<CSetMeetingKeynoteSpeakerRsp>() {
                     @Override
                     public void onSuccess(CSetMeetingKeynoteSpeakerRsp o) {
-                        showToast("取消主讲人设置成功");
+                        showToast(getString(R.string.meet_notice5));
                     }
 
                     @Override
                     public void onError(ErrorInfo errorInfo) {
                         Log.d("VIMApp", "onError = " + errorInfo.getMessage());
                         Log.d("VIMApp", "onError code = " + errorInfo.getCode());
-                        showToast("取消主讲人设置失败");
+                        showToast(getString(R.string.meet_notice6));
                     }
                 });
     }
@@ -490,7 +490,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
         }
 
         if (String.valueOf(AppDatas.Auth().getUserID()).equals(info.strUserID)) {
-            showToast("不能把自己踢出会议哦");
+            showToast(getString(R.string.meet_notice7));
             return;
         }
         ParamsMeetKickout.User user = new ParamsMeetKickout.User();
@@ -502,7 +502,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                 .addKickoutUser(user), new SdkCallback<CkickMeetingUserRsp>() {
             @Override
             public void onSuccess(CkickMeetingUserRsp ckickMeetingUserRsp) {
-                showToast("踢出成功");
+                showToast(getString(R.string.meet_tichuchenggong));
                 requestInfo();
             }
 
@@ -538,7 +538,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("邀请失败");
+                            showToast(getString(R.string.meet_invitor_error));
                         }
                     });
         } else {
@@ -559,7 +559,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                 .addUsers(user), new SdkCallback<CInviteUserMeetingRsp>() {
             @Override
             public void onSuccess(CInviteUserMeetingRsp cInviteUserMeetingRsp) {
-                showToast("邀请成功");
+                showToast(getString(R.string.meet_invitor_success));
             }
 
             @Override
@@ -585,18 +585,18 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
                     public void onSuccess(CMeetingSpeakSetRsp cMeetingSpeakSetRsp) {
                         if (!isAllInMute) {
                             isAllInMute = true;
-                            showToast("全体禁言成功");
+                            showToast(getString(R.string.meet_quantijinyan));
                             for (CGetMeetingInfoRsp.UserInfo temp : mJoinedList) {
                                 temp.nMuteStatus = 1;
                             }
-                            getNavigate().setRightText("一键解禁");
+                            getNavigate().setRightText(getString(R.string.meet_yijianjiejin));
                         } else {
                             isAllInMute = false;
-                            showToast("全体解禁成功");
+                            showToast(getString(R.string.meet_quantijiejin));
                             for (CGetMeetingInfoRsp.UserInfo temp : mJoinedList) {
                                 temp.nMuteStatus = 0;
                             }
-                            getNavigate().setRightText("一键禁言");
+                            getNavigate().setRightText(getString(R.string.meet_yijianjinyan));
 
                             //解除禁言，需要通知会议界面删除对应的举手人
                             RaiseMessage msg = new RaiseMessage();
@@ -625,7 +625,7 @@ public class MeetControlActivity extends AppBaseActivity implements SdpUITask.Sd
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(CNotifyMeetingStatusInfo info) {
         if (info.nMeetingStatus == 2) {
-            showToast("会议已结束");
+            showToast(getString(R.string.meet_has_end));
             onBackPressed();
         } else {
             requestInfo();

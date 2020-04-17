@@ -53,7 +53,7 @@ public class ModifyGroupNameActivity extends AppBaseActivity {
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            showToast(AppUtils.getString(R.string.modify_group_name_success));
+                                            showToast(getString(R.string.modify_group_name_success));
                                             MessageEvent nMessageEvent = new MessageEvent(AppUtils.EVENT_MODIFY_GROUPNAME_SUCCESS, groupName);
                                             nMessageEvent.argStr0 = strGroupID;
                                             nMessageEvent.msgContent = modifyGroupName.getText().toString().trim();

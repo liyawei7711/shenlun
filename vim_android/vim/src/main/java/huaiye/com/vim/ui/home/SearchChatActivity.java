@@ -9,15 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.huaiye.sdk.logger.Logger;
@@ -33,27 +29,15 @@ import butterknife.ButterKnife;
 import huaiye.com.vim.R;
 import huaiye.com.vim.common.recycle.LiteBaseAdapter;
 import huaiye.com.vim.common.rx.RxUtils;
-import huaiye.com.vim.common.views.FastRetrievalBar;
 import huaiye.com.vim.dao.AppDatas;
 import huaiye.com.vim.dao.auth.AppAuth;
 import huaiye.com.vim.dao.msgs.User;
 import huaiye.com.vim.dao.msgs.VimMessageListBean;
 import huaiye.com.vim.dao.msgs.VimMessageListMessages;
-import huaiye.com.vim.models.ModelApis;
-import huaiye.com.vim.models.ModelCallback;
-import huaiye.com.vim.models.contacts.bean.ContactsBean;
 import huaiye.com.vim.models.contacts.bean.CreateGroupContactData;
-import huaiye.com.vim.models.contacts.bean.CustomContacts;
 import huaiye.com.vim.ui.chat.holder.ChatListViewHolder;
-import huaiye.com.vim.ui.contacts.ContactDetailNewActivity;
-import huaiye.com.vim.ui.contacts.sharedata.ChoosedContactsNew;
-import huaiye.com.vim.ui.home.adapter.ContactsItemAdapter;
 import huaiye.com.vim.ui.meet.ChatGroupActivityNew;
 import huaiye.com.vim.ui.meet.ChatSingleActivity;
-import ttyy.com.jinnetwork.core.work.HTTPResponse;
-import ttyy.com.recyclerexts.base.EXTRecyclerAdapter;
-import ttyy.com.recyclerexts.base.EXTViewHolder;
-import ttyy.com.recyclerexts.tags.TagsAdapter;
 
 /**
  * Created by Administrator on 2018\3\14 0014.
@@ -217,8 +201,8 @@ public class SearchChatActivity extends AppCompatActivity {
                 }
 
                 ArrayList<VimMessageListBean> tempDatas = new ArrayList<>();
-                for(VimMessageListBean temp : data) {
-                    if(temp.sessionName.contains(mSearchKey)) {
+                for (VimMessageListBean temp : data) {
+                    if (temp.sessionName.contains(mSearchKey)) {
                         tempDatas.add(temp);
                     }
                 }

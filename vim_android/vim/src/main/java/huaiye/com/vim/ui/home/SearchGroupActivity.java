@@ -146,19 +146,19 @@ public class SearchGroupActivity extends AppCompatActivity {
         mSearchKey = key;
         mPage = 1;
 
-        if(null!= VIMApp.getInstance().mDomainInfoList&&VIMApp.getInstance().mDomainInfoList.size()>0){
+        if (null != VIMApp.getInstance().mDomainInfoList && VIMApp.getInstance().mDomainInfoList.size() > 0) {
             refresh_view.setRefreshing(true);
             requestCount = VIMApp.getInstance().mDomainInfoList.size();
             currentRequestTime = 0;
-            for(DomainInfoList.DomainInfo domainInfo:VIMApp.getInstance().mDomainInfoList){
-                ModelApis.Contacts().requestGroupBuddyContacts(-1, 0, 0, key,domainInfo.strDomainCode, new ModelCallback<ContactsGroupChatListBean>() {
+            for (DomainInfoList.DomainInfo domainInfo : VIMApp.getInstance().mDomainInfoList) {
+                ModelApis.Contacts().requestGroupBuddyContacts(-1, 0, 0, key, domainInfo.strDomainCode, new ModelCallback<ContactsGroupChatListBean>() {
                     @Override
                     public void onSuccess(final ContactsGroupChatListBean contactsBean) {
-                        if(currentRequestTime==0){
+                        if (currentRequestTime == 0) {
                             mlstGroupInfo.clear();
                         }
                         ++currentRequestTime;
-                        if(null!=contactsBean&&null!=contactsBean.lstGroupInfo&&contactsBean.lstGroupInfo.size()>0){
+                        if (null != contactsBean && null != contactsBean.lstGroupInfo && contactsBean.lstGroupInfo.size() > 0) {
                             mlstGroupInfo.addAll(contactsBean.lstGroupInfo);
                             rct_view.setAdapter(mGroupitemAdapter);
                             mGroupitemAdapter.setDatas(mlstGroupInfo);
@@ -182,7 +182,7 @@ public class SearchGroupActivity extends AppCompatActivity {
                     @Override
                     public void onFinish(HTTPResponse httpResponse) {
                         super.onFinish(httpResponse);
-                        if(requestCount==currentRequestTime){
+                        if (requestCount == currentRequestTime) {
                             refresh_view.setRefreshing(false);
 
                         }
@@ -193,6 +193,7 @@ public class SearchGroupActivity extends AppCompatActivity {
 
 
     }
+
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/common_icon_search"
         android:drawablePadding="6dp"
-        android:text="搜索"
+        android:text="@string/label_txt7"
         android:textColor="@color/black999"
         android:textSize="15sp" />
 </LinearLayout>

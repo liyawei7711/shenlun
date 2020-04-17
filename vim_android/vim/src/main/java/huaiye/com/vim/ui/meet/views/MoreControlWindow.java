@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.huaiye.sdk.sdpmsgs.meet.CGetMeetingInfoRsp;
 
 import huaiye.com.vim.R;
+import huaiye.com.vim.common.AppUtils;
 
 /**
  * Created by ywt on 2019/3/23.
@@ -63,9 +64,9 @@ public class MoreControlWindow extends PopupWindow implements View.OnClickListen
 
         TextView control_jingyan = (TextView) contentView.findViewById(R.id.control_jingyan);
         if (userInfo.isSpeakerMute()) {
-            control_jingyan.setText("取消禁言");
+            control_jingyan.setText(AppUtils.getString(R.string.talk_notice9));
         } else {
-            control_jingyan.setText("禁言");
+            control_jingyan.setText(AppUtils.getString(R.string.jingyan));
         }
         control_jingyan.setOnClickListener(this);
         if(strKeynoteSpeakerUserID == "") {

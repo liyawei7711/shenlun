@@ -8,8 +8,6 @@ import android.view.View;
 
 public class GestureLockView extends View {
 
-    private static final String TAG = "GestureLockView";
-
     /**
      * GestureLockView的三种状态
      */

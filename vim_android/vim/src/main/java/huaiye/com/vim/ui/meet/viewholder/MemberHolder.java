@@ -15,6 +15,8 @@ import butterknife.BindView;
 import huaiye.com.vim.R;
 import huaiye.com.vim.common.recycle.LiteViewHolder;
 
+import static huaiye.com.vim.common.AppUtils.getString;
+
 /**
  * Created by Administrator on 2018\2\27 0027.
  */
@@ -114,15 +116,15 @@ public class MemberHolder extends LiteViewHolder {
         tvName.setText(bean.strUserName);
         if (position == 0) {
             if(bean.nJoinStatus != 2) {
-                tvTitle.setText("未入会");
+                tvTitle.setText(getString(R.string.no_join_notice));
             } else {
-                tvTitle.setText("已入会");
+                tvTitle.setText(getString(R.string.has_join_notice));
             }
             tvTitle.setVisibility(View.VISIBLE);
         } else {
             if (bean.nJoinStatus != ((CGetMeetingInfoRsp.UserInfo) datas.get(position - 1)).nJoinStatus
                     && ((CGetMeetingInfoRsp.UserInfo) datas.get(position - 1)).nJoinStatus == 2) {
-                tvTitle.setText("未入会");
+                tvTitle.setText(getString(R.string.no_join_notice));
                 tvTitle.setVisibility(View.VISIBLE);
             } else {
                 tvTitle.setVisibility(View.GONE);

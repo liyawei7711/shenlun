@@ -119,7 +119,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="手机"
+                    android:text="@string/label_txt29"
                     android:textColor="#333"
                     android:textSize="16sp" />
 
@@ -128,7 +128,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:text=" "
+                    android:text=""
                     android:textColor="#333"
                     android:textSize="16sp" />
 
@@ -148,7 +148,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="公司"
+                    android:text="@string/label_txt30"
                     android:textColor="#333"
                     android:textSize="16sp" />
 
@@ -157,7 +157,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:text=" "
+                    android:text=""
                     android:textColor="#333"
                     android:textSize="16sp" />
 
@@ -182,7 +182,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="部门"
+                    android:text="@string/label_txt31"
                     android:textColor="#333"
                     android:textSize="16sp" />
 
@@ -191,7 +191,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:text=" "
+                    android:text=""
                     android:textColor="#333"
                     android:textSize="16sp" />
 
@@ -216,7 +216,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="职位"
+                    android:text="@string/label_txt32"
                     android:textColor="#333"
                     android:textSize="16sp" />
 
@@ -225,7 +225,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:text=" "
+                    android:text=""
                     android:textColor="#333"
                     android:textSize="16sp" />
 
@@ -245,10 +245,6 @@
         android:background="@color/white"
         android:orientation="horizontal">
 
-
-
-
-
         <TextView
             android:id="@+id/tv_create_meet"
             android:layout_width="wrap_content"
@@ -257,7 +253,7 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_meet_invite"
             android:gravity="center"
-            android:text="创建会商"
+            android:text="@string/create_conference"
             android:textColor="#333"
             android:textSize="14sp" />
 
@@ -276,7 +272,7 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_video_camera"
             android:gravity="center"
-            android:text="视频对讲"
+            android:text="@string/label_txt34"
             android:textColor="#333"
             android:textSize="14sp" />
         <View
@@ -294,7 +290,7 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/inf_yuyin"
             android:gravity="center"
-            android:text="语音对讲"
+            android:text="@string/label_txt35"
             android:textColor="@color/black333"
             android:textSize="14sp" />
 

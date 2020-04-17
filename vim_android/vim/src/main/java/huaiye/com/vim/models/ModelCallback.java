@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+import huaiye.com.vim.R;
 import huaiye.com.vim.common.AppBaseActivity;
 import huaiye.com.vim.common.AppUtils;
 import ttyy.com.jinnetwork.core.callback.HTTPUIThreadCallbackAdapter;
@@ -46,7 +47,7 @@ public abstract class ModelCallback<T> extends HTTPUIThreadCallbackAdapter {
     public void onPreStart(HTTPRequest httpRequest) {
         if (!AppUtils.isNetworkConnected()) {
             httpRequest.cancel();
-            AppBaseActivity.showToast("当前无网络");
+            AppBaseActivity.showToast(AppUtils.getString(R.string.download_notice5));
             return;
         }
         System.out.println("VIMApp, url -> " + httpRequest.getRequestURL());

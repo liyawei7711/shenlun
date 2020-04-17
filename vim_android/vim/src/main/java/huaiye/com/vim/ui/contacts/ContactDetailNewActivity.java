@@ -102,7 +102,7 @@ public class ContactDetailNewActivity extends AppBaseActivity {
 
     private void initNavigateView() {
         getNavigate().setVisibility(View.VISIBLE);
-        getNavigate().setTitlText("个人详情")
+        getNavigate().setTitlText(getString(R.string.title_notice1))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -120,17 +120,17 @@ public class ContactDetailNewActivity extends AppBaseActivity {
         mName = nUser.strUserName;
 
         if (nUser.nStatus == -1) {
-            mState = "(未登录)";
+            mState = getString(R.string.status_notice8);
         } else if (nUser.nStatus == 0) {
-            mState = "(离线)";
+            mState = getString(R.string.status_notice9);
         } else if (nUser.nStatus == 1) {
-            mState = "(空闲)";
+            mState = getString(R.string.status_notice10);
         } else if (nUser.nStatus == 2) {
-            mState = "(采集中)";
+            mState = getString(R.string.status_notice11);
         } else if (nUser.nStatus == 3) {
-            mState = "(对讲中)";
+            mState = getString(R.string.status_notice12);
         } else if (nUser.nStatus == 4) {
-            mState = "(会议中)";
+            mState = getString(R.string.status_notice13);
         }
 
         /* 根据性别类型，显示对应的内容，如果为0，则不显示(比如会议终端) */
@@ -169,11 +169,11 @@ public class ContactDetailNewActivity extends AppBaseActivity {
     @OnClick(R.id.contact_video)
     public void onVideoClicked(View view) {
         if (nUser == null) {
-            showToast("获取人员详情失败，无法通话");
+            showToast(getString(R.string.status_notice15));
             return;
         }
         if (nUser.strUserID.equals(String.valueOf(AppDatas.Auth().getUserID()))) {
-            showToast("不能与自己通话");
+            showToast(getString(R.string.status_notice14));
             return;
         }
         CStartTalkbackReq.ToUser toUser = new CStartTalkbackReq.ToUser();
@@ -197,11 +197,11 @@ public class ContactDetailNewActivity extends AppBaseActivity {
     @OnClick(R.id.contact_voice)
     public void onVoiceClicked(View view) {
         if (nUser == null) {
-            showToast("获取人员详情失败，无法对讲");
+            showToast(getString(R.string.status_notice7));
             return;
         }
         if (nUser.strUserID.equals(String.valueOf(AppDatas.Auth().getUserID()))) {
-            showToast("不能与自己通话");
+            showToast(getString(R.string.status_notice14));
             return;
         }
         CStartTalkbackReq.ToUser toUser = new CStartTalkbackReq.ToUser();
@@ -224,11 +224,11 @@ public class ContactDetailNewActivity extends AppBaseActivity {
     @OnClick(R.id.contact_message)
     public void onMessageClicked(View view) {
         if (nUser == null) {
-            showToast("获取人员详情失败，无法对讲");
+            showToast(getString(R.string.status_notice7));
             return;
         }
         if (nUser.strUserID.equals(String.valueOf(AppDatas.Auth().getUserID()))) {
-            showToast("不能与自己通话");
+            showToast(getString(R.string.status_notice14));
             return;
         }
         CStartTalkbackReq.ToUser toUser = new CStartTalkbackReq.ToUser();
@@ -330,7 +330,7 @@ public class ContactDetailNewActivity extends AppBaseActivity {
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("信息加密失败");
+                            showToast(getString(R.string.jiami_notice1));
                         }
                     });
         } else {
@@ -381,8 +381,7 @@ public class ContactDetailNewActivity extends AppBaseActivity {
 
                     @Override
                     public void onError(ErrorInfo errorInfo) {
-                        showToast("发送失败" + errorInfo.getMessage());
-
+                        showToast(getString(R.string.send_notice1) + errorInfo.getMessage());
                     }
                 }
         );

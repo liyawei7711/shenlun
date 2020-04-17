@@ -86,7 +86,7 @@
 
                 android:drawableRight="@drawable/bt_next_press"
                 android:gravity="center_vertical"
-                android:text="发送消息"
+                android:text="@string/label_txt1"
                 android:textColor="@color/black333"
                 android:textSize="16sp" />
 
@@ -111,7 +111,7 @@
                     android:drawableLeft="@drawable/geren_yuyin"
                     android:drawableRight="@drawable/bt_next_press"
                     android:gravity="center_vertical"
-                    android:text="音频通话"
+                    android:text="@string/label_txt2"
                     android:textColor="@color/black333"
                     android:textSize="16sp" />
 
@@ -131,7 +131,7 @@
                     android:drawableRight="@drawable/bt_next_press"
                     android:drawablePadding="16dp"
                     android:gravity="center_vertical"
-                    android:text="视频通话"
+                    android:text="@string/label_txt3"
                     android:textColor="@color/black333"
                     android:textSize="16sp" />
 

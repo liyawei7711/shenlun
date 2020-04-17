@@ -476,7 +476,7 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
 
             @Override
             public void onFocusRight() {
-                showToast("右面按钮被点击了");
+                showToast(getString(R.string.chat_group_notice1));
 
             }
 
@@ -681,7 +681,7 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
 
                     @Override
                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-//                            showToast("对方未开启加密,无法发送");
+//                            AppBaseActivity.showToast(getString(R.string.send_notice3));
                     }
                 });
     }
@@ -793,9 +793,9 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
                         public void onError(ErrorInfo errorInfo) {
                             if (sessionRsp.m_lstData.indexOf(temp) == sessionRsp.m_lstData.size() - 1) {
                                 if (null != errorInfo && SDKInnerMessageCode.NOT_LOGIN == errorInfo.getCode()) {
-                                    needLoad(AppUtils.getString(R.string.string_name_login_error));
+                                    needLoad(getString(R.string.string_name_login_error));
                                 }
-                                showToast("发送失败" + errorInfo.getMessage());
+                                showToast(getString(R.string.send_notice1) + errorInfo.getMessage());
                             }
 
                         }
@@ -813,7 +813,7 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        showToast(AppUtils.getString(R.string.string_name_yuehoujifeng_has_send));
+                        showToast(getString(R.string.string_name_yuehoujifeng_has_send));
                     }
                 });
             }
@@ -838,8 +838,6 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
             VimMessageBean vimMessageBean = VimMessageBean.from(bean);
             huaiye.com.vim.dao.msgs.ChatUtil.get().saveChangeMsg(vimMessageBean, true);
             loadMore();
-
-            Logger.debug("singleMsg 发送成功");
         }
     }
 
@@ -871,7 +869,7 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    showToast(AppUtils.getString(R.string.string_name_yuehoujifeng_has_send));
+                                    showToast(getString(R.string.string_name_yuehoujifeng_has_send));
                                 }
                             });
                         }
@@ -894,8 +892,6 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
                                 AppDatas.MsgDB().getSendUserListDao().insert(new SendMsgUserBean(groupMsgBean.sessionID, temp.strUserID, temp.strUserDomainCode));
                             }
                         }
-
-                        Logger.debug("singleMsg 发送成功");
                     }
 
                     @Override
@@ -903,7 +899,7 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
                         if (null != errorInfo && SDKInnerMessageCode.NOT_LOGIN == errorInfo.getCode()) {
                             needLoad(AppUtils.getString(R.string.string_name_login_error));
                         }
-                        showToast("发送失败" + errorInfo.getMessage());
+                        showToast(getString(R.string.send_notice1) + errorInfo.getMessage());
 
                     }
                 }
@@ -988,7 +984,7 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
             intent.putExtra("mMessageUsersDate", mMessageUsersDate);
             startActivityForResult(intent, AppUtils.REQUEST_CODE_SEND_LOCATION);
         } else {
-            showToast(AppUtils.getString(R.string.string_name_yuehoujifeng_un_support));
+            showToast(getString(R.string.string_name_yuehoujifeng_un_support));
         }
 
     }
@@ -1003,7 +999,7 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
             intent.putExtra("mMessageUsersDate", mMessageUsersDate);
             startActivityForResult(intent, REQUEST_CODE_CHOOSE_FILE);
         } else {
-            showToast(AppUtils.getString(R.string.string_name_yuehoujifeng_un_support));
+            showToast(getString(R.string.string_name_yuehoujifeng_un_support));
         }
 
     }
@@ -1096,10 +1092,9 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
                 for (String image : imagePaths) {
                     final File file = new File(image);
                     if (file.length() > 1028 * 1028 * 50) {
-                        showToast("文档大于50M");
-                        showToast("文档大于50M");
-                        mapImg.put(image, "文档大于50M");
-                        mapLocal.put(image, "文档大于50M");
+                        showToast(getString(R.string.send_notice2));
+                        mapImg.put(image, getString(R.string.send_notice2));
+                        mapLocal.put(image, getString(R.string.send_notice2));
                         if (mapImg.size() == imageSize) {
                             sendImageFile();
                         }
@@ -1117,9 +1112,9 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
 
                                     @Override
                                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                        mapImg.put(image, "对方未开启加密,无法发送");
-                                        mapLocal.put(image, "对方未开启加密,无法发送");
-//                                        showToast("对方未开启加密,无法发送");
+                                        mapImg.put(image, getString(R.string.send_notice3));
+                                        mapLocal.put(image, getString(R.string.send_notice3));
+//                                        AppBaseActivity.showToast(getString(R.string.send_notice3));
                                         if (mapImg.size() == imageSize) {
                                             sendImageFile();
                                         }
@@ -1203,15 +1198,15 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
             @Override
             public void onFailure(HTTPResponse httpResponse) {
                 super.onFailure(httpResponse);
-                mapImg.put(fileOld.getAbsolutePath(), "文件上传失败");
-                mapLocal.put(fileOld.getAbsolutePath(), "文件上传失败");
+                mapImg.put(fileOld.getAbsolutePath(), getString(R.string.file_upload_false));
+                mapLocal.put(fileOld.getAbsolutePath(), getString(R.string.file_upload_false));
                 if (mapImg.size() == imageSize) {
                     sendImageFile();
                 }
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        showToast("文件上传失败");
+                        showToast(getString(R.string.file_upload_false));
 
                     }
                 });
@@ -1247,9 +1242,9 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
             case AppUtils.EVENT_DEL_GROUP_SUCCESS://解散群
             case AppUtils.EVENT_LEAVE_GROUP_SUCCESS://退群
                 if (messageEvent.what == AppUtils.EVENT_DEL_GROUP_SUCCESS) {
-                    addNotice("群组已解散");
+                    addNotice(getString(R.string.send_notice4));
                 } else {
-                    addNotice("已退出群组");
+                    addNotice(getString(R.string.send_notice5));
                 }
                 canSendMsg = false;
                 queryGroupChatInfo(false);
@@ -1292,7 +1287,7 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
                 break;
             case AppUtils.EVENT_CLOSE_MEETTING:
                 String msgContentStrOver = ChatUtil.getChatContentJson(ChatGroupActivityNew.this,
-                        AppUtils.getString(R.string.chat_group_meet_over), "", "",
+                        getString(R.string.chat_group_meet_over), "", "",
                         0, 0, false, 0, 0, 0, 0, "");
 //                sendRealMsg(AppUtils.MESSAGE_TYPE_GROUP_MEET, msgContentStrOver, false);
 
@@ -1353,16 +1348,16 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
     @Override
     public void onFinishedRecord(String audioPath, final int time) {
         if (TextUtils.isEmpty(audioPath)) {
-            showToast("音频录制失败");
+            showToast(getString(R.string.media_txt_2));
             return;
         }
         final File file = new File(audioPath);
-        if (!file.exists()) {
-            showToast("音频录制失败");
+        if(!file.exists()) {
+            showToast(getString(R.string.media_txt_2));
             return;
         }
-        if (file.length() <= 0) {
-            showToast("音频录制失败");
+        if(file.length() <= 0) {
+            showToast(getString(R.string.media_txt_2));
             return;
         }
         mZeusLoadView.loadingText(AppUtils.getString(R.string.is_upload_ing)).setLoading();
@@ -1378,7 +1373,7 @@ public class ChatGroupActivityNew extends AppBaseActivity implements ChatMoreFun
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-//                            showToast("对方未开启加密,无法发送");
+//                            AppUtils.showToast(getString(R.string.send_notice3));
                             if (mZeusLoadView != null && mZeusLoadView.isShowing())
                                 mZeusLoadView.dismiss();
                         }

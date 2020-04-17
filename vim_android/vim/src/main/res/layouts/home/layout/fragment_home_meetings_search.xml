@@ -26,7 +26,7 @@
                 android:drawablePadding="5dp"
                 android:layout_toLeftOf="@+id/close"
                 android:background="@color/transparent"
-                android:hint="搜索"
+                android:hint="@string/seach_with_emptyh"
                 android:imeOptions="actionSearch"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
@@ -49,7 +49,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:paddingLeft="10dp"
-            android:text="取消"
+            android:text="@string/cancel"
             android:textColor="@color/blue_2E67FE"
             android:textSize="15sp" />
     </LinearLayout>
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:src="@drawable/image_zanwuxiaoxi"
-            android:text="暂时没有新消息"
+            android:text="@string/label_txt66"
             android:textColor="@color/black333"
             android:textSize="16sp" />
     </LinearLayout>

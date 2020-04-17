@@ -50,7 +50,6 @@ public class EncryptUtil {
                         , new SdkCallback<SdpMessageCmStartSessionRsp>() {
                             @Override
                             public void onSuccess(SdpMessageCmStartSessionRsp resp) {
-                                Logger.debug("encrypt:", "音视频加密成功:" + resp.toString());
                                 if (callback != null) {
                                     callback.onSuccess(resp);
                                 }
@@ -58,7 +57,6 @@ public class EncryptUtil {
 
                             @Override
                             public void onError(ErrorInfo error) {
-                                Logger.debug("encrypt:", "音视频加密失败:" + error.getMessage());
                                 if (callback != null) {
                                     callback.onError(error);
                                 }
@@ -77,13 +75,10 @@ public class EncryptUtil {
                         .setCallID(callID), new SdkCallback<SdpMessageCmStopSessionRsp>() {
                     @Override
                     public void onSuccess(SdpMessageCmStopSessionRsp resp) {
-                        Logger.debug("encrypt:", "音视频加密关闭成功:" + resp.toString());
                     }
 
                     @Override
                     public void onError(ErrorInfo error) {
-                        Logger.debug("encrypt:", "音视频加密关闭失败:" + error.getMessage());
-                        Logger.log("ApiMediaPlayerCore stopPlayImpl stop session  error " + error);
                     }
                 });
     }
@@ -122,7 +117,6 @@ public class EncryptUtil {
 
                     @Override
                     public void onError(ErrorInfo error) {
-                        Logger.debug("encrypt:", "信息加密失败:" + error.getMessage());
                         if (callback != null) {
                             callback.onError(error);
                         }
@@ -191,7 +185,6 @@ public class EncryptUtil {
                 new SdkCallback<SdpMessageCmProcessIMRsp>() {
                     @Override
                     public void onSuccess(SdpMessageCmProcessIMRsp resp) {
-                        Logger.debug("encrypt:", "文件加密成功:" + resp.toString());
                         if (callback != null) {
                             callback.onSuccess(resp);
                         }
@@ -199,7 +192,6 @@ public class EncryptUtil {
 
                     @Override
                     public void onError(ErrorInfo error) {
-                        Logger.debug("encrypt:", "文件加密失败:" + error.getMessage());
                         if (callback != null) {
                             callback.onError(error);
                         }

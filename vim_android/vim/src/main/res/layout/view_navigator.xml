@@ -3,7 +3,7 @@
     android:id="@+id/navigate_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_30313C"
+    android:background="@color/colorAccent"
     android:orientation="vertical">
 
     <View
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:gravity="center"
-        android:text="124"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="15sp"
         android:visibility="gone" />
@@ -53,7 +53,7 @@
             android:gravity="center_vertical"
             android:layout_centerVertical="true"
             android:paddingLeft="15dp"
-            android:text="标题"
+            android:text=""
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -66,7 +66,7 @@
             android:gravity="center"
             android:layout_centerVertical="true"
             android:layout_marginLeft="16dp"
-            android:text="标题1"
+            android:text=""
             android:textColor="@color/blackbbb"
             android:textSize="14sp"
             android:visibility="gone" />
@@ -78,7 +78,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="67dp"
-            android:src="@drawable/top_search"
+            android:src="@drawable/whatsapp_sousuo"
             android:visibility="gone" />
 
         <ImageView
@@ -88,7 +88,7 @@
             android:layout_marginRight="17dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/top_add"
+            android:src="@drawable/whatsapp_more"
             android:visibility="gone" />
 
         <LinearLayout
@@ -136,7 +136,7 @@
                 android:id="@+id/tv_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="xxx"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:visibility="visible" />
@@ -166,7 +166,7 @@
                 android:id="@+id/tv_right2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="xxx"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:visibility="gone" />

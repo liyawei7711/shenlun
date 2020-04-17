@@ -116,7 +116,7 @@
                 android:drawableLeft="@drawable/common_add"
                 android:drawablePadding="5dp"
                 android:gravity="center"
-                android:text="@string/add_meet_people"
+                android:text="@string/add_meet_person"
                 android:textColor="@color/blue_004CF9"
                 android:textSize="16sp" />
         </LinearLayout>

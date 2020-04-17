@@ -288,7 +288,7 @@ public class MeetMembersLayoutFragment extends AppBaseFragment {
                     public void onClick(View v) {
                         SelectedModel<CGetMeetingInfoRsp.UserInfo> bean = (SelectedModel<CGetMeetingInfoRsp.UserInfo>) v.getTag();
                         if (bean.bean.nJoinStatus != 2) {
-                            AppBaseActivity.showToast("该用户未参会，不能选择");
+                            AppBaseActivity.showToast(getString(R.string.meet_yicanhui));
                             return;
                         }
                         bean.isChecked = !bean.isChecked;
@@ -313,11 +313,11 @@ public class MeetMembersLayoutFragment extends AppBaseFragment {
 
     private void changeVideoPage() {
         if (currentModel == null) {
-            AppBaseActivity.showToast("交换人员不能为空");
+            AppBaseActivity.showToast(getString(R.string.meet_jiaohuan_no_empty));
             return;
         }
         if (currentView == null) {
-            AppBaseActivity.showToast("交换位置不能为空");
+            AppBaseActivity.showToast(getString(R.string.meet_jiaohuan_weizhi_no_empty));
             return;
         }
         CGetMeetingLayoutInfoRsp.UserInfo currentB = (CGetMeetingLayoutInfoRsp.UserInfo) currentView.getTag();
@@ -331,7 +331,7 @@ public class MeetMembersLayoutFragment extends AppBaseFragment {
                         new SdkCallback<CMeetingUserSwapRsp>() {
                             @Override
                             public void onSuccess(CMeetingUserSwapRsp cGetMeetingInfoRsp) {
-                                AppBaseActivity.showToast("交换成功,请稍后");
+                                AppBaseActivity.showToast(getString(R.string.meet_jiaohuan_success));
                                 hideAll();
                             }
 
@@ -601,7 +601,7 @@ public class MeetMembersLayoutFragment extends AppBaseFragment {
                 boxBg();
             }
         } else {
-            AppBaseActivity.showToast("该位置没有人哦~");
+            AppBaseActivity.showToast(getString(R.string.meet_weizhi_empty));
         }
     }
 

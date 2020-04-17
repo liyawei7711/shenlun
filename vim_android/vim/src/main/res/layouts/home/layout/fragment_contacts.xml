@@ -37,25 +37,43 @@
             android:textStyle="bold"
             android:visibility="gone" />
 
-
-        <TextView
+        <LinearLayout
             android:id="@+id/tv_group"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:background="#ffffff"
-            android:drawableLeft="@drawable/qunzu"
-            android:drawablePadding="20dp"
+            android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingLeft="16dp"
-            android:text="群聊"
-            android:textColor="#333333"
-            android:textSize="16sp" />
+            android:paddingLeft="15.5dp"
+            android:paddingTop="10dp"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/qunzu"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:paddingLeft="14dp"
+                android:text="@string/group_notice9"
+                android:textColor="#333333"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:visibility="gone"
+            android:layout_below="@id/tv_group"
+            android:background="@color/back_gray" />
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/refresh_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_below="@id/tv_group">
 
             <android.support.v7.widget.RecyclerView
@@ -67,8 +85,17 @@
         <huaiye.com.vim.common.views.FastRetrievalBar
             android:id="@+id/contacts_retrieval_bar"
             android:layout_width="25dp"
+            android:visibility="gone"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:background="@color/transparent" />
     </RelativeLayout>
+
+    <ImageView
+        android:layout_gravity="right|bottom"
+        android:layout_marginRight="16.5dp"
+        android:layout_marginBottom="19.5dp"
+        android:src="@drawable/whatsapp_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </FrameLayout><!--</android.support.v4.widget.SwipeRefreshLayout>-->

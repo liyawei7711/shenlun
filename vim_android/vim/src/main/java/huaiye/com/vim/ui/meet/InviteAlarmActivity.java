@@ -131,13 +131,13 @@ public class InviteAlarmActivity extends AppBaseActivity {
 
         tv_username.setText(strInviteName);
         if (null != chatMessageBean) {
-            tv_description.setText("邀请你查看视频");
+            tv_description.setText(getString(R.string.talk_notice10));
         } else if (strMeetingName == null) {
             if (requiredMediaMode == SdkBaseParams.MediaMode.Audio.value()) {
-                tv_description.setText("邀请你语音通话");
+                tv_description.setText(getString(R.string.talk_notice11));
 
             } else {
-                tv_description.setText("邀请你视频通话");
+                tv_description.setText(getString(R.string.talk_notice12));
             }
         } else {
             requestDatas();
@@ -235,7 +235,7 @@ public class InviteAlarmActivity extends AppBaseActivity {
                         .setMeetID(nMeetID), new SdkCallback<CGetMeetingInfoRsp>() {
                     @Override
                     public void onSuccess(CGetMeetingInfoRsp cGetMeetingInfoRsp) {
-                        tv_description.setText("邀请你参加" + strMeetingName + ",邀请(" + (cGetMeetingInfoRsp.listUser.size() - 1) + ")人");
+                        tv_description.setText(getString(R.string.meet_yaoqing, strMeetingName, (cGetMeetingInfoRsp.listUser.size() - 1)));
                         if (cGetMeetingInfoRsp.strMainUserID.equals(HYClient.getSdkOptions().User().getUserId())) {
                             isMaster = true;
                         } else {
@@ -272,23 +272,25 @@ public class InviteAlarmActivity extends AppBaseActivity {
         currentTalkData.clear();
 
     }
+
     public void onMeetInviteCancel(CNotifyInviteUserCancelJoinMeeting data, long millis) {
-        if(data == null) {
+        if (data == null) {
             return;
         }
 
-        for(CNotifyInviteUserJoinMeeting temp : currentData) {
-            if(temp.nMeetingID == data.nMeetingID && temp.strMeetingDomainCode.equals(data.strMeetingDomainCode)) {
+        for (CNotifyInviteUserJoinMeeting temp : currentData) {
+            if (temp.nMeetingID == data.nMeetingID && temp.strMeetingDomainCode.equals(data.strMeetingDomainCode)) {
                 currentData.remove(temp);
                 finish();
                 return;
             }
         }
 
-        if(nMeetID == data.nMeetingID && strMeetDomainCode.equals(data.strMeetingDomainCode)) {
+        if (nMeetID == data.nMeetingID && strMeetDomainCode.equals(data.strMeetingDomainCode)) {
             finish();
         }
     }
+
     @Override
     public void onMeetInvite(final CNotifyInviteUserJoinMeeting data, final long millisLocal) {
         if (data == null) {
@@ -341,7 +343,7 @@ public class InviteAlarmActivity extends AppBaseActivity {
     public void onEvent(CNotifyMeetingStatusInfo cNotifyMeetingStatusInfo) {
         if (nMeetID == cNotifyMeetingStatusInfo.nMeetingID &&
                 cNotifyMeetingStatusInfo.isMeetFinished()) {
-            showToast("会议已结束");
+            showToast(getString(R.string.meet_has_end));
             stopAlarmMP3();
             finish();
             HYClient.getModule(ApiMeet.class).observeMeetingStatus(null);
@@ -352,7 +354,7 @@ public class InviteAlarmActivity extends AppBaseActivity {
     public void onEvent(CNotifyTalkbackStatusInfo cNotifyTalkbackStatusInfo) {
         if (nTalkID == cNotifyTalkbackStatusInfo.nTalkbackID &&
                 cNotifyTalkbackStatusInfo.isTalkingStopped()) {
-            showToast("对讲已结束");
+            showToast(getString(R.string.talk_end));
             stopAlarmMP3();
             finish();
 

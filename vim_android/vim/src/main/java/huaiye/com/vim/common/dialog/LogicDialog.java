@@ -137,9 +137,9 @@ public class LogicDialog extends Dialog {
         setCancelable(true);
         setCancelButtonVisibility(View.VISIBLE);
         setConfirmButtonVisibility(View.VISIBLE);
-        setTitleText("提醒");
-        setCancelText("取消");
-        setConfirmText("确定");
+        setTitleText(getContext().getString(R.string.notice));
+        setCancelText(getContext().getString(R.string.cancel));
+        setConfirmText(getContext().getString(R.string.makesure));
         mCancelClickListener = null;
         mConfirmClickListener = null;
     }

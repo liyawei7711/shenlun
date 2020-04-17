@@ -301,7 +301,7 @@ public class WebPageFileActivity extends AppBaseActivity implements View.OnClick
                 try {
                     return getFileOutputString(file, getCharset(file));
                 } catch (Exception e) {
-                    return "读取文件出错";
+                    return getString(R.string.common_notice55);
                 }
             }
 

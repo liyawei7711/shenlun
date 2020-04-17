@@ -84,7 +84,7 @@ public class OrderMeetDetailActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText("会议详情")
+        getNavigate().setTitlText(getString(R.string.meet_detail))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -96,7 +96,7 @@ public class OrderMeetDetailActivity extends AppBaseActivity {
                     @Override
                     public void onClick(View v) {
                         if (info == null) {
-                            showToast("会议不存在");
+                            showToast(getString(R.string.meet_has_not));
                             return;
                         }
                         String copy = AppDatas.Auth().getUserName()
@@ -112,7 +112,7 @@ public class OrderMeetDetailActivity extends AppBaseActivity {
                                 + nMeetID
                                 + "&end";
                         AppUtils.copyAndPass(OrderMeetDetailActivity.this, copy);
-                        showToast("复制到剪切板，请分享");
+                        showToast(getString(R.string.common_notice30));
                     }
                 })*/;
 
@@ -120,7 +120,7 @@ public class OrderMeetDetailActivity extends AppBaseActivity {
 
     @Override
     public void doInitDelay() {
-        mZeusLoadView.loadingText("正在加载").setLoading();
+        mZeusLoadView.loadingText(getString(R.string.common_notice28)).setLoading();
         rct_view.setLayoutManager(new LinearLayoutManager(OrderMeetDetailActivity.this));
         adapter = new EXTRecyclerAdapter<ContactData>(R.layout.item_meetcreate_member) {
             @Override
@@ -188,7 +188,7 @@ public class OrderMeetDetailActivity extends AppBaseActivity {
                             @Override
                             public void onSuccess(CSendNotifyPredetermineMeetingRsp cGetMeetingInfoRsp) {
                                 if (value)
-                                    showToast("通知成功");
+                                    showToast(getString(R.string.common_notice29));
                             }
 
                             @Override
@@ -225,7 +225,7 @@ public class OrderMeetDetailActivity extends AppBaseActivity {
      */
     private void startPlayer() {
         if (info.nRecordID == 0) {
-            showToast("该会议无会议记录");
+            showToast(getString(R.string.meet_notice22));
             return;
         }
         Intent intent = new Intent(this, MeetPlaybackActivity.class);
@@ -253,7 +253,7 @@ public class OrderMeetDetailActivity extends AppBaseActivity {
      */
     void deleteMeet() {
         final LogicDialog logicDialog = new LogicDialog(this);
-        logicDialog.setMessageText("是否删除会议？");
+        logicDialog.setMessageText(getString(R.string.meet_notice17));
         logicDialog.setConfirmClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -263,7 +263,7 @@ public class OrderMeetDetailActivity extends AppBaseActivity {
                                 .setStrDomainCode(strMeetDomainCode), new SdkCallback<CDelMeetingInfoRsp>() {
                             @Override
                             public void onSuccess(CDelMeetingInfoRsp info) {
-                                showToast("删除成功");
+                                showToast(getString(R.string.common_notice2));
                                 finish();
                             }
 
@@ -288,23 +288,23 @@ public class OrderMeetDetailActivity extends AppBaseActivity {
     void editMeet() {
 
         if (TextUtils.isEmpty(header.getMeetName())) {
-            showToast("会议名称不能为空");
+            showToast(getString(R.string.meet_notice11));
             return;
         }
         if (TextUtils.isEmpty(header.getMeetStartTime())) {
-            showToast("请选择开会时间");
+            showToast(getString(R.string.meet_notice12));
             return;
         }
         if (header.getMeetLong() <= 0) {
-            showToast("请输入会议时长");
+            showToast(getString(R.string.meet_time_duration));
             return;
         }
         if (header.getMeetLong() > 24 * 60 * 60) {
-            showToast("会议时长不能大于24小时");
+            showToast(getString(R.string.meet_notice13));
             return;
         }
         if (MbeConfigParaValue != -1 && adapter.getDatasCount() - adapter.getHeaderViewsCount() > MbeConfigParaValue) {
-            showToast("参会人员上限为" + MbeConfigParaValue + "人");
+            showToast(getString(R.string.meet_notice1, MbeConfigParaValue));
             return;
         }
 
@@ -324,7 +324,7 @@ public class OrderMeetDetailActivity extends AppBaseActivity {
                     @Override
                     public void onSuccess(CSetPredetermineMeetingRsp cStartMeetingRsp) {
                         pushNotify(false);
-                        showToast("修改成功");
+                        showToast(getString(R.string.common_notice31));
                         finish();
                     }
 

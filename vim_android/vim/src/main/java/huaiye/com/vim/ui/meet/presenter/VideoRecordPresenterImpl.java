@@ -98,22 +98,18 @@ public class VideoRecordPresenterImpl implements VideoRecordPresenterHelper.Pres
                 new Capture.Callback() {
                     @Override
                     public void onRepeatCapture() {
-                        Logger.debug("onRepeatCapture");
                     }
 
                     @Override
                     public void onSuccess(CStartMobileCaptureRsp resp) {
-                        Logger.debug("onSuccess");
                     }
 
                     @Override
                     public void onError(ErrorInfo error) {
-                        Logger.debug("onError");
                     }
 
                     @Override
                     public void onCaptureStatusChanged(SdpMessageBase msg) {
-                        Logger.debug("onCaptureStatusChanged");
                     }
                 });
     }

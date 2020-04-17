@@ -19,7 +19,7 @@
             android:layout_marginTop="25.5dp"
             android:layout_marginLeft="25.5dp"
             android:layout_marginRight="25.5dp"
-            android:text="发送给:"
+            android:text="@string/label_txt71"
             android:textSize="17sp"
             android:textColor="@color/black333" />
 
@@ -44,7 +44,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@+id/iv_head"
-                android:text="B 同事"
+                android:text=""
                 android:textColor="@color/black333"
                 android:textSize="16sp" />
 
@@ -174,7 +174,7 @@
                 android:gravity="center"
                 android:layout_marginLeft="6dp"
                 android:layout_marginBottom="6dp"
-                android:text="取消"
+                android:text="@string/cancel"
                 android:textColor="@color/black333"
                 android:textSize="17dp" />
 
@@ -191,7 +191,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="发送"
+                android:text="@string/send"
                 android:layout_marginRight="6dp"
                 android:layout_marginBottom="6dp"
                 android:textColor="@color/color_55A2FD"

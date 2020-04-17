@@ -185,8 +185,7 @@ public class MeetInviteFragment extends AppBaseFragment {
     @OnClick(R.id.tv_invite)
     void onInviteClicked() {
         if (adapter.getSelectedPositions().isEmpty()) {
-
-            AppBaseActivity.showToast("请选择参会人员");
+            AppBaseActivity.showToast(getString(R.string.meet_xuanze_notice));
             return;
         }
 
@@ -243,10 +242,10 @@ public class MeetInviteFragment extends AppBaseFragment {
                     cuntCount++;
                     cuntCountSuccess++;
                     if (count == cuntCount) {
-                        AppBaseActivity.showToast("邀请成功");
+                        AppBaseActivity.showToast(getString(R.string.meet_invitor_success));
                     }
                 } else {
-                    AppBaseActivity.showToast("邀请成功");
+                    AppBaseActivity.showToast(getString(R.string.meet_invitor_success));
                 }
                 if (getActivity() != null) {
                     if (getActivity() instanceof MeetActivity) {
@@ -262,7 +261,7 @@ public class MeetInviteFragment extends AppBaseFragment {
                 if (HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
                     cuntCount++;
                     if (count == cuntCount && cuntCountSuccess > 0) {
-                        AppBaseActivity.showToast("邀请成功");
+                        AppBaseActivity.showToast(getString(R.string.meet_invitor_success));
                     } else {
                         AppBaseActivity.showToast(ErrorMsg.getMsg(ErrorMsg.invite_user_err_code));
                     }

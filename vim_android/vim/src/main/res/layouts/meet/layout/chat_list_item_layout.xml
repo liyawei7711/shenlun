@@ -34,7 +34,7 @@
                     android:layout_weight="1"
                     android:textSize="17sp"
                     android:textColor="@color/black333"
-                    android:text="xxxx"/>
+                    android:text=""/>
 
                 <TextView
                     android:id="@+id/chat_time"
@@ -43,7 +43,7 @@
                     android:layout_marginLeft="5dp"
                     android:textSize="14sp"
                     android:textColor="@color/black999"
-                    android:text="xxxx"/>
+                    android:text=""/>
             </LinearLayout>
 
             <LinearLayout
@@ -59,7 +59,7 @@
                     android:layout_weight="1"
                     android:textSize="15sp"
                     android:textColor="@color/black666"
-                    android:text="xxxx"/>
+                    android:text=""/>
 
                 <TextView
                     android:id="@+id/chat_unread"
@@ -73,7 +73,7 @@
                     android:gravity="center"
                     android:textSize="13sp"
                     android:textColor="@color/white"
-                    android:text="xxxx"/>
+                    android:text=""/>
             </LinearLayout>
         </LinearLayout>
 

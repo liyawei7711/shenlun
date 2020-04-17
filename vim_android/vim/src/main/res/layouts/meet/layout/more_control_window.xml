@@ -27,7 +27,7 @@
                 android:layout_marginRight="13dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
-                android:text="禁言"
+                android:text="@string/jingyan"
                 android:textColor="@color/black333"
                 android:textSize="15sp" />
 
@@ -39,7 +39,7 @@
                 android:layout_marginRight="13dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
-                android:text="设为主讲人"
+                android:text="@string/zhujiangren"
                 android:textColor="@color/black333"
                 android:textSize="15sp" />
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_marginRight="13dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
-                android:text="取消主讲人"
+                android:text="@string/label_txt101"
                 android:textColor="@color/black333"
                 android:textSize="15sp"
                 android:visibility="gone"/>
@@ -64,7 +64,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:gravity="center_vertical"
-                android:text="强制离开"
+                android:text="@string/kick_out"
                 android:textColor="@color/black333"
                 android:textSize="15sp" />
 
@@ -95,7 +95,7 @@
             android:layout_marginRight="13dp"
             android:layout_marginTop="20dp"
             android:gravity="center_vertical"
-            android:text="禁言"
+            android:text="@string/jingyan"
             android:textColor="@color/black333"
             android:textSize="15sp" />
 
@@ -107,7 +107,7 @@
             android:layout_marginRight="13dp"
             android:layout_marginTop="20dp"
             android:gravity="center_vertical"
-            android:text="设为主讲人"
+            android:text="@string/zhujiangren"
             android:textColor="@color/black333"
             android:textSize="15sp" />
 
@@ -120,7 +120,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:gravity="center_vertical"
-            android:text="强制离开"
+            android:text="@string/kick_out"
             android:textColor="@color/black333"
             android:textSize="15sp" />
 

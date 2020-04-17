@@ -648,7 +648,7 @@ public final class AppUtils {
     }
 
     public static String getString(int id) {
-        return ctx.getString(id);
+        return VIMApp.getInstance().getCurrentActivity().getString(id);
     }
 
 

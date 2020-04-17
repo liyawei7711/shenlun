@@ -76,7 +76,7 @@ public class ShareChooseActivity extends AppBaseActivity {
     protected void initActionBar() {
         EventBus.getDefault().register(this);
         getNavigate().setVisibility(View.VISIBLE);
-        getNavigate().setTitlText("联系人")
+        getNavigate().setTitlText(getString(R.string.user_notice1))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

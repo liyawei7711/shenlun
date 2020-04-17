@@ -156,7 +156,7 @@ public class ModifyHeadPicActivity extends AppBaseActivity {
                     public void doOnMain(String data) {
                         final File file = new File(data);
                         if (file.length() > 1028 * 100) {
-                            showToast("图片大于100K");
+                            showToast(getString(R.string.common_notice46));
                             return;
                         }
                         ModelApis.Download().uploadFile(new ModelCallback<Upload>() {

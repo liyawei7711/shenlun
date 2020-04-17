@@ -3,8 +3,12 @@ package huaiye.com.vim.models;
 import com.huaiye.sdk.sdpmsgs.meet.CGetMeetingInfoRsp;
 import com.huaiye.sdk.sdpmsgs.meet.CNotifyMeetingStatusInfo;
 
+import huaiye.com.vim.R;
+import huaiye.com.vim.VIMApp;
+import huaiye.com.vim.common.AppUtils;
+
 /**
- * @Describe 界面上的主讲人,服务器没有主讲人的时候,就用的列表第一个
+ * @Describe 界面上的主讲人, 服务器没有主讲人的时候, 就用的列表第一个
  * @Author lxf
  * @date 2019-04-11
  */
@@ -14,10 +18,10 @@ public class MeetSpeakMain {
     private String strUserID;
     private String strUserName;
     /**
-     *  true 服务器设置的主讲人
-     *  false 没有主讲人,按顺序找到主讲人
+     * true 服务器设置的主讲人
+     * false 没有主讲人,按顺序找到主讲人
      */
-    private  boolean mainSpeakOnServer;
+    private boolean mainSpeakOnServer;
 
     private String desc;
 
@@ -31,12 +35,12 @@ public class MeetSpeakMain {
         this.strUserName = userInfo.strUserName;
         this.mainSpeakOnServer = mainSpeakOnServer;
         this.needShowDesc = false;
-        if (mainSpeakOnServer){
-            desc="主讲人";
+        if (mainSpeakOnServer) {
+            desc = AppUtils.getString(R.string.meet_notice1);
             this.needShowDesc = true;
-        }else {
-            if (userInfo.nUserRole == 1){
-                desc = "主持人";
+        } else {
+            if (userInfo.nUserRole == 1) {
+                desc = AppUtils.getString(R.string.meet_notice2);
                 this.needShowDesc = true;
             }
         }
@@ -50,12 +54,12 @@ public class MeetSpeakMain {
         this.strUserName = userInfo.strUserName;
         this.mainSpeakOnServer = mainSpeakOnServer;
         this.needShowDesc = false;
-        if (mainSpeakOnServer){
-            desc="主讲人";
+        if (mainSpeakOnServer) {
+            desc = AppUtils.getString(R.string.meet_notice1);
             this.needShowDesc = true;
-        }else {
-            if (userInfo.nUserRole == 1){
-                desc = "主持人";
+        } else {
+            if (userInfo.nUserRole == 1) {
+                desc = AppUtils.getString(R.string.meet_notice2);
                 this.needShowDesc = true;
             }
         }

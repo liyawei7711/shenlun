@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/guankan"
-            android:text="观看会议"
+            android:text="@string/label_txt58"
             android:textColor="@color/black333" />
 
         <TextView
@@ -46,7 +46,7 @@
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:drawableTop="@drawable/xinzeng"
-            android:text="新增人员"
+            android:text="@string/label_txt59"
             android:textColor="@color/black333" />
 
         <TextView
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/yijianjinyan"
-            android:text="一键禁言"
+            android:text="@string/meet_yijianjinyan"
             android:textColor="@color/black333" />
 
         <TextView
@@ -66,7 +66,7 @@
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:drawableTop="@drawable/gengaibuju"
-            android:text="更改布局"
+            android:text="@string/label_txt60"
             android:textColor="@color/black333" />
 
         <TextView
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/jiesan"
-            android:text="解散会议"
+            android:text="@string/label_txt61"
             android:textColor="@color/black333" />
     </LinearLayout>
 

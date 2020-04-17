@@ -113,7 +113,6 @@ public class JieSuoSetActivity extends AppBaseActivity {
 
                     @Override
                     public void onUnmatchedExceedBoundary() {
-                        showToast("错误5次...");
                         mGestureLockViewGroup.setUnMatchExceedBoundary(5);
                     }
 
@@ -124,7 +123,7 @@ public class JieSuoSetActivity extends AppBaseActivity {
                             linshi = toStringArray(mChoose);
                             reset();
                             changeSelect();
-                            tv_notic.setText("请在输一次");
+                            tv_notic.setText(getString(R.string.common_notice9));
                             int[] a = toIntArray(mChoose);
                             mGestureLockViewGroup.reset();
                             mGestureLockViewGroup.setAnswer(a);
@@ -145,10 +144,10 @@ public class JieSuoSetActivity extends AppBaseActivity {
                                 }
                                 AppDatas.MsgDB().getJieSuoDao().insertAll(bean);
                                 mGestureLockViewGroup.reset();
-                                showToast("设置成功");
+                                showToast(getString(R.string.common_notice10));
                                 finish();
                             } else {
-                                showToast("输入错误，请重试");
+                                showToast(getString(R.string.common_notice11));
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
@@ -169,11 +168,11 @@ public class JieSuoSetActivity extends AppBaseActivity {
 
     private void initNotice() {
         if(isReSet) {
-            tv_gongneng.setText("请重置解锁图案");
+            tv_gongneng.setText(getString(R.string.common_notice12));
             linshi = bean.jiesuo;
             changeSelect();
         } else {
-            tv_gongneng.setText("请绘制解锁图案");
+            tv_gongneng.setText(getString(R.string.common_notice13));
             reset();
         }
     }

@@ -178,21 +178,21 @@ public class AuthApi {
                             authUser = new Gson().fromJson(str, AuthUser.class);
                         } catch (Exception e) {
                             if (callback != null) {
-                                callback.onFailure(new ModelSDKErrorResp().setErrorMessage("用户名密码错误,服务器返回解析失败"));
+                                callback.onFailure(new ModelSDKErrorResp().setErrorMessage(AppUtils.getString(R.string.login_error1)));
                             }
                             return;
                         }
                         if (authUser.nResultCode == 1010100003) {
-                            callback.onFailure(new ModelSDKErrorResp().setErrorMessage("用户名错误"));
+                            callback.onFailure(new ModelSDKErrorResp().setErrorMessage(AppUtils.getString(R.string.login_error2)));
                             return;
                         } else if (authUser.nResultCode == 1010100005) {
-                            callback.onFailure(new ModelSDKErrorResp().setErrorMessage("密码错误"));
+                            callback.onFailure(new ModelSDKErrorResp().setErrorMessage(AppUtils.getString(R.string.login_error3)));
                             return;
                         } else if (authUser.nResultCode != 0) {
                             if (!TextUtils.isEmpty(authUser.strResultDescribe)) {
                                 callback.onFailure(new ModelSDKErrorResp().setErrorMessage(authUser.strResultDescribe));
                             } else {
-                                callback.onFailure(new ModelSDKErrorResp().setErrorMessage("错误码:" + authUser.nResultCode + ",用户名密码错误"));
+                                callback.onFailure(new ModelSDKErrorResp().setErrorMessage(AppUtils.getString(R.string.login_error4) + authUser.nResultCode + AppUtils.getString(R.string.login_error5)));
                             }
                             return;
                         }
@@ -528,15 +528,15 @@ public class AuthApi {
                     .getJinJiLianXiRenDao().queryOneItem(strLoginName);
         }
         if (bean == null) {
-            showToast("尚未设置紧急联系人");
+            showToast(AppUtils.getString(R.string.notice_txt_2));
             return;
         }
         if (bean.getUserRel() == null) {
-            showToast("尚未设置紧急联系人");
+            showToast(AppUtils.getString(R.string.notice_txt_2));
             return;
         }
         if (bean.getUserRel().isEmpty()) {
-            showToast("尚未设置紧急联系人");
+            showToast(AppUtils.getString(R.string.notice_txt_2));
             return;
         }
 
@@ -569,7 +569,7 @@ public class AuthApi {
                     @Override
                     public void onSuccess(CommonResult response) {
                         if (response != null && response.nResultCode == 0) {
-                            showToast("报警成功");
+                            showToast(AppUtils.getString(R.string.notice_txt_4));
                             if (listener != null) {
                                 listener.onSuccess(response);
                             }
@@ -578,14 +578,14 @@ public class AuthApi {
                                 AppAuth.get().clearData(activity);
                             }
                         } else {
-                            showToast("报警失败");
+                            showToast(AppUtils.getString(R.string.login_error6));
                         }
                     }
 
                     @Override
                     public void onFailure(HTTPResponse httpResponse) {
                         super.onFailure(httpResponse);
-                        showToast("报警失败");
+                        showToast(AppUtils.getString(R.string.login_error6));
                         if (listener != null) {
                             listener.onFailure(httpResponse);
                         }

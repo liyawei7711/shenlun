@@ -320,7 +320,7 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
             @Override
             public void onSuccess(CJoinTalkbackRsp cJoinTalkbackRsp) {
                 iv_speaker.setImageResource(R.drawable.btn_mianti);
-                tv_speaker.setText("免提");
+                tv_speaker.setText(getString(R.string.talk_notice1));
                 isSpeakerOn = true;
 
                 startSpeakerLound();
@@ -332,7 +332,6 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
 
             @Override
             public void onError(ErrorInfo errorInfo) {
-                Logger.debug("TalkActivity joinTalk error " + errorInfo.getMessage());
                 showToast(ErrorMsg.getMsg(ErrorMsg.join_talk_err_code));
                 stopMp3();
             }
@@ -401,7 +400,7 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
 
             @Override
             public void onRefuseTalk(CNotifyTalkbackPeerUserOption cNotifyTalkbackPeerUserOption) {
-                showToast("对方拒绝对讲邀请");
+                showToast(getString(R.string.common_notice56));
                 if (isTalkStarter) {
                     EventBus.getDefault().post(new MessageEvent(AppUtils.EVENT_VIDEO_REFUSE, AppUtils.getString(R.string.single_chat_video_voice_refuse_other)));
                 }
@@ -430,7 +429,7 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
 
             @Override
             public void onNoResponse(CNotifyTalkbackPeerUserOption cNotifyTalkbackPeerUserOption) {
-                showToast("对方不响应");
+                showToast(getString(R.string.common_notice57));
                 if (isTalkStarter) {
                     EventBus.getDefault().post(new MessageEvent(AppUtils.EVENT_VIDEO_CANCLE, AppUtils.getString(R.string.single_chat_video_voice_cancle)));
                 }
@@ -439,7 +438,7 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
 
             @Override
             public void onUserOffline(CNotifyTalkbackPeerUserOption cNotifyTalkbackPeerUserOption) {
-                showToast("对方不在线");
+                showToast(getString(R.string.common_notice58));
                 if (isTalkStarter) {
                     EventBus.getDefault().post(new MessageEvent(AppUtils.EVENT_VIDEO_CANCLE, AppUtils.getString(R.string.single_chat_video_voice_cancle)));
                 }
@@ -448,7 +447,7 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
 
             @Override
             public void onUserQuitTalk(CNotifyTalkbackPeerUserOption cNotifyTalkbackPeerUserOption) {
-                showToast("对方退出了对讲");
+                showToast(getString(R.string.common_notice59));
                 createError();
             }
 
@@ -535,7 +534,6 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
 //            JniIntf.SetPlayerSurface(nPlayerSessionId, enterBackground ? null
 //                    : new Surface(texture_bigger.getSurfaceTexture()));
         } catch (Exception e) {
-            Logger.log("ToggleBackgroundState Exception..." + e);
         }
 
     }
@@ -573,8 +571,8 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
         currentMeetingInvite = data;
         final CNotifyInviteUserJoinMeeting temp = data;
         // 会议中来会议邀请，对话框提示
-        mLogicDialog.setMessageText(temp.strInviteUserName + "邀请你参加会议，是否接受？")
-                .setTitleText("邀请")
+        mLogicDialog.setMessageText(temp.strInviteUserName + getString(R.string.common_notice21))
+                .setTitleText(getString(R.string.common_notice20))
                 .setCancelClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -651,8 +649,8 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
         currentTalkInvite = data;
         final CNotifyUserJoinTalkback temp = data;
         // 会议中来会议邀请，对话框提示
-        mLogicDialog.setTitleText("邀请")
-                .setMessageText(data.strFromUserName + "邀请您对讲，要切换到对讲嘛？")
+        mLogicDialog.setTitleText(getString(R.string.common_notice20))
+                .setMessageText(data.strFromUserName + getString(R.string.common_notice22))
                 .setCancelClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -711,7 +709,7 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
 
                     @Override
                     public void onError(ErrorInfo errorInfo) {
-                        showToast("切换失败");
+                        showToast(getString(R.string.common_notice23));
                     }
                 });
             }
@@ -735,12 +733,11 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
     //    @OnClick({R.id.ll_mic, R.id.ll_speaker, R.id.tv_end_talk, R.id.iv_change_camera, R.id.ll_camera})
     void onViewClicked(View v) {
         if (v.getId() == R.id.tv_end_talk) {
-            Log.d("VIMApp", "tv_end_talk");
             onBackPressed();
             return;
         }
         if (!HYClient.getHYPlayer().isVideoRendering(texture_bigger)) {
-            showToast("未加入对讲");
+            showToast(getString(R.string.common_notice60));
             return;
         }
         switch (v.getId()) {
@@ -757,11 +754,11 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
                 if (isSpeakerOn) {
                     HYClient.getHYAudioMgr().from(getSelf()).setSpeakerphoneOn(true);
                     iv_speaker.setImageResource(R.drawable.btn_mianti);
-                    tv_speaker.setText("免提");
+                    tv_speaker.setText(getString(R.string.talk_notice1));
                 } else {
                     HYClient.getHYAudioMgr().from(getSelf()).setSpeakerphoneOn(false);
                     iv_speaker.setImageResource(R.drawable.btn_mitiquxiao);
-                    tv_speaker.setText("听筒");
+                    tv_speaker.setText(getString(R.string.talk_notice2));
                 }
                 break;
             case R.id.iv_change_camera:
@@ -770,7 +767,6 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
                 HYClient.getHYCapture().toggleInnerCamera();
                 break;
             case R.id.ll_camera:
-                Log.d("VIMApp", "isCaptureVideoOn = " + HYClient.getHYCapture().isCaptureVideoOn());
                 if (HYClient.getHYCapture().isCaptureVideoOn()) {
                     HYClient.getHYCapture().setCaptureVideoOn(false);
                     iv_camera.setImageResource(R.drawable.btn_huiyi_shexiangtou_guanbi);
@@ -840,7 +836,7 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
         if (info.nTalkbackID == nTalkID && info.isTalkingStopped() && !isChangeTalk) {
             stopAlarmMP3();
             finish();
-            showToast("对讲已结束");
+            showToast(getString(R.string.talk_end));
         }
 
         if (currentTalkInvite == null) {
@@ -877,8 +873,8 @@ public class TalkActivity extends AppBaseActivity implements View.OnClickListene
     public void onBackPressed() {
         if(isTalkStarter && isTalking) {
             getLogicDialog()
-                    .setTitleText("提醒")
-                    .setMessageText("是否退出本次对讲?")
+                    .setTitleText(getString(R.string.notice))
+                    .setMessageText(getString(R.string.talk_notice))
                     .setConfirmClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

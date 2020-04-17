@@ -32,7 +32,7 @@ import huaiye.com.vim.ui.contacts.sharedata.ChoosedContacts;
 import huaiye.com.vim.ui.contacts.sharedata.VimChoosedContacts;
 import huaiye.com.vim.ui.home.MainActivity;
 
-import static huaiye.com.vim.ui.home.FragmentSettings.deleteDir;
+import static huaiye.com.vim.ui.home.MainSettingsActivity.deleteDir;
 
 /**
  * author: admin

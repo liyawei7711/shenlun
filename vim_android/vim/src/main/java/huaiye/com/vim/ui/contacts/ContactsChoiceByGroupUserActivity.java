@@ -89,7 +89,7 @@ public class ContactsChoiceByGroupUserActivity extends AppBaseActivity {
     @Override
     protected void initActionBar() {
         if (TextUtils.isEmpty(titleName)) {
-            titleName = "联系人";
+            titleName = getString(R.string.user_notice1);
         }
         getNavigate().setTitlText(titleName)
                 .setLeftClickListener(new View.OnClickListener() {
@@ -283,7 +283,7 @@ public class ContactsChoiceByGroupUserActivity extends AppBaseActivity {
     }
 
     private void changeNum(int num) {
-        tv_choose_confirm.setText("确定(" + num + ")");
+        tv_choose_confirm.setText(getString(R.string.makesure)+"(" + num + ")");
     }
 
     @Override

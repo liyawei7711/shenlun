@@ -18,6 +18,8 @@ import com.ttyy.commonanno.anno.OnClick;
 
 import huaiye.com.vim.R;
 
+import static huaiye.com.vim.common.AppUtils.getString;
+
 /**
  * author: admin
  * date: 2018/01/02
@@ -230,10 +232,10 @@ public class MeetMediaMenuView extends RelativeLayout {
 
         if (isVoiceOpened) {
             HYClient.getHYAudioMgr().from(getContext()).setSpeakerphoneOn(true);
-            tv_voice_title.setText("免提");
+            tv_voice_title.setText(getString(R.string.talk_notice1));
         } else {
             HYClient.getHYAudioMgr().from(getContext()).setSpeakerphoneOn(false);
-            tv_voice_title.setText("听筒");
+            tv_voice_title.setText(getString(R.string.talk_notice2));
         }
 
 //        if (mCallback != null) {
@@ -267,7 +269,7 @@ public class MeetMediaMenuView extends RelativeLayout {
         isVideoOpened = false;
         Drawable d = ContextCompat.getDrawable(getContext(), R.drawable.huiyi_btn_kaiqiishipin);
         d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
-        tv_video_title.setText("打开视频");
+        tv_video_title.setText(getString(R.string.talk_notice3));
         tv_video_title.setCompoundDrawables(null, d, null, null);
 //        tv_video_title.setCompoundDrawablePadding(5);
     }
@@ -279,7 +281,7 @@ public class MeetMediaMenuView extends RelativeLayout {
         isVideoOpened = true;
         Drawable d = ContextCompat.getDrawable(getContext(), R.drawable.huiyi_btn_guanbishipin);
         d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
-        tv_video_title.setText("关闭视频");
+        tv_video_title.setText(getString(R.string.talk_notice4));
         tv_video_title.setCompoundDrawables(null, d, null, null);
 //        tv_video_title.setCompoundDrawablePadding(5);
     }
@@ -295,7 +297,7 @@ public class MeetMediaMenuView extends RelativeLayout {
         Drawable d = ContextCompat.getDrawable(getContext(),
                 isVideoOpened ? R.drawable.huiyi_btn_guanbishipin : R.drawable.huiyi_btn_kaiqiishipin);
         d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
-        tv_video_title.setText(isVideoOpened ? "关闭视频" : "打开视频");
+        tv_video_title.setText(isVideoOpened ? getString(R.string.talk_notice4) : getString(R.string.talk_notice3));
         tv_video_title.setCompoundDrawables(null, d, null, null);
 //        tv_video_title.setCompoundDrawablePadding(5);
 
@@ -332,7 +334,7 @@ public class MeetMediaMenuView extends RelativeLayout {
         isMorePrepare = true;
         Drawable d = ContextCompat.getDrawable(getContext(), R.drawable.huiyi_btn_more);
         d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
-        ll_more_txt.setText("更多");
+        ll_more_txt.setText(getString(R.string.talk_notice5));
         ll_more_txt.setCompoundDrawables(null, d, null, null);
 //        ll_more_txt.setCompoundDrawablePadding(5);
     }
@@ -342,7 +344,7 @@ public class MeetMediaMenuView extends RelativeLayout {
         Drawable d = ContextCompat.getDrawable(getContext(),
                 isMorePrepare ? R.drawable.huiyi_btn_more : R.drawable.huiyi_btn_more);
         d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
-        ll_more_txt.setText(isMorePrepare ? "更多" : "关闭更多");
+        ll_more_txt.setText(isMorePrepare ? getString(R.string.talk_notice5) : getString(R.string.talk_notice6));
         ll_more_txt.setCompoundDrawables(null, d, null, null);
 //        ll_more_txt.setCompoundDrawablePadding(5);
 
@@ -361,7 +363,7 @@ public class MeetMediaMenuView extends RelativeLayout {
         Drawable d = ContextCompat.getDrawable(getContext(),
                 isAudioOn ? R.drawable.huiyi_btn_kaimai_open : R.drawable.huiyi_btn_kaimai);
         d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
-        menu_iv_mic.setText(isAudioOn ? "关闭麦克" : "打开麦克");
+        menu_iv_mic.setText(isAudioOn ? getString(R.string.talk_notice7) : getString(R.string.talk_notice8));
         menu_iv_mic.setCompoundDrawables(null, d, null, null);
 //        menu_iv_mic.setCompoundDrawablePadding(5);
         return isAudioOn;
@@ -371,7 +373,7 @@ public class MeetMediaMenuView extends RelativeLayout {
         mIsJingYan = isJingyan;
         Drawable d = ContextCompat.getDrawable(getContext(), R.drawable.huiyi_btn_kaimai);
         d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
-        menu_iv_mic.setText("打开麦克");
+        menu_iv_mic.setText(getString(R.string.talk_notice8));
         menu_iv_mic.setCompoundDrawables(null, d, null, null);
 //        menu_iv_mic.setCompoundDrawablePadding(5);
     }
@@ -380,7 +382,7 @@ public class MeetMediaMenuView extends RelativeLayout {
         mIsJingYan = false;
         Drawable d = ContextCompat.getDrawable(getContext(), R.drawable.huiyi_btn_kaimai_open);
         d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
-        menu_iv_mic.setText("关闭麦克");
+        menu_iv_mic.setText(getString(R.string.talk_notice7));
         menu_iv_mic.setCompoundDrawables(null, d, null, null);
 //        menu_iv_mic.setCompoundDrawablePadding(5);
     }

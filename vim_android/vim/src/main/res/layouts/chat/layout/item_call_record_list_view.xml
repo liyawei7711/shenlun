@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="fsfjkhskjfhsjfhsj"
+                android:text=""
                 android:textColor="@color/black333"
                 android:textSize="15dp" />
 
@@ -109,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:text="ssssssss"
+                    android:text=""
                     android:textColor="@color/black999"
                     android:textSize="12dp" />
             </LinearLayout>

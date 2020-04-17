@@ -79,8 +79,8 @@ public class ChoosePhotoAndScreenActivity extends AppBaseActivity {
     protected void initActionBar() {
         getNavigate()
                 .setLeftClickListener(v -> onBackPressed())
-                .setTitlText(AppUtils.getString(R.string.img))
-                .setRightText(AppUtils.getString(R.string.confirm))
+                .setTitlText(getString(R.string.img))
+                .setRightText(getString(R.string.confirm))
                 .setRightClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -106,7 +106,7 @@ public class ChoosePhotoAndScreenActivity extends AppBaseActivity {
 
                                                 @Override
                                                 public void onError(ErrorInfo errorInfo) {
-                                                    showToast("文件加密失败");
+                                                    showToast(getString(R.string.jiami_notice6));
                                                 }
                                             });
                         } else {

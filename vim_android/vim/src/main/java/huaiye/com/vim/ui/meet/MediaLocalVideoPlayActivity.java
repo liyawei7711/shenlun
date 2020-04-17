@@ -19,7 +19,6 @@ import com.ttyy.commonanno.anno.route.BindExtra;
 
 import huaiye.com.vim.R;
 import huaiye.com.vim.common.AppBaseActivity;
-import huaiye.com.vim.common.AppUtils;
 import huaiye.com.vim.common.views.MediaRecordProgress;
 
 /**
@@ -44,7 +43,7 @@ public class MediaLocalVideoPlayActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText(AppUtils.getString(R.string.video_record_local_video))
+        getNavigate().setTitlText(getString(R.string.video_record_local_video))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -80,13 +79,13 @@ public class MediaLocalVideoPlayActivity extends AppBaseActivity {
                     @Override
                     public void onVideoStatusChanged(VideoParams param, SdpMessageBase msg) {
                         super.onVideoStatusChanged(param, msg);
-                        if (msg instanceof SdkMsgNotifyPlayStatus){
+                        if (msg instanceof SdkMsgNotifyPlayStatus) {
                             SdkMsgNotifyPlayStatus status = (SdkMsgNotifyPlayStatus) msg;
                             if (status.isStopped()
                                     && !isFinishing()) {
 
                                 if (!status.isOperationFromUser()) {
-                                    showToast("播放完成...");
+                                    showToast(getString(R.string.play_end));
                                     finish();
 
                                 }
@@ -100,7 +99,7 @@ public class MediaLocalVideoPlayActivity extends AppBaseActivity {
                     @Override
                     public void onError(VideoParams param, SdkCallback.ErrorInfo errorInfo) {
                         super.onError(param, errorInfo);
-                        showToast(errorInfo+"");
+                        showToast(errorInfo + "");
                     }
                 }));
     }
@@ -108,7 +107,7 @@ public class MediaLocalVideoPlayActivity extends AppBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(!isVideoPaused){
+        if (!isVideoPaused) {
             HYClient.getHYPlayer().pausePlayEx(false, video_texture);
         }
     }
@@ -120,15 +119,16 @@ public class MediaLocalVideoPlayActivity extends AppBaseActivity {
     }
 
     boolean isVideoPaused = false;
+
     @OnClick(R.id.iv_play_status)
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_play_status:
                 isVideoPaused = HYClient.getHYPlayer().togglePausePlayEx(video_texture)
                         .isPlayPausedEx(video_texture);
-                if(isVideoPaused){
+                if (isVideoPaused) {
                     iv_play_status.setImageResource(R.drawable.ic_play_start);
-                }else {
+                } else {
                     iv_play_status.setImageResource(R.drawable.ic_play_pause);
                 }
                 break;

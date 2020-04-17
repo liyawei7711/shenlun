@@ -3,15 +3,12 @@ package huaiye.com.vim.ui.home;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
 
 import com.huaiye.sdk.HYClient;
 import com.huaiye.sdk.logger.Logger;
@@ -29,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import huaiye.com.vim.BuildConfig;
 import huaiye.com.vim.R;
 import huaiye.com.vim.bus.MessageEvent;
 import huaiye.com.vim.bus.ReafBean;
@@ -91,38 +89,7 @@ public class FragmentMessages extends AppBaseFragment implements MessageNotify {
         EventBus.getDefault().register(this);
         MessageReceiver.get().subscribe(this);
 
-        getNavigate().hideLeftIcon()
-                .hideRightIcon()
-                .showTopSearch()
-                .showTopAdd()
-                .setReserveStatusbarPlace()
-                .setTitlText(AppUtils.getString(R.string.app_name))
-                .setTitleLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View view) {
-                        startActivity(new Intent(getContext(), SettingAddressSafeActivity.class));
-                        return false;
-                    }
-                })
-                .setTopSearchClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (isSOS) {
-                            return;
-                        }
-                        Log.d(this.getClass().getName(), "onClick");
-                        Intent intent = new Intent(getContext(), SearchChatActivity.class);
-                        startActivity(intent);
-                    }
-                }).setTopAddClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isSOS) {
-                    return;
-                }
-                showChatMoreStylePopupWindow(v);
-            }
-        });
+        getNavigate().setVisibility(View.GONE);
 
         new RecycleTouchUtils().initTouch(new RecycleTouchUtils.ITouchEvent() {
 
@@ -136,7 +103,7 @@ public class FragmentMessages extends AppBaseFragment implements MessageNotify {
                 final LogicDialog logicDialog = new LogicDialog(getContext());
                 logicDialog.setCancelable(false);
                 logicDialog.setCanceledOnTouchOutside(false);
-                logicDialog.setMessageText("是否删除这条消息?");
+                logicDialog.setMessageText(getString(R.string.common_notice5));
                 logicDialog.setConfirmClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -169,6 +136,7 @@ public class FragmentMessages extends AppBaseFragment implements MessageNotify {
                         }
                         datas.remove(viewHolder.getAdapterPosition());
                         adapter.notifyDataSetChanged();
+
                         showEmpty();
                     }
                 }).setCancelClickListener(new View.OnClickListener() {
@@ -206,13 +174,22 @@ public class FragmentMessages extends AppBaseFragment implements MessageNotify {
         message_list.setAdapter(adapter);
     }
 
+    public void onClickSearch() {
+        if(isSOS) {
+            return;
+        }
+        Log.d(this.getClass().getName(), "onClick");
+        Intent intent = new Intent(getContext(), SearchChatActivity.class);
+        startActivity(intent);
+    }
+
     private void searchHuiHua(String str) {
 
     }
 
     private void dealAdapterItemClick(View v) {
-        if (!HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
-            AppBaseActivity.showToast("加密模块未初始化完成，请稍后");
+        if(!HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
+            AppBaseActivity.showToast(getString(R.string.jiami_notice7));
             return;
         }
         VimMessageListBean bean = (VimMessageListBean) v.getTag();

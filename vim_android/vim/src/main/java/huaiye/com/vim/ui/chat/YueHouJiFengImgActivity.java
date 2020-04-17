@@ -235,7 +235,7 @@ public class YueHouJiFengImgActivity extends AppBaseActivity {
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("文件解密失败");
+                            showToast(getString(R.string.jiami_notice5));
                         }
                     }
             );

@@ -199,7 +199,7 @@ public class ContactsFrequentActivity extends AppBaseActivity {
     }
 
     private void changeNum(int num) {
-        tv_choose_confirm.setText("确定(" + num + ")");
+        tv_choose_confirm.setText(getString(R.string.makesure) + "(" + num + ")");
     }
 
 

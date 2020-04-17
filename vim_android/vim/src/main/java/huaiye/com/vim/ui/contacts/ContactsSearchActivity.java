@@ -72,7 +72,7 @@ public class ContactsSearchActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText("搜索")
+        getNavigate().setTitlText(getString(R.string.seach_with_emptyh))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -221,7 +221,7 @@ public class ContactsSearchActivity extends AppBaseActivity {
     }
 
     private void changeNum(int num) {
-        tv_choose_confirm.setText("确定(" + num + ")");
+        tv_choose_confirm.setText(getString(R.string.makesure) + "(" + num + ")");
     }
 
     void refreshDatas() {

@@ -142,7 +142,7 @@ public class MeetMembersNewFragment extends AppBaseFragment {
     private void onekeyJinYan() {
         ArrayList<CMeetingSpeakSetReq.User> users = new ArrayList<>();
         int type = 1;
-        if (tv_one_key_voice.getText().toString().equals("一键禁言")) {
+        if (tv_one_key_voice.getText().toString().equals(getString(R.string.meet_yijianjinyan))) {
             type = 0;
         }
 
@@ -156,12 +156,12 @@ public class MeetMembersNewFragment extends AppBaseFragment {
                     @Override
                     public void onSuccess(CMeetingSpeakSetRsp cMeetingSpeakSetRsp) {
                         if (finalType == 0) {
-                            AppBaseActivity.showToast("全体禁言成功");
+                            AppBaseActivity.showToast(getString(R.string.meet_quantijinyan));
                             for (CGetMeetingInfoRsp.UserInfo temp : listUser) {
                                 temp.nMuteStatus = 1;
                             }
                         } else {
-                            AppBaseActivity.showToast("全体解禁成功");
+                            AppBaseActivity.showToast(getString(R.string.meet_quantijiejin));
                             for (CGetMeetingInfoRsp.UserInfo temp : listUser) {
                                 temp.nMuteStatus = 0;
                             }
@@ -202,7 +202,7 @@ public class MeetMembersNewFragment extends AppBaseFragment {
                     public void onSuccess(CMeetingSpeakSetRsp cMeetingSpeakSetRsp) {
                         if (userInfo.isSpeakerMute()) {
                         } else {
-                            AppBaseActivity.showToast("禁言成功");
+                            AppBaseActivity.showToast(getString(R.string.meet_jinyanchenggong));
                         }
                         userInfo.nMuteStatus = userInfo.isSpeakerMute() ? 0 : 1;
                         adapter.notifyDataSetChanged();
@@ -232,7 +232,7 @@ public class MeetMembersNewFragment extends AppBaseFragment {
                 .addKickoutUser(user), new SdkCallback<CkickMeetingUserRsp>() {
             @Override
             public void onSuccess(CkickMeetingUserRsp ckickMeetingUserRsp) {
-                AppBaseActivity.showToast("踢出成功");
+                AppBaseActivity.showToast(getString(R.string.meet_tichuchenggong));
                 listUser.remove(info);
                 adapter.notifyDataSetChanged();
 //                if (getActivity() != null) {
@@ -267,7 +267,7 @@ public class MeetMembersNewFragment extends AppBaseFragment {
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            AppBaseActivity.showToast("邀请失败");
+                            AppBaseActivity.showToast(getString(R.string.meet_invitor_error));
                         }
                     });
         } else {
@@ -288,7 +288,7 @@ public class MeetMembersNewFragment extends AppBaseFragment {
                 .addUsers(user), new SdkCallback<CInviteUserMeetingRsp>() {
             @Override
             public void onSuccess(CInviteUserMeetingRsp cInviteUserMeetingRsp) {
-                AppBaseActivity.showToast("邀请成功");
+                AppBaseActivity.showToast(getString(R.string.meet_invitor_success));
 //                if (getActivity() != null) {
 //                    ((MeetActivity) getActivity()).hideAll();
 //                }
@@ -366,9 +366,9 @@ public class MeetMembersNewFragment extends AppBaseFragment {
 
     public void changeOneKey(boolean meetMute) {
         if (meetMute) {
-            tv_one_key_voice.setText("一键解禁");
+            tv_one_key_voice.setText(getString(R.string.meet_yijianjiejin));
         } else {
-            tv_one_key_voice.setText("一键禁言");
+            tv_one_key_voice.setText(getString(R.string.meet_yijianjinyan));
         }
     }
 }

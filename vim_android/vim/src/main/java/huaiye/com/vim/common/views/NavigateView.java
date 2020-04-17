@@ -354,7 +354,7 @@ public class NavigateView extends LinearLayout {
         switch (status) {
             case Connected:
                 tv_con_status.setVisibility(View.VISIBLE);
-                tv_con_status.setText("已连接");
+                tv_con_status.setText(getContext().getString(R.string.navigate_connect));
                 tv_con_status.setTextColor(AppUtils.getResourceColor(R.color.green_online));
                 postDelayed(new Runnable() {
                     @Override
@@ -365,12 +365,12 @@ public class NavigateView extends LinearLayout {
                 break;
             case Connecting:
                 tv_con_status.setVisibility(View.VISIBLE);
-                tv_con_status.setText("正在连接");
+                tv_con_status.setText(getContext().getString(R.string.navigate_connecting));
                 tv_con_status.setTextColor(AppUtils.getResourceColor(R.color.purple_connecting));
                 break;
             case Disconnected:
                 tv_con_status.setVisibility(View.VISIBLE);
-                tv_con_status.setText("已断连");
+                tv_con_status.setText(getContext().getString(R.string.navigate_disconnect));
                 tv_con_status.setTextColor(AppUtils.getResourceColor(R.color.red_disconnect));
                 break;
         }

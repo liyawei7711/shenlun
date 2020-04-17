@@ -110,66 +110,7 @@ public class FragmentContacts extends AppBaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         EventBus.getDefault().register(this);
-        getNavigate().hideLeftIcon()
-                .setReserveStatusbarPlace()
-                .setTitlText("联系人")
-                .setTitlClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View V) {
-                        if(isSOS) {
-                            return;
-                        }
-                        isFreadList = true;
-                        contacts_retrieval_bar.setVisibility(View.VISIBLE);
-                        if (null != mAllContacts && mAllContacts.size() > 0) {
-                            updateContacts(true);
-                        } else {
-                            requestContacts();
-                        }
-                    }
-                })
-//                .setTitl1Text("群聊")
-//                .setTitl1ClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View V) {
-//                        contacts_retrieval_bar.setVisibility(View.GONE);
-//                        if(null!=mlstGroupInfo&&mlstGroupInfo.size()>0){
-//                            updateGroupContacts();
-//                        }else{
-//                            requestGroupContacts();
-//                        }
-//                        isFreadList = false;
-//                    }
-//                })
-                .showTopSearch()
-                .showTopAdd()
-                .setTopSearchClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(isSOS) {
-                            return;
-                        }
-                        if (isFreadList) {
-                            Log.d(this.getClass().getName(), "onClick");
-                            Intent intent = new Intent(getContext(), SearchActivity.class);
-                            intent.putExtra(ContactsFrequentActivity.SOURCE, 0);
-                            startActivity(intent);
-                        } else {
-                            Log.d(this.getClass().getName(), "onClick");
-                            Intent intent = new Intent(getContext(), SearchGroupActivity.class);
-                            intent.putExtra(ContactsFrequentActivity.SOURCE, 0);
-                            startActivity(intent);
-                        }
-                    }
-                }).setTopAddClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isSOS) {
-                    return;
-                }
-                showChatMoreStylePopupWindow(v);
-            }
-        });
+        getNavigate().setVisibility(View.GONE);
 
         refresh_view.setColorSchemeColors(ContextCompat.getColor(getActivity(), R.color.blue),
                 ContextCompat.getColor(getActivity(), R.color.colorPrimary));
@@ -198,6 +139,7 @@ public class FragmentContacts extends AppBaseFragment {
                         data.users, mCustomContacts.get(i - getHeaderViewsCount()).letter,
                         false,
                         null);
+                itemAdapter.setMainContct(true, i == getDatasCount() -1);
                 itemAdapter.setOnItemClickLinstener((position, user) -> {
                     Intent intent = new Intent(getActivity(), ContactDetailNewActivity.class);
                     intent.putExtra("nUser", user);
@@ -270,8 +212,25 @@ public class FragmentContacts extends AppBaseFragment {
             }
         });
 
-        if(!isSOS) {
+        if (!isSOS) {
             initData();
+        }
+    }
+
+    public void onClickSearch() {
+        if (isSOS) {
+            return;
+        }
+        if (isFreadList) {
+            Log.d(this.getClass().getName(), "onClick");
+            Intent intent = new Intent(getContext(), SearchActivity.class);
+            intent.putExtra(ContactsFrequentActivity.SOURCE, 0);
+            startActivity(intent);
+        } else {
+            Log.d(this.getClass().getName(), "onClick");
+            Intent intent = new Intent(getContext(), SearchGroupActivity.class);
+            intent.putExtra(ContactsFrequentActivity.SOURCE, 0);
+            startActivity(intent);
         }
     }
 
@@ -597,7 +556,7 @@ public class FragmentContacts extends AppBaseFragment {
 
     @OnClick({R.id.tv_group})
     public void onClick(View view) {
-        if(isSOS) {
+        if (isSOS) {
             return;
         }
         Intent intent = new Intent(getContext(), GroupListActivity.class);

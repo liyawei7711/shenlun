@@ -57,8 +57,6 @@ import huaiye.com.vim.common.rx.RxUtils;
 import huaiye.com.vim.dao.AppDatas;
 import huaiye.com.vim.ui.contacts.ContactsChoiceByAllFriendActivity;
 import huaiye.com.vim.ui.contacts.sharedata.ChoosedContacts;
-import huaiye.com.vim.ui.contacts.sharedata.ChoosedContactsNew;
-import huaiye.com.vim.ui.contacts.sharedata.ConvertContacts;
 import huaiye.com.vim.ui.meet.fragments.MeetBoardFragment;
 import huaiye.com.vim.ui.meet.fragments.MeetMembersLayoutFragment;
 import huaiye.com.vim.ui.meet.fragments.MeetMembersNewFragment;
@@ -338,7 +336,7 @@ public class MeetWatchActivity extends AppBaseActivity implements SdpUITask.SdpU
                                                 ChoosedContacts.get().clear();
                                                 ChoosedContacts.get().setOnMeetUsersInfo(data);
                                                 Intent intent = new Intent(getSelf(), ContactsChoiceByAllFriendActivity.class);
-                                                intent.putExtra("titleName", "邀请参会");
+                                                intent.putExtra("titleName", getString(R.string.title_notice3));
                                                 intent.putExtra("isSelectUser", true);
                                                 intent.putExtra("needAddSelf", false);
                                                 startActivityForResult(intent, 1000);
@@ -478,7 +476,7 @@ public class MeetWatchActivity extends AppBaseActivity implements SdpUITask.SdpU
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(final CNotifyMeetingStatusInfo info) {
         if (info.nMeetingStatus == 2) {
-            showToast("会议已结束");
+            showToast(getString(R.string.meet_has_end));
             EventBus.getDefault().post(new FinishMeet());
             onBackPressed();
         } else {
@@ -512,10 +510,10 @@ public class MeetWatchActivity extends AppBaseActivity implements SdpUITask.SdpU
         cuntCount = 0;
         cuntCountSuccess = 0;
 
-        ArrayList<CStartMeetingReq.UserInfo> users = ChoosedContacts.get().convertContacts(ChoosedContacts.get().getContacts( false));
+        ArrayList<CStartMeetingReq.UserInfo> users = ChoosedContacts.get().convertContacts(ChoosedContacts.get().getContacts(false));
         if (HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
-            for(CStartMeetingReq.UserInfo temp : users) {
-                if(!HYClient.getSdkOptions().User().getUserId().equals(temp.strUserID)) {
+            for (CStartMeetingReq.UserInfo temp : users) {
+                if (!HYClient.getSdkOptions().User().getUserId().equals(temp.strUserID)) {
                     EncryptUtil.startEncrypt(true, temp.strUserID, temp.strUserDomainCode,
                             nMeetID + "", strMeetDomainCode, new SdkCallback<SdpMessageCmStartSessionRsp>() {
                                 @Override
@@ -555,7 +553,7 @@ public class MeetWatchActivity extends AppBaseActivity implements SdpUITask.SdpU
                             cuntCount++;
                             cuntCountSuccess++;
                             if (count == cuntCount) {
-                                showToast("已邀请选中人员");
+                                showToast(getString(R.string.meet_yiyaoqing));
                             }
                         } else {
                             if(nEncryptIMEnable) {
@@ -563,7 +561,7 @@ public class MeetWatchActivity extends AppBaseActivity implements SdpUITask.SdpU
                                 finish();
                                 return;
                             }
-                            showToast("已邀请选中人员");
+                            showToast(getString(R.string.meet_yiyaoqing));
                         }
                     }
 
@@ -572,7 +570,7 @@ public class MeetWatchActivity extends AppBaseActivity implements SdpUITask.SdpU
                         if (HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
                             cuntCount++;
                             if (count == cuntCount && cuntCountSuccess > 0) {
-                                showToast("已邀请选中人员");
+                                showToast(getString(R.string.meet_yiyaoqing));
                             } else {
                                 showToast(ErrorMsg.getMsg(ErrorMsg.invite_user_err_code));
                             }

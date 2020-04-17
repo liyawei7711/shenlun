@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:padding="10dp"
-            android:text="取消"
+            android:text="@string/cancel"
             android:textColor="@color/black999"
             android:textSize="16sp" />
 
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="标题"
+            android:text=""
             android:textColor="@color/black333"
             android:textSize="20sp"
             android:visibility="invisible" />
@@ -37,7 +37,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:padding="10dp"
-            android:text="确认"
+            android:text="@string/confirm"
             android:textColor="@color/red"
             android:textSize="16sp" />
 
@@ -75,7 +75,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="年"
+                android:text="@string/label_txt9"
                 android:textColor="@color/black333"
                 android:textSize="18sp" />
 
@@ -91,7 +91,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="月"
+                android:text="@string/label_txt10"
                 android:textColor="@color/black333"
                 android:textSize="18sp" />
 
@@ -107,7 +107,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="日"
+                android:text="@string/label_txt11"
                 android:textColor="@color/black333"
                 android:textSize="18sp" />
 
@@ -123,7 +123,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="时"
+                android:text="@string/label_txt12"
                 android:textColor="@color/black333"
                 android:textSize="18sp" />
 
@@ -139,7 +139,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="分"
+                android:text="@string/label_txt13"
                 android:textColor="@color/black333"
                 android:textSize="18sp" />
 

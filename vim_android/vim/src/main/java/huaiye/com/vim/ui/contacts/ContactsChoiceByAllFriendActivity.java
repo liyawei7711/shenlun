@@ -80,7 +80,7 @@ public class ContactsChoiceByAllFriendActivity extends AppBaseActivity {
     private int mPage = 1;
     private int mTotalSize = 0;
     private boolean mIsShowAll = false;
-    private int mJoinNum=0;
+    private int mJoinNum = 0;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -92,7 +92,7 @@ public class ContactsChoiceByAllFriendActivity extends AppBaseActivity {
     @Override
     protected void initActionBar() {
         if (TextUtils.isEmpty(titleName)) {
-            titleName = "联系人";
+            titleName = getString(R.string.user_notice1);
         }
         getNavigate().setTitlText(titleName)
                 .setLeftClickListener(new View.OnClickListener() {
@@ -101,7 +101,7 @@ public class ContactsChoiceByAllFriendActivity extends AppBaseActivity {
                         onBackPressed();
                     }
                 })
-                ;
+        ;
     }
 
     @Override
@@ -176,7 +176,7 @@ public class ContactsChoiceByAllFriendActivity extends AppBaseActivity {
                 itemAdapter.setOnItemClickLinstener(new ContactsItemAdapter.OnItemClickLinstener() {
                     @Override
                     public void onClick(int position, User user) {
-                        if(user.nJoinStatus !=2 ) {
+                        if (user.nJoinStatus != 2) {
                             handleChoice(user);
                         }
                     }
@@ -231,10 +231,10 @@ public class ContactsChoiceByAllFriendActivity extends AppBaseActivity {
         mChoosedAdapter = new EXTRecyclerAdapter<User>(R.layout.item_contacts_person_choosed) {
             @Override
             public void onBindViewHolder(EXTViewHolder extViewHolder, int i, User contactData) {
-                if(contactData.nJoinStatus != 2) {
+                if (contactData.nJoinStatus != 2) {
                     extViewHolder.setText(R.id.tv_contact_name, contactData.strUserName);
                 } else {
-                    extViewHolder.setVisibility(R.id.tv_contact_name,View.GONE);
+                    extViewHolder.setVisibility(R.id.tv_contact_name, View.GONE);
                     mJoinNum++;
                 }
             }
@@ -279,7 +279,7 @@ public class ContactsChoiceByAllFriendActivity extends AppBaseActivity {
      */
     void requestDatas() {
         mPage = -1;
-        ModelApis.Contacts().requestBuddyContacts(mPage, 0,0, new ModelCallback<ContactsBean>() {
+        ModelApis.Contacts().requestBuddyContacts(mPage, 0, 0, new ModelCallback<ContactsBean>() {
             @Override
             public void onSuccess(final ContactsBean contactsBean) {
                 new RxUtils<ArrayList<User>>()
@@ -287,9 +287,9 @@ public class ContactsChoiceByAllFriendActivity extends AppBaseActivity {
                             @Override
                             public ArrayList<User> doOnThread() {
                                 mTotalSize = contactsBean.nTotalSize;
-                                for(User user:contactsBean.userList){
-                                    if(TextUtils.isEmpty(user.strHeadUrl)){
-                                        user.strHeadUrl = AppDatas.MsgDB().getFriendListDao().getFriendHeadPic(user.strUserID,user.strDomainCode);
+                                for (User user : contactsBean.userList) {
+                                    if (TextUtils.isEmpty(user.strHeadUrl)) {
+                                        user.strHeadUrl = AppDatas.MsgDB().getFriendListDao().getFriendHeadPic(user.strUserID, user.strDomainCode);
                                     }
                                 }
                                 return contactsBean.userList;
@@ -313,13 +313,13 @@ public class ContactsChoiceByAllFriendActivity extends AppBaseActivity {
     }
 
 
-    protected void updateContacts(){
+    protected void updateContacts() {
         mCustomContacts = getCustomContacts(mAllContacts);
         getNavigate()
                 .setRightText("")
                 .setRightTextColor(Color.parseColor("#2E67FE"));
 
-        if(mCustomContacts != null){
+        if (mCustomContacts != null) {
             adapter.setDatas(mCustomContacts);
             adapter.notifyDataSetChanged();
         }
@@ -327,7 +327,7 @@ public class ContactsChoiceByAllFriendActivity extends AppBaseActivity {
 
 
     private void changeNum(int num) {
-        tv_choose_confirm.setText("确定(" + num + ")");
+        tv_choose_confirm.setText(getString(R.string.makesure) + "(" + num + ")");
     }
 
     @Override
@@ -422,8 +422,8 @@ public class ContactsChoiceByAllFriendActivity extends AppBaseActivity {
         }
         adapter.notifyDataSetChanged();
         mChoosedAdapter.notifyDataSetChanged();
-        changeNum(mChoosedAdapter.getDatas().size()-mJoinNum);
-        mJoinNum=0;
+        changeNum(mChoosedAdapter.getDatas().size() - mJoinNum);
+        mJoinNum = 0;
     }
 
 

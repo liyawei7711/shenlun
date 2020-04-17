@@ -245,10 +245,10 @@ public class TalkVoiceActivity extends AppBaseActivity {
             @Override
             public void onSuccess(CJoinTalkbackRsp cJoinTalkbackRsp) {
                 iv_speaker.setImageResource(R.drawable.btn_mianti);
-                tv_speaker.setText("免提");
+                tv_speaker.setText(getString(R.string.talk_notice1));
                 isSpeakerOn = true;
 
-                tv_description.setText("正在通话");
+                tv_description.setText(getString(R.string.talk_notice13));
                 iv_mic.setBackgroundResource(R.drawable.btn_jingyin);
 
                 isChangeTalk = false;
@@ -276,7 +276,7 @@ public class TalkVoiceActivity extends AppBaseActivity {
 
     void createTalk() {
         tv_name.setText(toUser.strToUserName);
-        tv_description.setText("正在呼叫...");
+        tv_description.setText(getString(R.string.talk_notice14));
         HYClient.getHYCapture().stopCapture(null);
 
         if (HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
@@ -326,7 +326,7 @@ public class TalkVoiceActivity extends AppBaseActivity {
 
             @Override
             public void onRefuseTalk(CNotifyTalkbackPeerUserOption cNotifyTalkbackPeerUserOption) {
-                showToast("对方拒绝对讲邀请");
+                showToast(getString(R.string.common_notice56));
                 if (isTalkStarter) {
                     EventBus.getDefault().post(new MessageEvent(AppUtils.EVENT_VOICE_REFUSE, AppUtils.getString(R.string.single_chat_video_voice_refuse_other)));
                 }
@@ -340,7 +340,7 @@ public class TalkVoiceActivity extends AppBaseActivity {
                 isTalking = true;
                 stopAlarmMP3();
                 startTimer();
-                tv_description.setText("正在通话");
+                tv_description.setText(getString(R.string.talk_notice13));
                 setSpeakOn();
                 startSpeakerLound();
 
@@ -358,7 +358,7 @@ public class TalkVoiceActivity extends AppBaseActivity {
 
             @Override
             public void onNoResponse(CNotifyTalkbackPeerUserOption cNotifyTalkbackPeerUserOption) {
-                showToast("对方不响应");
+                showToast(getString(R.string.common_notice57));
                 if (isTalkStarter) {
                     EventBus.getDefault().post(new MessageEvent(AppUtils.EVENT_VOICE_CANCLE, AppUtils.getString(R.string.single_chat_video_voice_cancle)));
                 }
@@ -367,7 +367,7 @@ public class TalkVoiceActivity extends AppBaseActivity {
 
             @Override
             public void onUserOffline(CNotifyTalkbackPeerUserOption cNotifyTalkbackPeerUserOption) {
-                showToast("对方不在线");
+                showToast(getString(R.string.common_notice58));
                 if (isTalkStarter) {
                     EventBus.getDefault().post(new MessageEvent(AppUtils.EVENT_VOICE_CANCLE, AppUtils.getString(R.string.single_chat_video_voice_cancle)));
                 }
@@ -376,7 +376,7 @@ public class TalkVoiceActivity extends AppBaseActivity {
 
             @Override
             public void onUserQuitTalk(CNotifyTalkbackPeerUserOption cNotifyTalkbackPeerUserOption) {
-                showToast("对方退出了对讲");
+                showToast(getString(R.string.common_notice59));
                 createError();
             }
 
@@ -486,8 +486,8 @@ public class TalkVoiceActivity extends AppBaseActivity {
         currentMeetingInvite = data;
         final CNotifyInviteUserJoinMeeting temp = data;
         // 会议中来会议邀请，对话框提示
-        mLogicDialog.setMessageText(temp.strInviteUserName + "邀请你参加会议，是否接受？")
-                .setTitleText("邀请")
+        mLogicDialog.setMessageText(temp.strInviteUserName + getString(R.string.common_notice21))
+                .setTitleText(getString(R.string.common_notice20))
                 .setCancelClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -564,8 +564,8 @@ public class TalkVoiceActivity extends AppBaseActivity {
         currentTalkInvite = data;
         final CNotifyUserJoinTalkback temp = data;
         // 会议中来会议邀请，对话框提示
-        mLogicDialog.setTitleText("邀请")
-                .setMessageText(data.strFromUserName + "邀请您对讲，要切换到对讲嘛？")
+        mLogicDialog.setTitleText(getString(R.string.common_notice20))
+                .setMessageText(data.strFromUserName + getString(R.string.common_notice22))
                 .setCancelClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -625,7 +625,7 @@ public class TalkVoiceActivity extends AppBaseActivity {
 
                     @Override
                     public void onError(ErrorInfo errorInfo) {
-                        showToast("切换失败");
+                        showToast(getString(R.string.common_notice23));
                     }
                 });
             }
@@ -663,11 +663,11 @@ public class TalkVoiceActivity extends AppBaseActivity {
                 if (isSpeakerOn) {
                     HYClient.getHYAudioMgr().from(getSelf()).setSpeakerphoneOn(true);
                     iv_speaker.setImageResource(R.drawable.btn_mianti);
-                    tv_speaker.setText("免提");
+                    tv_speaker.setText(getString(R.string.talk_notice1));
                 } else {
                     HYClient.getHYAudioMgr().from(getSelf()).setSpeakerphoneOn(false);
                     iv_speaker.setImageResource(R.drawable.btn_mitiquxiao);
-                    tv_speaker.setText("听筒");
+                    tv_speaker.setText(getString(R.string.talk_notice2));
                 }
                 break;
         }
@@ -734,7 +734,7 @@ public class TalkVoiceActivity extends AppBaseActivity {
         if (info.nTalkbackID == nTalkID && info.isTalkingStopped() && !isChangeTalk) {
             stopAlarmMP3();
             finish();
-            showToast("对讲已结束");
+            showToast(getString(R.string.talk_end));
         }
 
         if (currentTalkInvite == null) {
@@ -764,8 +764,8 @@ public class TalkVoiceActivity extends AppBaseActivity {
     public void onBackPressed() {
         if(isTalkStarter && isTalking) {
             getLogicDialog()
-                    .setTitleText("提醒")
-                    .setMessageText("是否退出本次对讲?")
+                    .setTitleText(getString(R.string.notice))
+                    .setMessageText(getString(R.string.talk_notice))
                     .setConfirmClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

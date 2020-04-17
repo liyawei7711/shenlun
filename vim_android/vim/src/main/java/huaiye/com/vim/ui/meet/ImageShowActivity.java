@@ -55,7 +55,7 @@ public class ImageShowActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText(AppUtils.getString(R.string.look_big_image))
+        getNavigate().setTitlText(getString(R.string.look_big_image))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

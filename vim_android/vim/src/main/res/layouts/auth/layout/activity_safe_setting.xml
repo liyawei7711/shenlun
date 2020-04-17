@@ -9,7 +9,7 @@
         android:layout_width="230dp"
         android:layout_height="40dp"
         android:gravity="center"
-        android:hint="请输入设备编号"
+        android:hint="@string/label_txt21"
         android:singleLine="true"
         android:textSize="16sp" />
 
@@ -20,7 +20,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:inputType="textPassword"
-        android:hint="请输入加密密码"
+        android:hint="@string/label_txt22"
         android:singleLine="true"
         android:textSize="16sp" />
 

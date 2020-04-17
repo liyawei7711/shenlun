@@ -41,7 +41,7 @@ public class ContactsListOperationActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText("左滑删除联系人")
+        getNavigate().setTitlText(getString(R.string.common_notice1))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

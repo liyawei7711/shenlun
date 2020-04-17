@@ -26,7 +26,7 @@
             android:layout_toRightOf="@+id/iv_user_head"
             android:ellipsize="marquee"
             android:singleLine="true"
-            android:text="B 同事"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="17sp" />
 

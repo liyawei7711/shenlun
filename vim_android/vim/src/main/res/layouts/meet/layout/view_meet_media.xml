@@ -21,7 +21,7 @@
             android:drawableTop="@drawable/huiyi_btn_kaimai_open"
             android:drawablePadding="5dp"
             android:gravity="center"
-            android:text="关闭麦克"
+            android:text="@string/talk_notice7"
             android:textColor="@color/white"
             android:textSize="10sp" />
 
@@ -42,7 +42,7 @@
             android:drawableTop="@drawable/ic_loudspeaker_on"
             android:drawablePadding="5dp"
             android:gravity="center"
-            android:text="免提"
+            android:text="@string/talk_notice1"
             android:textColor="@color/white"
             android:textSize="10sp" />
     </LinearLayout>
@@ -62,7 +62,7 @@
             android:drawableTop="@drawable/huiyi_btn_guanbishipin"
             android:drawablePadding="5dp"
             android:gravity="center"
-            android:text="关闭视频"
+            android:text="@string/talk_notice4"
             android:textColor="@color/white"
             android:textSize="10sp" />
 
@@ -83,7 +83,7 @@
             android:drawableTop="@drawable/huiyi_btn_kongzhi"
             android:drawablePadding="5dp"
             android:gravity="center"
-            android:text="会议控制"
+            android:text="@string/title_notice7"
             android:textColor="@color/white"
             android:textSize="10sp" />
 
@@ -104,7 +104,7 @@
             android:drawableTop="@drawable/huiyi_btn_more"
             android:drawablePadding="5dp"
             android:gravity="center"
-            android:text="更多"
+            android:text="@string/talk_notice5"
             android:textColor="@color/white"
             android:textSize="10sp" />
 
@@ -131,7 +131,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginTop="5dp"
-             android:text="禁言"
+             android:text="@string/jingyan"
              android:textColor="@color/white"
              android:textSize="9sp" />
 
@@ -159,7 +159,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginTop="5dp"
-             android:text="关闭视频"
+             android:text="@string/talk_notice4"
              android:textColor="@color/white"
              android:textSize="9sp" />
 
@@ -241,7 +241,7 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:layout_marginTop="5dp"
-                 android:text="人员列表"
+                 android:text="@string/label_txt91"
                  android:textColor="@color/white"
                  android:textSize="9sp" />
 

@@ -17,6 +17,8 @@ import huaiye.com.vim.R;
 import huaiye.com.vim.ui.contacts.ContactsSearchActivity;
 import huaiye.com.vim.ui.contacts.sharedata.ChoosedContacts;
 
+import static huaiye.com.vim.common.AppUtils.getString;
+
 /**
  * author: admin
  * date: 2018/02/23
@@ -80,7 +82,7 @@ public class UserListPopupWindow extends PopupWindow implements View.OnClickList
                 break;
             case R.id.tv_online:
                 ChoosedContacts.get().isOnLine = !ChoosedContacts.get().isOnLine;
-                tv_online.setText(ChoosedContacts.get().isOnLine ? "显示全部" : "显示在线");
+                tv_online.setText(ChoosedContacts.get().isOnLine ? getString(R.string.show_all) : getString(R.string.show_online2));
                 confirmClickListener.onClickShow();
                 break;
 
@@ -103,7 +105,7 @@ public class UserListPopupWindow extends PopupWindow implements View.OnClickList
     }
 
     public void ref() {
-        tv_online.setText(ChoosedContacts.get().isOnLine ? "显示全部" : "显示在线");
+        tv_online.setText(ChoosedContacts.get().isOnLine ? getString(R.string.show_all) : getString(R.string.show_online2));
     }
 
 

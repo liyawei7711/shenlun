@@ -53,8 +53,8 @@ public class ZeusLoadView extends Dialog {
         super(context);
 
         handler = new Handler();
-        loading_text = "正在请求...";
-        success_text = "请求成功...";
+        loading_text = context.getString(R.string.reqing);
+        success_text = context.getString(R.string.reqsuccess);
         success_dismiss_delay = 800;
 
         initFeatures();
@@ -146,7 +146,7 @@ public class ZeusLoadView extends Dialog {
 
     // 成功展示文字
     public ZeusLoadView successText(String text) {
-        success_text = TextUtils.isEmpty(text) ? "操作成功..." : text;
+        success_text = TextUtils.isEmpty(text) ? getContext().getString(R.string.dealsuccess) : text;
         return this;
     }
 

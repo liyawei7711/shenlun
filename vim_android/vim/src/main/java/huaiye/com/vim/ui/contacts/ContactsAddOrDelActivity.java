@@ -126,7 +126,7 @@ public class ContactsAddOrDelActivity extends AppBaseActivity {
         }
 
         if (TextUtils.isEmpty(titleName)) {
-            titleName = "联系人";
+            titleName = getString(R.string.user_notice1);
         }
 
         if (isSelectUser) {
@@ -147,7 +147,7 @@ public class ContactsAddOrDelActivity extends AppBaseActivity {
                             if (isCreateVideoPish) {
                                 if (HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
                                     if (VimChoosedContacts.get().getContacts().size() != 2) {
-                                        showToast("加密分享只能为一人");
+                                        showToast(getString(R.string.user_notice2));
                                         currentTime = 0;
                                         return;
                                     }
@@ -224,7 +224,7 @@ public class ContactsAddOrDelActivity extends AppBaseActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        showToast("加群失败");
+                        showToast(getString(R.string.group_notice6));
                     }
                 });
             }
@@ -261,7 +261,7 @@ public class ContactsAddOrDelActivity extends AppBaseActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        showToast("群创建失败");
+                        showToast(getString(R.string.group_notice7));
                     }
                 });
             }
@@ -295,7 +295,7 @@ public class ContactsAddOrDelActivity extends AppBaseActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        showToast("加群失败");
+                        showToast(getString(R.string.group_notice6));
                     }
                 });
             }
@@ -310,7 +310,7 @@ public class ContactsAddOrDelActivity extends AppBaseActivity {
         MessageEvent event = new MessageEvent(AppUtils.EVENT_ADD_PEOPLE_TO_GROUP_SUCCESS);
         event.msgContent = str.toString().substring(0, str.length() - 1);
         EventBus.getDefault().post(event);
-        showToast("加群成功");
+        showToast(getString(R.string.group_notice8));
         finish();
     }
 
@@ -352,7 +352,7 @@ public class ContactsAddOrDelActivity extends AppBaseActivity {
             }
         }
         if (TextUtils.isEmpty(stringGoupName)) {
-            stringGoupName.append("群聊");
+            stringGoupName.append(getString(R.string.group_notice9));
         }
         return stringGoupName.toString();
     }
@@ -697,7 +697,7 @@ public class ContactsAddOrDelActivity extends AppBaseActivity {
             VimChoosedContacts.get().removeContacts(user);
         } else {
             if (VimChoosedContacts.get().getContacts().size() >= max + 1) {
-                showToast("最多选" + max + "人，已达人数上限");
+                showToast(getString(R.string.group_notice10) + max + getString(R.string.group_notice11));
                 return;
             }
             VimChoosedContacts.get().addContacts(user);

@@ -54,8 +54,8 @@ public class DownloadService extends IntentService {
 
         notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.guanyu_logo)
-                .setContentTitle("下载")
-                .setContentText("准备下载")
+                .setContentTitle(getString(R.string.download_notice1))
+                .setContentText(getString(R.string.download_notice2))
                 .setAutoCancel(true);
 
         notificationManager.notify(0, notificationBuilder.build());
@@ -97,7 +97,7 @@ public class DownloadService extends IntentService {
 
                     @Override
                     public void onSuccess(HTTPResponse httpResponse) {
-                        downloadCompleted("下载成功");
+                        downloadCompleted(getString(R.string.download_notice3));
                     }
 
                     @Override
@@ -106,7 +106,7 @@ public class DownloadService extends IntentService {
 
                     @Override
                     public void onFailure(HTTPResponse httpResponse) {
-                        downloadCompleted("下载失败");
+                        downloadCompleted(getString(R.string.download_notice4));
                     }
 
                     @Override

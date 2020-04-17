@@ -1,5 +1,6 @@
 package huaiye.com.vim.ui.contacts;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -129,7 +130,7 @@ public class UserDetailActivity extends AppBaseActivity implements UserDetailUse
     @Override
     protected void initActionBar() {
         getNavigate().setVisibility(View.VISIBLE);
-        getNavigate().setTitlText(AppUtils.getString(R.string.chat_info_title))
+        getNavigate().setTitlText(getString(R.string.chat_info_title))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -405,7 +406,7 @@ public class UserDetailActivity extends AppBaseActivity implements UserDetailUse
     public void onItemClick(User item) {
         if (UserDetailUserListAdapter.TYPE_ADD.equals(item.strUserID)) {
             Intent intent = new Intent(getSelf(), ContactsAddOrDelActivity.class);
-            intent.putExtra("titleName", AppUtils.getResourceString(R.string.user_detail_add_user_title));
+            intent.putExtra("titleName", getString(R.string.user_detail_add_user_title));
             intent.putExtra("isSelectUser", true);
             if (isGroupChat) {
                 intent.putExtra("isCreateGroup", false);
@@ -422,7 +423,7 @@ public class UserDetailActivity extends AppBaseActivity implements UserDetailUse
             startActivityForResult(intent, 1000);
         } else if (UserDetailUserListAdapter.TYPE_DEL.equals(item.strUserID)) {
             Intent intent = new Intent(getSelf(), ContactsAddOrDelActivity.class);
-            intent.putExtra("titleName", AppUtils.getResourceString(R.string.user_detail_del_user_title));
+            intent.putExtra("titleName", getString(R.string.user_detail_del_user_title));
             intent.putExtra("strGroupDomainCode", strGroupDomainCode);
             intent.putExtra("strGroupID", strGroupID);
             intent.putExtra("strGroupName", strGroupName);
@@ -440,7 +441,7 @@ public class UserDetailActivity extends AppBaseActivity implements UserDetailUse
     @OnClick(R.id.user_detail_group_user_count_rel)
     void go2GroupUserList() {
         Intent intent = new Intent(getSelf(), ContactsAddOrDelActivity.class);
-        intent.putExtra("titleName", AppUtils.getResourceString(R.string.user_detail_del_user_title));
+        intent.putExtra("titleName", getString(R.string.user_detail_del_user_title));
         intent.putExtra("isSelectUser", false);
         intent.putExtra("isCreateGroup", false);
         intent.putExtra("isAddMore", false);
@@ -657,7 +658,7 @@ public class UserDetailActivity extends AppBaseActivity implements UserDetailUse
                     @Override
                     public void run() {
 //                        VimMessageListMessages.get().del(strGroupDomainCode + strGroupID);
-                        addGroupNotice("已退出群组", sessionID, strGroupID, strGroupName);
+                        addGroupNotice(getString(R.string.send_notice5), sessionID, strGroupID, strGroupName);
                         EventBus.getDefault().post(new VimMessageBean());
                         EventBus.getDefault().post(new MessageEvent(AppUtils.EVENT_LEAVE_GROUP_SUCCESS));
                         finish();
@@ -671,7 +672,7 @@ public class UserDetailActivity extends AppBaseActivity implements UserDetailUse
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        showToast("加群失败");
+                        showToast(getString(R.string.group_notice6));
                     }
                 });
             }
@@ -685,7 +686,7 @@ public class UserDetailActivity extends AppBaseActivity implements UserDetailUse
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        addGroupNotice("群组已解散", sessionID, strGroupID, strGroupName);
+                        addGroupNotice(getString(R.string.send_notice4), sessionID, strGroupID, strGroupName);
                         EventBus.getDefault().post(new MessageEvent(AppUtils.EVENT_DEL_GROUP_SUCCESS));
                         finish();
                     }
@@ -698,7 +699,7 @@ public class UserDetailActivity extends AppBaseActivity implements UserDetailUse
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        showToast("加群失败");
+                        showToast(getString(R.string.group_notice6));
                     }
                 });
             }
@@ -717,6 +718,7 @@ public class UserDetailActivity extends AppBaseActivity implements UserDetailUse
                 .chatGroupMsgDao().insert(bean);
     }
 
+    @SuppressLint("StringFormatInvalid")
     @OnClick(R.id.user_detail_message_clear)
     void clearMessage() {
         if (isGroupChat) {
@@ -733,7 +735,7 @@ public class UserDetailActivity extends AppBaseActivity implements UserDetailUse
     @OnClick(R.id.user_detail_modify_group_head_pic)
     void modifyGroupHead() {
         if (!isGroupOwner) {
-            showToast("你不是群主无法操作");
+            showToast(getString(R.string.group_notice18));
             return;
         }
         Intent intent = new Intent(this, ModifyHeadPicActivity.class);

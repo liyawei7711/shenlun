@@ -12,7 +12,7 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingTop="15dp"
-        android:text="发现了新版本"
+        android:text="@string/label_txt4"
         android:textColor="#323232"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:padding="15dp"
-        android:text="新版本已准备好，是否安装?"
+        android:text="@string/label_txt6"
         android:textColor="#323232" />
 
     <View
@@ -43,7 +43,7 @@
             android:layout_weight="1"
             android:background="@drawable/selector_errinfo"
             android:gravity="center"
-            android:text="取消"
+            android:text="@string/cancel"
             android:textColor="#323232" />
 
         <View
@@ -60,7 +60,7 @@
             android:layout_weight="1"
             android:background="@drawable/selector_errinfo"
             android:gravity="center"
-            android:text="确认"
+            android:text="@string/confirm"
             android:textColor="@color/blue" />
 
     </LinearLayout>

@@ -497,7 +497,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
                                                 ChoosedContacts.get().clear();
                                                 ChoosedContacts.get().setOnMeetUsersInfo(data);
                                                 Intent intent = new Intent(getSelf(), ContactsChoiceByAllFriendActivity.class);
-                                                intent.putExtra("titleName", "邀请参会");
+                                                intent.putExtra("titleName", getString(R.string.title_notice3));
                                                 intent.putExtra("isSelectUser", true);
                                                 intent.putExtra("needAddSelf", false);
                                                 startActivityForResult(intent, 1000);
@@ -560,7 +560,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
 
                             @Override
                             public void onSuccess(CMeetingUserRaiseRsp info) {
-                                showToast("举手成功");
+                                showToast(getString(R.string.meet_handup_success));
                             }
 
                             @Override
@@ -640,7 +640,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
                 @Override
                 public void onShareImg() {
                     if (status != null) {
-                        showToast("白板已开启");
+                        showToast(getString(R.string.meet_whiteboard_success));
                         return;
                     }
                     startWhiteBoard(1, 2);
@@ -655,7 +655,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
                 @Override
                 public void onShareFile() {
                     if (status != null) {
-                        showToast("白板已开启");
+                        showToast(getString(R.string.meet_whiteboard_success));
                         return;
                     }
                     startWhiteBoard(1, 1);
@@ -702,7 +702,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
                                                     ChoosedContacts.get().clear();
                                                     ChoosedContactsNew.get().setContacts(ConvertContacts.ConvertMeetUserInfoToContacts(data));
                                                     Intent intent = new Intent(MeetActivity.this, ContactsChoiceByAllFriendActivity.class);
-                                                    intent.putExtra("titleName", "邀请参会");
+                                                    intent.putExtra("titleName", getString(R.string.title_notice3));
                                                     MeetActivity.this.startActivityForResult(intent, 1000);
                                                 }
                                             });
@@ -766,69 +766,63 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
                     return;
                 }
                         /*multiPlayHelper.userJoin(info.strUserID);
-                        showInfo(info.strToUserName + " 同意加入会议");*/
-                showToast(info.strToUserName + " 同意加入会议");
+                        showInfo(info.strToUserName + getString(R.string.meet_agree));*/
+                showToast(info.strToUserName + getString(R.string.meet_agree));
 
             }
 
             @Override
             public void onRefuseMeet(CNotifyPeerUserMeetingInfo info) {
-                Log.e("VIMApp", "onRefuseMeet...");
                 if (isFinishing()) {
 
                     return;
                 }
-//                        showInfo(info.strToUserName + " 拒绝加入会议");
-                showToast(info.strToUserName + " 拒绝加入会议");
+//                        showInfo(info.strToUserName + getString(R.string.meet_disagree));
+                showToast(info.strToUserName + getString(R.string.meet_disagree));
             }
 
             @Override
             public void onNoResponse(CNotifyPeerUserMeetingInfo info) {
-                Log.e("VIMApp", "onNoResponse...");
                 if (isFinishing()) {
                     return;
                 }
-//                        showInfo(info.strToUserName + " 无响应");
-                showToast(info.strToUserName + " 无响应");
+//                        showInfo(info.strToUserName + getString(R.string.meet_wuxiangying));
+                showToast(info.strToUserName + getString(R.string.meet_wuxiangying));
             }
 
             @Override
             public void onUserOffline(CNotifyPeerUserMeetingInfo info) {
-                Log.e("VIMApp", "onUserOffline...");
                 if (isFinishing()) {
                     return;
                 }
-//                        showInfo(info.strToUserName + " 不在线");
-                showToast(info.strToUserName + " 不在线");
+//                        showInfo(info.strToUserName + getString(R.string.meet_offline));
+                showToast(info.strToUserName + getString(R.string.meet_offline));
             }
 
             @Override
             public void onRepeatInvitation(CNotifyPeerUserMeetingInfo info) {
-                Log.e("VIMApp", "onRepeatInvitation...");
                 if (isFinishing()) {
                     return;
                 }
-//                        showToast(info.strToUserName + " 重复邀请");
-                showToast(info.strToUserName + " 重复邀请");
+//                        showToast(info.strToUserName + getString(R.string.meet_chongfuyaoqing));
+                showToast(info.strToUserName + getString(R.string.meet_chongfuyaoqing));
             }
 
             @Override
             public void onMeetStatusChanged(CNotifyMeetingStatusInfo info) {
-                Log.e("VIMApp", " onMeetStatusChanged...");
                 if (isFinishing()) {
                     return;
                 }
                 if (info.isMeetFinished()) {
-                    Log.e("VIMApp", " Meet Has Finished...");
                             /*isInMeeting = false;
-                            getInfoDialog().setContent("会议已结束")
+                            getInfoDialog().setContent(getString(R.string.meet_has_end))
                                     .setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             finish();
                                         }
                                     }).show();*/
-                    showToast("会议已结束");
+                    showToast(getString(R.string.meet_has_end));
                     finish();
                 } else {
 //                            showToast("onMeetStatusChanged... ");
@@ -842,18 +836,17 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
 
             @Override
             public void onKickedFromMeet(CNotifyKickUserMeeting info) {
-                Log.e("VIMApp", "onKickedFromMeet...");
                 if (isFinishing()) {
                     return;
                 }
-                        /*getInfoDialog().setContent("你被踢出了会议")
+                        /*getInfoDialog().setContent(getString(R.string.meet_kitout_bei))
                                 .setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         finish();
                                     }
                                 }).show();*/
-                showToast("你被踢出了会议");
+                showToast(getString(R.string.meet_kitout_bei));
                 finish();
             }
 
@@ -889,9 +882,8 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
 
             @Override
             public void onSuccess(CJoinMeetingRsp resp) {
-                Log.e("VIMApp", " onSuccess...");
 //                        showInfo("进入会议成功...");
-                showToast("成功进入会议");
+                showToast(getString(R.string.meet_jinruhuiyi_success));
                         /*view_media_menu.updateStatus();
                         HYClient.getHYCapture().setCaptureVideoOn(AppSettings.get().getMeetSettings().isMeetVideoShow());
                         HYClient.getHYCapture().setCaptureAudioOn(AppSettings.get().getMeetSettings().isMeetVoiceShow());*/
@@ -900,7 +892,6 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
 
             @Override
             public void onError(ErrorInfo errorInfo) {
-                Log.e("VIMApp", "onError...>>> " + errorInfo.toString());
 //                        isInMeeting = false;
                 if (isFinishing()) {
                     return;
@@ -912,7 +903,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
                                         finish();
                                     }
                                 }).show();*/
-                showToast("加入会议失败");
+                showToast(getString(R.string.meet_join_error));
             }
 
         });
@@ -1083,7 +1074,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
                 status.strInitiatorTokenID.equals(HYClient.getSdkOptions().User().getUserTokenId())) {
             stopWhiteBoard();
         } else {
-            showToast("你不是共享发起人，无权操作");
+            showToast(getString(R.string.meet_wuquanxian_caozuo));
         }
     }
 
@@ -1101,13 +1092,13 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
 
     private void onUserOfflineActivity(CNotifyPeerUserMeetingInfo cNotifyPeerUserMeetingInfo) {
         if (isMeetStarter) {
-//                            showToast(cNotifyPeerUserMeetingInfo.strToUserName + " 不在线");
+//                            showToast(cNotifyPeerUserMeetingInfo.strToUserName + getString(R.string.meet_offline));
         }
     }
 
     private void onNoResponseActivity(CNotifyPeerUserMeetingInfo cNotifyPeerUserMeetingInfo) {
         if (isMeetStarter) {
-            showToast(cNotifyPeerUserMeetingInfo.strToUserName + " 不响应");
+            showToast(cNotifyPeerUserMeetingInfo.strToUserName + getString(R.string.meet_wuxiangying));
         }
     }
 
@@ -1123,12 +1114,12 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
 
     private void onRefuseMeetActivity(CNotifyPeerUserMeetingInfo cNotifyPeerUserMeetingInfo) {
         if (isMeetStarter) {
-            showToast(cNotifyPeerUserMeetingInfo.strToUserName + " 拒绝入会");
+            showToast(cNotifyPeerUserMeetingInfo.strToUserName + getString(R.string.meet_disagree));
         }
     }
 
     private void onUserRaiseOfMeetActivity(CNotifyMeetingRaiseInfo cNotifyMeetingRaiseInfo) {
-        showToast(cNotifyMeetingRaiseInfo.strUserName + " 举手了 ");
+        showToast(cNotifyMeetingRaiseInfo.strUserName + getString(R.string.meet_jushou));
 
         if (mMeetMembersFragment == null) return;
 
@@ -1142,7 +1133,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
         if (cNotifyMeetingStatusInfo.nMeetingStatus == 2) {
             quitMeet(isMeetStarter);
 
-            showToast("会议已结束");
+            showToast(getString(R.string.meet_has_end));
         } else {
             if (mMeetMembersFragment != null) {
                 mMeetMembersFragment.changeOneKey(cNotifyMeetingStatusInfo.isMeetMute());
@@ -1226,9 +1217,9 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
     private void openBoardView(CNotifyWhiteboardStatus status, boolean isOwner) {
         MeetActivity.this.status = status;
         iv_change.setVisibility(View.VISIBLE);
-        menu_meet_media.setWhiteBoardTxt("本地共享", false, isOwner);
+        menu_meet_media.setWhiteBoardTxt(getString(R.string.title_notice6), false, isOwner);
         if (shareLocalPopupWindow != null && isOwner) {
-            shareLocalPopupWindow.changeStatue("关闭白板");
+            shareLocalPopupWindow.changeStatue(getString(R.string.meet_close_whiteboard));
         }
 
         hideMenu();
@@ -1248,9 +1239,9 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
         MeetActivity.this.status = null;
         iv_change.setVisibility(View.GONE);
         exitWhiteBoardDeal();
-        menu_meet_media.setWhiteBoardTxt("本地共享", true, isOwner);
+        menu_meet_media.setWhiteBoardTxt(getString(R.string.title_notice6), true, isOwner);
         if (shareLocalPopupWindow != null) {
-            shareLocalPopupWindow.changeStatue("开启白板");
+            shareLocalPopupWindow.changeStatue(getString(R.string.meet_open_whiteboard));
         }
     }
 
@@ -1347,8 +1338,8 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
         }
         // 会议中来会议邀请，对话框提示
         dialog = getLogicDialog()
-                .setTitleText("邀请")
-                .setMessageText(data.strInviteUserName + "邀请你参加会议，是否接受？")
+                .setTitleText(getString(R.string.common_notice20))
+                .setMessageText(data.strInviteUserName + getString(R.string.common_notice21))
                 .setCancelClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -1450,8 +1441,8 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
         final CNotifyUserJoinTalkback temp = data;
         // 会议中来会议邀请，对话框提示
         dialog = getLogicDialog()
-                .setTitleText("邀请")
-                .setMessageText(data.strFromUserName + "邀请您对讲，要切换到对讲嘛？")
+                .setTitleText(getString(R.string.common_notice20))
+                .setMessageText(data.strFromUserName + getString(R.string.common_notice22))
                 .setCancelClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -1502,7 +1493,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
 
                                     @Override
                                     public void onError(ErrorInfo errorInfo) {
-                                        showToast("切换失败");
+                                        showToast(getString(R.string.common_notice23));
                                     }
                                 });
                     }
@@ -1612,7 +1603,6 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
             JniIntf.SetCapturerPreviewTexture(isShow ? null
                     : texture_preview.getSurfaceTexture());
         } catch (Exception e) {
-            Logger.log("ToggleBackgroundState Exception..." + e);
         }
     }
 
@@ -1645,13 +1635,13 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
             hideAll();
             return;
         }
-        final LogicDialog dialog = getLogicDialog().setMessageText(isMeetStarter ? "解散或退出会议?" : "是否退出本次会议?");
+        final LogicDialog dialog = getLogicDialog().setMessageText(isMeetStarter ? getString(R.string.common_notice24) : getString(R.string.common_notice25));
         if (isMeetStarter) {
-            dialog.setConfirmText("退出");
-            dialog.setCancelText("解散");
+            dialog.setConfirmText(getString(R.string.quite));
+            dialog.setCancelText(getString(R.string.jiesan));
         } else {
-            dialog.setConfirmText("退出");
-            dialog.setCancelText("取消");
+            dialog.setConfirmText(getString(R.string.quite));
+            dialog.setCancelText(getString(R.string.cancel));
         }
         dialog.setConfirmClickListener(new View.OnClickListener() {
             @Override
@@ -1734,7 +1724,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
                                     public void startResult(CStartFileConvertRsp cStartFileConvertRsp) {
                                         if (cStartFileConvertRsp.nResultCode != 0) {
                                             status = null;
-                                            showToast("文件转换失败");
+                                            showToast(getString(R.string.common_notice26));
                                             exitWhiteBoardDeal();
                                         }
                                     }
@@ -1746,7 +1736,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
                                                 mMeetBoardFragment.openWhiteBoard(true, notifyFileConvertStatus, true);
                                         } else {
                                             status = null;
-                                            showToast("文件转换失败");
+                                            showToast(getString(R.string.common_notice26));
                                             exitWhiteBoardDeal();
                                         }
                                     }
@@ -1822,7 +1812,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
                             cuntCount++;
                             cuntCountSuccess++;
                             if (count == cuntCount) {
-                                showToast("已邀请选中人员");
+                                showToast(getString(R.string.meet_yiyaoqing));
                             }
                         } else {
                             if(nEncryptIMEnable) {
@@ -1830,7 +1820,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
                                 finish();
                                 return;
                             }
-                            showToast("已邀请选中人员");
+                            showToast(getString(R.string.meet_yiyaoqing));
                         }
                     }
 
@@ -1839,7 +1829,7 @@ public class MeetActivity extends AppBaseActivity implements SdpUITask.SdpUIList
                         if (HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
                             cuntCount++;
                             if (count == cuntCount && cuntCountSuccess > 0) {
-                                showToast("邀请成功");
+                                showToast(getString(R.string.meet_yiyaoqing));
                             } else {
                                 showToast(ErrorMsg.getMsg(ErrorMsg.invite_user_err_code));
                             }

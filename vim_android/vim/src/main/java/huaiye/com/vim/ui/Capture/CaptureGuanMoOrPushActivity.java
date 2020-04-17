@@ -104,7 +104,7 @@ public class CaptureGuanMoOrPushActivity extends AppBaseActivity {
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("开启采集推送失败");
+                            showToast(getString(R.string.start_push_error));
                             finish();
                         }
                     });

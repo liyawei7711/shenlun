@@ -19,7 +19,7 @@
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="默认摄像头"
+                android:text="@string/label_txt41"
                 android:textColor="@color/black999"
                 android:textSize="14sp" />
 
@@ -39,7 +39,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="前置"
+                    android:text="@string/label_txt42"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -52,7 +52,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="后置"
+                    android:text="@string/label_txt43"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -64,7 +64,7 @@
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="传输方式"
+                android:text="@string/label_txt44"
                 android:textColor="@color/black999"
                 android:textSize="14sp" />
 
@@ -84,7 +84,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="TCP"
+                    android:text="@string/label_txt45"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -96,7 +96,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="UDP"
+                    android:text="@string/label_txt46"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -107,7 +107,7 @@
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="采集画质"
+                android:text="@string/label_txt47"
                 android:textColor="@color/black999"
                 android:textSize="14sp" />
 
@@ -127,7 +127,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="标清"
+                    android:text="@string/label_txt48"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -140,7 +140,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="高清"
+                    android:text="@string/label_txt49"
                     android:textColor="@color/black333"
                     android:textSize="14sp"
                     android:visibility="gone" />
@@ -154,7 +154,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="高清"
+                    android:text="@string/label_txt49"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -166,7 +166,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="超清"
+                    android:text="@string/label_txt114"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -177,7 +177,7 @@
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="采集码率"
+                android:text="@string/label_txt115"
                 android:textColor="@color/black999"
                 android:textSize="14sp" />
 
@@ -197,7 +197,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="低"
+                    android:text="@string/label_txt116"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -210,7 +210,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="中"
+                    android:text="@string/label_txt117"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -223,7 +223,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="高"
+                    android:text="@string/label_txt118"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -235,7 +235,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="自定义"
+                    android:text="@string/label_txt119"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -268,7 +268,7 @@
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="网络自适应"
+                android:text="@string/label_txt120"
                 android:textColor="@color/black999"
                 android:textSize="14sp" />
 
@@ -288,7 +288,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="开启"
+                    android:text="@string/label_txt121"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -301,7 +301,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="关闭"
+                    android:text="@string/label_txt122"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -312,7 +312,7 @@
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="播放画质"
+                android:text="@string/label_txt123"
                 android:textColor="@color/black999"
                 android:textSize="14sp"/>
 
@@ -332,7 +332,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="标清"
+                    android:text="@string/label_txt48"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -344,7 +344,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="高清"
+                    android:text="@string/label_txt49"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -355,7 +355,7 @@
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="采集编码"
+                android:text="@string/label_txt50"
                 android:textColor="@color/black999"
                 android:textSize="14sp"/>
 
@@ -375,7 +375,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="硬编"
+                    android:text="@string/label_txt51"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -387,7 +387,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="软编"
+                    android:text="@string/label_txt52"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -398,7 +398,7 @@
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="播放解码"
+                android:text="@string/label_txt53"
                 android:textColor="@color/black999"
                 android:textSize="14sp"/>
 
@@ -418,7 +418,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="硬解"
+                    android:text="@string/label_txt54"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 
@@ -430,7 +430,7 @@
                     android:button="@null"
                     android:drawableLeft="@drawable/selector_check_uncheck_red"
                     android:drawablePadding="5dp"
-                    android:text="软解"
+                    android:text="@string/label_txt55"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
 

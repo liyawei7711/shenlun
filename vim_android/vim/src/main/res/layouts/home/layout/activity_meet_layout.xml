@@ -33,7 +33,7 @@
                 android:gravity="center"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                android:text="确定"
+                android:text="@string/makesure"
                 android:textColor="@color/blue2"
                 android:textSize="16sp"
                 tools:ignore="ContentDescription" />
@@ -103,7 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="人员不足无法改变布局"
+            android:text="@string/meet_renyuanbuzu"
             android:textSize="16sp" />
 
         <include

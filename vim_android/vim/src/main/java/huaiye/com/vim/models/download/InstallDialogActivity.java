@@ -1,14 +1,11 @@
 package huaiye.com.vim.models.download;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -20,7 +17,6 @@ import java.io.File;
 import huaiye.com.vim.R;
 import huaiye.com.vim.common.AppBaseActivity;
 import huaiye.com.vim.common.AppUtils;
-import huaiye.com.vim.dao.AppDatas;
 
 /**
  * Created by liyawei on 15-12-24.
@@ -73,16 +69,16 @@ public class InstallDialogActivity extends AppBaseActivity {
 
     protected void initListener() {
         apkPath = getIntent().getStringExtra(APK_PATH);
-        if (haveInstallPermission()){
+        if (haveInstallPermission()) {
             showInstallInfo();
-        }else {
+        } else {
             showAllowInstallTip();
         }
 
     }
 
 
-    private boolean haveInstallPermission(){
+    private boolean haveInstallPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             boolean canRequestPackageInstall = getPackageManager().canRequestPackageInstalls();
             return canRequestPackageInstall;
@@ -93,9 +89,9 @@ public class InstallDialogActivity extends AppBaseActivity {
     /**
      * 展示申请安装权限信息
      */
-    private void showAllowInstallTip(){
-        tv_title.setText("允许" + AppUtils.getString(R.string.app_name)+"安装app");
-        tv_info.setText("升级需要您同意安装未知应用?");
+    private void showAllowInstallTip() {
+        tv_title.setText(getString(R.string.install_notice1) + AppUtils.getString(R.string.app_name) + getString(R.string.install_notice2));
+        tv_info.setText(getString(R.string.install_notice3));
         tv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,11 +106,11 @@ public class InstallDialogActivity extends AppBaseActivity {
         });
     }
 
-    private void toSetting(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+    private void toSetting() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             boolean canRequestPackageInstall = getPackageManager().canRequestPackageInstalls();
-            if (!canRequestPackageInstall){
-                Uri packageURI = Uri.parse("package:" +getPackageName());
+            if (!canRequestPackageInstall) {
+                Uri packageURI = Uri.parse("package:" + getPackageName());
                 //注意这个是8.0新API
                 Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, packageURI);
                 startActivityForResult(intent, REQUEST_INSTALL_UNKNOW_APP);
@@ -127,9 +123,9 @@ public class InstallDialogActivity extends AppBaseActivity {
     /**
      * 暂时app安装提示界面
      */
-    private void showInstallInfo(){
-        tv_title.setText("安装新版本");
-        tv_info.setText("新版本已准备好，是否安装?");
+    private void showInstallInfo() {
+        tv_title.setText(getString(R.string.install_notice4));
+        tv_info.setText(getString(R.string.install_notice5));
         tv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,11 +149,11 @@ public class InstallDialogActivity extends AppBaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_INSTALL_UNKNOW_APP ){
+        if (requestCode == REQUEST_INSTALL_UNKNOW_APP) {
             boolean canRequestPackageInstall = false;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 canRequestPackageInstall = getPackageManager().canRequestPackageInstalls();
-                if (canRequestPackageInstall){
+                if (canRequestPackageInstall) {
                     InstallUtil.installNormal(InstallDialogActivity.this, new File(apkPath), true);
                     onBackPressed();
                 }

@@ -37,7 +37,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="15dp"
         android:layout_marginTop="10dp"
-        android:text="17:25"
+        android:text=""
         android:textColor="@color/black999"
         android:textSize="12sp" />
 
@@ -50,7 +50,7 @@
         android:layout_toLeftOf="@id/tv_date"
         android:layout_toRightOf="@id/fl_view"
         android:singleLine="true"
-        android:text="邀请会商"
+        android:text="@string/label_txt70"
         android:textColor="@color/black333"
         android:textSize="15sp" />
 
@@ -63,7 +63,7 @@
         android:layout_marginTop="2.5dp"
         android:layout_toRightOf="@id/fl_view"
         android:singleLine="true"
-        android:text="xxxxxxxxxx"
+        android:text=""
         android:textColor="@color/black999"
         android:textSize="14dp" />
 

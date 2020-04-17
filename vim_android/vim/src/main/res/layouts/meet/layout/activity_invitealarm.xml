@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="xxxx"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="22sp" />
 
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="70dp"
-        android:text="邀请你语音通话"
+        android:text="@string/talk_notice11"
         android:textColor="@color/white"
         android:textSize="15sp" />
 
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
-            android:text="xxxx"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -90,7 +90,7 @@
                 android:drawablePadding="10dp"
                 android:drawableTop="@drawable/btn_guaduan"
                 android:gravity="center"
-                android:text="拒绝"
+                android:text="@string/label_txt72"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -110,7 +110,7 @@
                 android:drawablePadding="10dp"
                 android:drawableTop="@drawable/btn_jieting"
                 android:gravity="center"
-                android:text="接听"
+                android:text="@string/label_txt73"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
         </LinearLayout>

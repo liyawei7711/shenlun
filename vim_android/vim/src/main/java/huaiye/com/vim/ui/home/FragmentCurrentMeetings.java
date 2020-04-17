@@ -117,7 +117,7 @@ public class FragmentCurrentMeetings extends AppBaseFragment {
                             startActivity(intent);
 
                         } else if (data.nStatus == 2) {
-                            AppBaseActivity.showToast("会议已结束");
+                            AppBaseActivity.showToast(getString(R.string.meet_has_end));
                         } else if (data.nStatus == 4) {
                             Intent intent = new Intent(getContext(), OrderMeetDetailActivity.class);
                             intent.putExtra("strMeetDomainCode", data.strMainUserDomainCode);

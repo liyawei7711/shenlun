@@ -10,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -343,7 +342,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void changeNum(int num) {
-        tv_choose_confirm.setText("确定(" + num + ")");
+        tv_choose_confirm.setText(getString(R.string.makesure) + "(" + num + ")");
     }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {

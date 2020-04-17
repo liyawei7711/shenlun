@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Looper;
-import android.util.Log;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -84,7 +83,6 @@ class CrashHandler implements Thread.UncaughtExceptionHandler {
                 System.exit(1);
 
             } catch (InterruptedException e) {
-                Log.e(TAG, "error : ", e);
             }
         }
     }
@@ -106,7 +104,7 @@ class CrashHandler implements Thread.UncaughtExceptionHandler {
             @Override
             public void run() {
                 Looper.prepare();
-                AppBaseActivity.showToast("很抱歉,程序出现异常,正在收集日志，即将退出");
+                AppBaseActivity.showToast(mContext.getString(R.string.common_notice65));
                 Looper.loop();
             }
         }.start();
@@ -135,16 +133,13 @@ class CrashHandler implements Thread.UncaughtExceptionHandler {
                 infos.put("versionCode", versionCode);
             }
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(TAG, "an error occured when collect package info", e);
         }
         Field[] fields = Build.class.getDeclaredFields();
         for (Field field : fields) {
             try {
                 field.setAccessible(true);
                 infos.put(field.getName(), field.get(null).toString());
-                Log.d(TAG, field.getName() + " : " + field.get(null));
             } catch (Exception e) {
-                Log.e(TAG, "an error occured when collect crash info", e);
             }
         }
     }

@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="我的群组"
+            android:text="@string/label_txt39"
             android:ellipsize="end"
             android:singleLine="true"
             android:textColor="@color/black333"

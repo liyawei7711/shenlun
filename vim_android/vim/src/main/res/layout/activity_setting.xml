@@ -148,7 +148,7 @@
                     android:drawablePadding="16dp"
                     android:gravity="center_vertical"
                     android:paddingRight="15dp"
-                    android:text="紧急联系人"
+                    android:text="@string/label_txt8"
                     android:textColor="@color/black333"
                     android:textSize="16sp" />
 
@@ -178,7 +178,7 @@
                     android:drawablePadding="16dp"
                     android:gravity="center_vertical"
                     android:paddingRight="15dp"
-                    android:text="绘制手势密码"
+                    android:text="@string/label_txt14"
                     android:textColor="@color/black333"
                     android:textSize="16sp" />
 
@@ -208,7 +208,7 @@
                     android:drawablePadding="16dp"
                     android:gravity="center_vertical"
                     android:paddingRight="15dp"
-                    android:text="紧急救助"
+                    android:text="@string/label_txt15"
                     android:textColor="@color/black333"
                     android:textSize="16sp" />
                 <CheckBox
@@ -238,7 +238,7 @@
                     android:drawablePadding="16dp"
                     android:gravity="center_vertical"
                     android:paddingRight="15dp"
-                    android:text="启用手势解锁"
+                    android:text="@string/label_txt16"
                     android:textColor="@color/black333"
                     android:textSize="16sp" />
 

@@ -7,10 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.huaiye.cmf.sdp.SdpMessageCmStartSessionRsp;
 import com.huaiye.sdk.HYClient;
 import com.huaiye.sdk.core.SdkCallback;
-import com.huaiye.sdk.media.capture.HYCapture;
 import com.huaiye.sdk.sdkabi._api.ApiMeet;
 import com.huaiye.sdk.sdkabi._params.SdkParamsCenter;
 import com.huaiye.sdk.sdpmsgs.meet.CStartMeetingReq;
@@ -101,7 +99,7 @@ public class ContactDetailActivity extends AppBaseActivity {
             public void onSuccess(ContactDetail contactDetail) {
                 mContactDetail = contactDetail;
 
-                if(contactDetail.result.loginName.equals(AppDatas.Auth().getUserLoginName())) {
+                if (contactDetail.result.loginName.equals(AppDatas.Auth().getUserLoginName())) {
                     iv_collection.setVisibility(View.GONE);
                     chat_layout.setVisibility(View.GONE);
                 } else {
@@ -117,16 +115,16 @@ public class ContactDetailActivity extends AppBaseActivity {
 
                 tv_name.setText(contactDetail.result.name);
                 if (map.containsKey(contactDetail.result.loginName)) {
-                    if (map.get(contactDetail.result.loginName).isSpeaking()||
+                    if (map.get(contactDetail.result.loginName).isSpeaking() ||
                             map.get(contactDetail.result.loginName).isUserCapturing() ||
                             map.get(contactDetail.result.loginName).isUserTalking() ||
                             map.get(contactDetail.result.loginName).isUserMeeting()) {
-                        tv_status.setText("[忙碌]");
+                        tv_status.setText(getString(R.string.status_notice1));
                     } else {
-                        tv_status.setText("[在线]");
+                        tv_status.setText(getString(R.string.status_notice2));
                     }
                 } else {
-                    tv_status.setText("[不在线]");
+                    tv_status.setText(getString(R.string.status_notice3));
                 }
                 tv_company.setText(contactDetail.result.entName);
                 tv_phone.setText(contactDetail.result.mobilePhone);
@@ -146,7 +144,7 @@ public class ContactDetailActivity extends AppBaseActivity {
     void addCommonContactControl() {
         if (mContactDetail == null
                 || mContactDetail.result == null) {
-            showToast("没有人员具体信息");
+            showToast(getString(R.string.status_notice4));
             return;
         }
 
@@ -192,7 +190,7 @@ public class ContactDetailActivity extends AppBaseActivity {
     void onMeetClicked() {
         // 发起会议
         if (mContactDetail == null) {
-            showToast("获取人员详情失败，无法会议");
+            showToast(getString(R.string.status_notice5));
             return;
         }
 
@@ -206,17 +204,16 @@ public class ContactDetailActivity extends AppBaseActivity {
                 .createMeeting(SdkParamsCenter.Meet.CreateMeet()
                         .addUsers(user)
                         .setOpenRecord(false)
-                        .setMeetName("临时会议"), new SdkCallback<CStartMeetingRsp>() {
+                        .setMeetName(getString(R.string.status_notice6)), new SdkCallback<CStartMeetingRsp>() {
                     @Override
                     public void onSuccess(CStartMeetingRsp cStartMeetingRsp) {
-                        if(HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
+                        if (HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
                             EncryptUtil.startEncrypt(true, user.strUserID, user.strUserDomainCode,
-                                    cStartMeetingRsp.nMeetingID+"", cStartMeetingRsp.strMeetingDomainCode, null);
+                                    cStartMeetingRsp.nMeetingID + "", cStartMeetingRsp.strMeetingDomainCode, null);
                         } else {
-                            if(nEncryptIMEnable) {
+                            if (nEncryptIMEnable) {
                                 EventBus.getDefault().post(new MessageEvent(AppUtils.EVENT_INIT_FAILED, -4, "error"));
                                 finish();
-                                return;
                             }
                         }
                     }
@@ -231,7 +228,7 @@ public class ContactDetailActivity extends AppBaseActivity {
     @OnClick(R.id.tv_talking)
     void onTalkClicked() {
         if (mContactDetail == null) {
-            showToast("获取人员详情失败，无法对讲");
+            showToast(getString(R.string.status_notice7));
             return;
         }
 
@@ -250,7 +247,7 @@ public class ContactDetailActivity extends AppBaseActivity {
     @OnClick(R.id.tv_voice_talk)
     void onTalkVoiceClicked() {
         if (mContactDetail == null) {
-            showToast("获取人员详情失败，无法对讲");
+            showToast(getString(R.string.status_notice7));
             return;
         }
 

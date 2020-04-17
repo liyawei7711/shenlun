@@ -62,8 +62,8 @@ import static huaiye.com.vim.common.AppUtils.rootPath;
 @BindLayout(R.layout.activity_choose_photo)
 public class ChooseFilesActivity extends AppBaseActivity {
 
-    private static String NEIZHI = "内置存储";
-    private static String WAIZHI = "外置SD卡";
+    private static String NEIZHI = AppUtils.getString(R.string.common_notice14);
+    private static String WAIZHI = AppUtils.getString(R.string.common_notice15);
 
     private static int HAS_CARD = 1;
     private static int NO_CARD = 0;
@@ -132,11 +132,11 @@ public class ChooseFilesActivity extends AppBaseActivity {
 
         getNavigate().setLeftClickListener(v -> {
             onBackPressed();
-        }).setTitlText("共享文件").setRightText("确定").setRightClickListener(new View.OnClickListener() {
+        }).setTitlText(getString(R.string.title_notice4)).setRightText(getString(R.string.makesure)).setRightClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (currentBean == null) {
-                    showToast("请选择要分享的文件");
+                    showToast(getString(R.string.common_notice16));
                     return;
                 }
                 final File file = new File(currentBean.path);
@@ -151,7 +151,7 @@ public class ChooseFilesActivity extends AppBaseActivity {
 
                                 @Override
                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                    showToast("文件加密失败");
+                                    showToast(getString(R.string.jiami_notice6));
                                 }
                             }
                     );
@@ -170,10 +170,10 @@ public class ChooseFilesActivity extends AppBaseActivity {
 
     private void upFile(File oldFile, File file) {
         if (file.length() > 1028 * 1028 * 50) {
-            showToast("文档大于50M");
+            showToast(getString(R.string.send_notice2));
             return;
         }
-        mZeusLoadView.loadingText("正在上传").setLoading();
+        mZeusLoadView.loadingText(getString(R.string.is_upload_ing)).setLoading();
         ModelApis.Download().uploadFile(new ModelCallback<Upload>() {
             @Override
             public void onSuccess(Upload upload) {
@@ -191,7 +191,7 @@ public class ChooseFilesActivity extends AppBaseActivity {
             @Override
             public void onFailure(HTTPResponse httpResponse) {
                 super.onFailure(httpResponse);
-                showToast("文件上传失败");
+                showToast(getString(R.string.file_upload_false));
             }
 
             @Override
@@ -222,7 +222,7 @@ public class ChooseFilesActivity extends AppBaseActivity {
                     } else {
 
                         if (bean.name.equals(WAIZHI) && bean.has_sd_card == NO_CARD) {
-                            showToast("外置SD卡不存在");
+                            showToast(getString(R.string.common_notice17));
                             return;
                         }
                         mapIndex.put(bean.mapKey, linearLayoutManager.findLastVisibleItemPosition());

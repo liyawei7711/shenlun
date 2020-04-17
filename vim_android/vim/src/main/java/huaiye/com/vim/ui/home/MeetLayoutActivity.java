@@ -306,7 +306,7 @@ public class MeetLayoutActivity extends AppBaseActivity implements SdpUITask.Sdp
                     public void onClick(View v) {
                         SelectedModel<CGetMeetingInfoRsp.UserInfo> bean = (SelectedModel<CGetMeetingInfoRsp.UserInfo>) v.getTag();
                         if (bean.bean.nJoinStatus != 2) {
-                            showToast("该用户未参会，不能选择");
+                            showToast(getString(R.string.meet_yicanhui));
                             return;
                         }
                         bean.isChecked = !bean.isChecked;
@@ -348,11 +348,11 @@ public class MeetLayoutActivity extends AppBaseActivity implements SdpUITask.Sdp
 
     private void changeVideoPage() {
         if (currentModel == null) {
-            showToast("交换人员不能为空");
+            showToast(getString(R.string.meet_jiaohuan_no_empty));
             return;
         }
         if (currentView == null) {
-            showToast("交换位置不能为空");
+            showToast(getString(R.string.meet_jiaohuan_weizhi_no_empty));
             return;
         }
         CGetMeetingLayoutInfoRsp.UserInfo currentB = (CGetMeetingLayoutInfoRsp.UserInfo) currentView.getTag();
@@ -366,7 +366,7 @@ public class MeetLayoutActivity extends AppBaseActivity implements SdpUITask.Sdp
                         new SdkCallback<CMeetingUserSwapRsp>() {
                             @Override
                             public void onSuccess(CMeetingUserSwapRsp cGetMeetingInfoRsp) {
-                                showToast("交换成功,请稍后");
+                                showToast(getString(R.string.meet_jiaohuan_success));
                                 finish();
                             }
 
@@ -429,9 +429,9 @@ public class MeetLayoutActivity extends AppBaseActivity implements SdpUITask.Sdp
                         isBigSmall = info.nIsWideScreen == 1;
 
                         if (isBigSmall) {
-                            tv_title.setText("大小布局");
+                            tv_title.setText(getString(R.string.meet_daxiao_layout));
                         } else {
-                            tv_title.setText("等分布局");
+                            tv_title.setText(getString(R.string.meet_dengfen_layout));
                         }
 
                         tv_notice.setVisibility(View.GONE);
@@ -598,7 +598,7 @@ public class MeetLayoutActivity extends AppBaseActivity implements SdpUITask.Sdp
                 break;
             case R.id.ll_title:
                 if (listUser.size() <= 1) {
-                    showToast("人员不足无法改变布局");
+                    showToast(getString(R.string.meet_renyuanbuzu));
                     return;
                 }
                 if (enable) {
@@ -632,7 +632,7 @@ public class MeetLayoutActivity extends AppBaseActivity implements SdpUITask.Sdp
                 boxBg();
             }
         } else {
-            showToast("该位置没有人哦~");
+            showToast(getString(R.string.meet_weizhi_empty));
         }
     }
 
@@ -1022,7 +1022,7 @@ public class MeetLayoutActivity extends AppBaseActivity implements SdpUITask.Sdp
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(CNotifyMeetingStatusInfo info) {
         if (info.nMeetingStatus == 2) {
-            showToast("会议已结束");
+            showToast(getString(R.string.meet_has_end));
             onBackPressed();
         }
     }

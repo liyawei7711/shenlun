@@ -46,6 +46,7 @@ import static huaiye.com.vim.common.AppUtils.MESSAGE_TYPE_TEXT;
 import static huaiye.com.vim.common.AppUtils.MESSAGE_TYPE_VIDEO_FILE;
 import static huaiye.com.vim.common.AppUtils.NOTIFICATION_TYPE_DEVICE_PUSH;
 import static huaiye.com.vim.common.AppUtils.NOTIFICATION_TYPE_PERSON_PUSH;
+import static huaiye.com.vim.common.AppUtils.getString;
 import static huaiye.com.vim.common.AppUtils.nEncryptIMEnable;
 import static huaiye.com.vim.ui.meet.adapter.ChatContentAdapter.CHAT_CONTENT_CUSTOM_NOTICE_ITEM;
 
@@ -57,6 +58,8 @@ import static huaiye.com.vim.ui.meet.adapter.ChatContentAdapter.CHAT_CONTENT_CUS
  * desc: ChatViewHolder
  */
 public class ChatListViewHolder extends LiteViewHolder {
+    @BindView(R.id.tv_notice)
+    View tv_notice;
     @BindView(R.id.view_divider)
     View view_divider;
     @BindView(R.id.view_point)
@@ -108,7 +111,11 @@ public class ChatListViewHolder extends LiteViewHolder {
         itemView.setTag(bean);
 
         time.setVisibility(View.VISIBLE);
-        time.setText(WeiXinDateFormat.getChatTime(bean.time));
+
+        try {
+            time.setText(WeiXinDateFormat.getChatTimeYingWen(bean.time));
+        } catch (Exception e) {
+        }
 
 
         if (TextUtils.isEmpty(bean.sessionName)) {
@@ -219,8 +226,10 @@ public class ChatListViewHolder extends LiteViewHolder {
 
         if (position == datas.size() - 1) {
             view_divider.setVisibility(View.GONE);
+            tv_notice.setVisibility(View.VISIBLE);
         } else {
-            view_divider.setVisibility(View.VISIBLE);
+            view_divider.setVisibility(View.GONE);
+            tv_notice.setVisibility(View.GONE);
         }
 
         if (bean.nMsgTop == 1) {
@@ -268,31 +277,31 @@ public class ChatListViewHolder extends LiteViewHolder {
                                 @Override
                                 public void onError(ErrorInfo sessionRsp) {
                                     if (bean.type == MESSAGE_TYPE_SHARE) {
-                                        textView.setText("[" + AppUtils.getString(R.string.chat_link) + "]信息已加密");
+                                        textView.setText("[" + AppUtils.getString(R.string.chat_link) + "]" + getString(R.string.jiami_notice3));
                                     } else {
-                                        textView.setText("信息已加密");
+                                        textView.setText(getString(R.string.jiami_notice3));
                                     }
                                 }
                             });
                 } else {
                     if (bean.type == MESSAGE_TYPE_SHARE) {
-                        textView.setText("[" + AppUtils.getString(R.string.chat_link) + "]信息已加密");
+                        textView.setText("[" + AppUtils.getString(R.string.chat_link) + "]" + getString(R.string.jiami_notice3));
                     } else {
-                        textView.setText("信息已加密");
+                        textView.setText(getString(R.string.jiami_notice3));
                     }
                 }
             } else {
                 if (bean.type == MESSAGE_TYPE_SHARE) {
                     textView.setText("[" + AppUtils.getString(R.string.chat_link) + "]" + bean.msgTxt);
                 } else {
-                    textView.setText(bean.msgTxt + "");
+                    textView.setText(bean.msgTxt);
                 }
             }
         } else {
             if (bean.type == MESSAGE_TYPE_SHARE) {
-                textView.setText("[" + AppUtils.getString(R.string.chat_link) + "]" + "新消息");
+                textView.setText("[" + AppUtils.getString(R.string.chat_link) + "]" + bean.msgTxt);
             } else {
-                textView.setText("新消息");
+                textView.setText(bean.msgTxt + "");
             }
         }
     }

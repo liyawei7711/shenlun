@@ -115,7 +115,7 @@ public class MeetMembersFragment extends AppBaseFragment {
     void onKickoutClicked(View v) {
 
         if (adapter.getSelectedPositions().isEmpty()) {
-            AppBaseActivity.showToast("请选择要提出的人员");
+            AppBaseActivity.showToast(getString(R.string.meet_xuanze_tichu));
             return;
         }
 
@@ -137,7 +137,7 @@ public class MeetMembersFragment extends AppBaseFragment {
                 .setKickoutUsers(users), new SdkCallback<CkickMeetingUserRsp>() {
             @Override
             public void onSuccess(CkickMeetingUserRsp ckickMeetingUserRsp) {
-                AppBaseActivity.showToast("踢出成功");
+                AppBaseActivity.showToast(getString(R.string.meet_tichuchenggong));
                 if (getActivity() != null) {
                     if (getActivity() instanceof MeetActivity) {
                         ((MeetActivity) getActivity()).hideAll();

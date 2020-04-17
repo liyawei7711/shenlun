@@ -68,7 +68,7 @@ public class MapLocationActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText("紧急求助定位")
+        getNavigate().setTitlText(getString(R.string.common_notice45))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -181,7 +181,7 @@ public class MapLocationActivity extends AppBaseActivity {
         PoiInfo userPoi = new PoiInfo();
         userPoi.location = location;
 //        userPoi.address = location.getAddrStr() + location.getLocationDescribe();
-        userPoi.name = "[位置]";
+        userPoi.name = getString(R.string.common_notice44);
         mGeoCoder.reverseGeoCode(new ReverseGeoCodeOption().location(location));
     }
 

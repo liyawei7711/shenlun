@@ -7,6 +7,7 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 
+import huaiye.com.vim.R;
 import huaiye.com.vim.common.AppBaseActivity;
 import huaiye.com.vim.common.AppUtils;
 
@@ -56,7 +57,7 @@ public class MapPositioning {
                 //定位失败
                 if (location.getLocType() == BDLocation.TypeServerError || location.getLocType() == BDLocation.TypeNetWorkException || location.getLocType() == BDLocation.TypeCriteriaException) {
                     if (mXLocation != null) {
-                        mXLocation.locFailure(location.getLocType(), "定位失败,请检查网络");
+                        mXLocation.locFailure(location.getLocType(), AppUtils.getString(R.string.common_notice33));
                     }
                 }
 
@@ -90,7 +91,7 @@ public class MapPositioning {
                     sb.append("\naddr : ");
                     sb.append(location.getAddrStr());
                     sb.append("\ndescribe : ");
-                    sb.append("gps定位成功");
+                    sb.append(AppUtils.getString(R.string.common_notice34));
 
                 } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {
                     // 网络定位结果
@@ -100,24 +101,24 @@ public class MapPositioning {
                     sb.append("\noperationers : ");
                     sb.append(location.getOperators());
                     sb.append("\ndescribe : ");
-                    sb.append("网络定位成功");
+                    sb.append(AppUtils.getString(R.string.common_notice35));
 
                 } else if (location.getLocType() == BDLocation.TypeOffLineLocation) {
                     // 离线定位结果
                     sb.append("\ndescribe : ");
-                    sb.append("离线定位成功，离线定位结果也是有效的");
+                    sb.append(AppUtils.getString(R.string.common_notice36));
                 } else if (location.getLocType() == BDLocation.TypeServerError) {
                     sb.append("\ndescribe : ");
-                    sb.append("服务端网络定位失败，可以反馈IMEI号和大体定位时间到loc-bugs@baidu.com，会有人追查原因");
-                    AppBaseActivity.showToast("定位失败，请重试！");
+                    sb.append(AppUtils.getString(R.string.common_notice37));
+                    AppBaseActivity.showToast(AppUtils.getString(R.string.common_notice38));
                 } else if (location.getLocType() == BDLocation.TypeNetWorkException) {
                     sb.append("\ndescribe : ");
-                    sb.append("网络不同导致定位失败，请检查网络是否通畅");
-                    AppBaseActivity.showToast("定位失败，请检查网络是否通畅");
+                    sb.append(AppUtils.getString(R.string.common_notice39));
+                    AppBaseActivity.showToast(AppUtils.getString(R.string.common_notice40));
                 } else if (location.getLocType() == BDLocation.TypeCriteriaException) {
                     sb.append("\ndescribe : ");
-                    sb.append("无法获取有效定位依据导致定位失败，一般是由于手机的原因，处于飞行模式下一般会造成这种结果，可以试着重启手机");
-                    AppBaseActivity.showToast("定位失败，请检查是否是飞行模式");
+                    sb.append(AppUtils.getString(R.string.common_notice41));
+                    AppBaseActivity.showToast(AppUtils.getString(R.string.common_notice42));
                 }
                 sb.append("\nlocationdescribe : ");
                 // 位置语义化信息

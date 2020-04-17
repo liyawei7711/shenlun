@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="设备串号"
+            android:text="@string/label_txt111"
             android:textColor="#333"
             android:textSize="16sp" />
 
@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:hint="请输入串号"
+            android:hint="@string/label_txt112"
             android:gravity="center_vertical|right"
             android:inputType="textPassword"
             android:maxLength="20"
@@ -61,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="设备密码"
+            android:text="@string/label_txt110"
             android:textColor="#333"
             android:textSize="16sp" />
 
@@ -72,7 +72,7 @@
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="center_vertical|right"
-            android:hint="请输入密码"
+            android:hint="@string/hint_auth_password"
             android:singleLine="true"
             android:textSize="16sp" />
 

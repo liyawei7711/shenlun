@@ -1,5 +1,7 @@
 package huaiye.com.vim.common;
 
+import huaiye.com.vim.R;
+
 /**
  * Created by Administrator on 2018\3\9 0009.
  */
@@ -8,19 +10,19 @@ public class ErrorMsg {
     public static final int meet_not_koten_code = 1720310003;
     public static final int meet_not_exit_code = 1720410012;
     public static final int meet_max_num_code = 1720310004;
-    private static final String meet_not_exit = "会议不存在";
-    private static final String meet_max_num = "会议达到最大人数";
+    private static final String meet_not_exit = AppUtils.getString(R.string.meet_has_not);
+    private static final String meet_max_num = AppUtils.getString(R.string.meet_has_arrive_max_num);
 
-    public static final int white_board_not_exist_code			=   1720410013; //会议没有白板分享
-    public static final int white_board_has_exist_code		=   1720410014; //会议已存在白板分享
-    public static final int white_board_not_opener_code		=   1720410015; //不是白板分享发起者
-    public static final int white_board_exist_code		=   1720410016; //不是白板分享发起者
-    public static final int white_board_start_code		=   27;
-    private static final String white_board_not_exist = "会议没有白板分享";
-    private static final String white_board_has_exist = "重复开启白板";
-    private static final String white_board_not_opener = "不是白板分享发起者";
-    private static final String white_board_exist = "会议已存在白板分享";
-    private static final String white_board_start = "开启白板失败";
+    public static final int white_board_not_exist_code = 1720410013; //会议没有白板分享
+    public static final int white_board_has_exist_code = 1720410014; //会议已存在白板分享
+    public static final int white_board_not_opener_code = 1720410015; //不是白板分享发起者
+    public static final int white_board_exist_code = 1720410016; //不是白板分享发起者
+    public static final int white_board_start_code = 27;
+    private static final String white_board_not_exist = AppUtils.getString(R.string.meet_has_no_whiteboard);
+    private static final String white_board_has_exist = AppUtils.getString(R.string.meet_replay_whiteboard);
+    private static final String white_board_not_opener = AppUtils.getString(R.string.meet_not_owner_whiteboard);
+    private static final String white_board_exist = AppUtils.getString(R.string.meet_has_whiteboard);
+    private static final String white_board_start = AppUtils.getString(R.string.meet_error_whiteboard);
 
     public static final int re_load_code = 1720200002;
     public static final int login_err_code = 0;
@@ -53,36 +55,36 @@ public class ErrorMsg {
     public static final int switch_meet_layout_code = 27;
     public static final int start_record_code = 28;
     public static final int upload_code = 29;
-    private static String login_err = "登录失败，请检查账户和网络信息";
-    private static String create_meet_err = "创建会议失败";
-    private static String raise_hands_err = "举手失败";
-    private static String joine_err = "加入会议失败";
-    private static String send_nofity = "发送邀请失败";
-    private static String start_play_err = "视频记录不存在";
-    private static String delete_meet_err = "删除会议失败";
-    private static String update_meet_err = "修改会议失败";
-    private static String invite_user_err = "邀请失败";
-    private static String get_meet_info_err = "获取会议信息失败";
-    private static String quite_talk_err = "退出对讲失败";
-    private static String kitout_err = "请出参会者失败";
-    private static String change_video_err = "变换布局信息失败";
-    private static String getlayout_info_err = "获取布局信息失败";
-    private static String jinyan_close_err = "禁言失败";
-    private static String jinyan_open_err = "解禁失败";
-    private static String start_talk_err = "开启对讲失败";
-    private static String join_talk_err = "加入对讲失败";
-    private static String create_group_err = "创建群组失败";
-    private static String get_err = "获取失败";
-    private static String delete_err = "删除失败";
-    private static String quite_err = "退出失败";
-    private static String update_err = "修改失败";
-    private static String add_err = "添加失败";
-    private static String open_white_board = "进入白板失败";
-    private static String close_white_board = "退出白板失败";
-    private static String update_white_board = "更新白板失败";
-    private static String switch_meet_layout = "更换布局失败";
-    private static String start_record = "开启录像失败";
-    private static String upload = "上传失败";
+    private static String login_err = AppUtils.getString(R.string.meet_login_error);
+    private static String create_meet_err = AppUtils.getString(R.string.meet_creat_error);
+    private static String raise_hands_err = AppUtils.getString(R.string.meet_handup_error);
+    private static String joine_err = AppUtils.getString(R.string.meet_join_error);
+    private static String send_nofity = AppUtils.getString(R.string.meet_send_invitor_error);
+    private static String start_play_err = AppUtils.getString(R.string.meet_no_video_record);
+    private static String delete_meet_err = AppUtils.getString(R.string.meet_delete_error);
+    private static String update_meet_err = AppUtils.getString(R.string.meet_change_error);
+    private static String invite_user_err = AppUtils.getString(R.string.meet_invitor_error);
+    private static String get_meet_info_err = AppUtils.getString(R.string.meet_getmessage_error);
+    private static String quite_talk_err = AppUtils.getString(R.string.talk_cancel_error);
+    private static String kitout_err = AppUtils.getString(R.string.meet_kitout_error);
+    private static String change_video_err = AppUtils.getString(R.string.meet_change_layout_error);
+    private static String getlayout_info_err = AppUtils.getString(R.string.meet_getlayout_error);
+    private static String jinyan_close_err = AppUtils.getString(R.string.meet_jinyan_error);
+    private static String jinyan_open_err = AppUtils.getString(R.string.meet_jiejinyan_error);
+    private static String start_talk_err = AppUtils.getString(R.string.talk_start_error);
+    private static String join_talk_err = AppUtils.getString(R.string.talk_join_error);
+    private static String create_group_err = AppUtils.getString(R.string.group_create_error);
+    private static String get_err = AppUtils.getString(R.string.group_get_error);
+    private static String delete_err = AppUtils.getString(R.string.group_delete_error);
+    private static String quite_err = AppUtils.getString(R.string.group_quite_error);
+    private static String update_err = AppUtils.getString(R.string.group_change_error);
+    private static String add_err = AppUtils.getString(R.string.group_add_error);
+    private static String open_white_board = AppUtils.getString(R.string.meet_error_join_whiteboard);
+    private static String close_white_board = AppUtils.getString(R.string.meet_error_cancel_whiteboard);
+    private static String update_white_board = AppUtils.getString(R.string.meet_error_update_whiteboard);
+    private static String switch_meet_layout = AppUtils.getString(R.string.meet_huan_layout_error);
+    private static String start_record = AppUtils.getString(R.string.meet_start_record_error);
+    private static String upload = AppUtils.getString(R.string.meet_start_upload_error);
 
 
     public static String getMsg(int code) {
@@ -154,11 +156,11 @@ public class ErrorMsg {
                 return upload;
 
         }
-        return "出错啦~";
+        return AppUtils.getString(R.string.error);
     }
 
     public static String getMsgWhiterBoard(int code) {
-        switch (code){
+        switch (code) {
             case white_board_has_exist_code:
                 return white_board_has_exist;
             case white_board_not_opener_code:

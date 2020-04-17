@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="112dp"
             android:layout_height="14dp"
-            android:text="重新绘制解锁图案"
+            android:text="@string/label_txt56"
             android:textColor="#ff55a2fd"
             android:textSize="14sp"
             />

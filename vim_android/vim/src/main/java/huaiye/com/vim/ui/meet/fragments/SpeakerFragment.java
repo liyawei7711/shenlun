@@ -194,7 +194,6 @@ public class SpeakerFragment extends AppBaseFragment {
 //        mBigVideoWidth = params.width;
 //        mBigVideoHeight = params.height;
         addListeners();
-        Log.d("test", "SpeakerFragment onViewCreated");
     }
 
     @Override
@@ -241,7 +240,6 @@ public class SpeakerFragment extends AppBaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("test", "SpeakerFragment onResume");
         isResumed = true;
         refresh();
     }
@@ -249,7 +247,6 @@ public class SpeakerFragment extends AppBaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-        Log.d("test", "SpeakerFragment onPause");
         isResumed = false;
     }
 
@@ -262,13 +259,9 @@ public class SpeakerFragment extends AppBaseFragment {
             DisplayMetrics dm = getResources().getDisplayMetrics();
             int heigth = dm.heightPixels;
             int width = dm.widthPixels;
-            Log.d(getClass().getName(), "LANDSCAPE heigth=" + heigth);
-            Log.d(getClass().getName(), "LANDSCAPE width=" + width);
             if (mMainSpeaker != null && mMainSpeaker.getStrUserID().equals(AppAuth.get().getUserID() + "")) {
-                Log.d(getClass().getName(), "onConfigurationChanged resize main speaker");
                 calcCaptrueViewWidth(texture_video, heigth);
             } else {
-                Log.d(getClass().getName(), "onConfigurationChanged resize self");
                 ViewGroup.LayoutParams params = texture_self_video.getLayoutParams();
                 int tempWidth = params.height;
                 params.height = params.width;
@@ -280,8 +273,6 @@ public class SpeakerFragment extends AppBaseFragment {
             DisplayMetrics dm = getResources().getDisplayMetrics();
             int heigth = dm.heightPixels;
             int width = dm.widthPixels;
-            Log.d(getClass().getName(), "PORTRAIT heigth=" + heigth);
-            Log.d(getClass().getName(), "PORTRAIT width=" + width);
             if (mMainSpeaker != null && mMainSpeaker.getStrUserID().equals(AppAuth.get().getUserID() + "")) {
                 calcCaptureViewSize(texture_video, width);
             } else {
@@ -586,12 +577,10 @@ public class SpeakerFragment extends AppBaseFragment {
 
                     @Override
                     public void onSuccess(VideoParams param) {
-                        Logger.log("setMixCallback---onSuccess");
                     }
 
                     @Override
                     public void onError(VideoParams param, SdkCallback.ErrorInfo errorInfo) {
-                        Logger.log("setMixCallback---onError");
                     }
 
                 });
@@ -728,18 +717,15 @@ public class SpeakerFragment extends AppBaseFragment {
     }
 
     private void stopPlay() {
-        Log.d("VIMApp", "SpeakerFragment stopPlay");
         if (mMainSpeaker != null) {
             if (!mMainSpeaker.getStrUserID().equals(AppAuth.get().getUserID() + "")) {
                 HYClient.getHYPlayer().stopPlay(new SdkCallback<VideoParams>() {
                     @Override
                     public void onSuccess(VideoParams videoParams) {
-                        Log.d("VIMApp", "SpeakerFragment stop video success");
                     }
 
                     @Override
                     public void onError(ErrorInfo errorInfo) {
-                        Log.d("VIMApp", "SpeakerFragment stop video failed");
                     }
                 }, mainSpeakerParams);
             }
@@ -861,7 +847,7 @@ public class SpeakerFragment extends AppBaseFragment {
                                                 ChoosedContactsNew.get().clear();
                                                 ChoosedContactsNew.get().setContacts(ConvertContacts.ConvertMeetUserInfoToContacts(data));
                                                 Intent intent = new Intent(getActivity(), ContactsChoiceByAllFriendActivity.class);
-                                                intent.putExtra("titleName", "邀请参会");
+                                                intent.putExtra("titleName", getString(R.string.title_notice3));
                                                 getActivity().startActivityForResult(intent, 1000);
                                             }
                                         });
@@ -952,7 +938,7 @@ public class SpeakerFragment extends AppBaseFragment {
 
                             @Override
                             public void onSuccess(CMeetingUserRaiseRsp info) {
-                                AppBaseActivity.showToast("举手成功");
+                                AppBaseActivity.showToast(getString(R.string.meet_handup_success));
                             }
 
                             @Override
@@ -1004,7 +990,7 @@ public class SpeakerFragment extends AppBaseFragment {
                 whiteboardStatus.strInitiatorTokenID.equals(HYClient.getSdkOptions().User().getUserTokenId())) {
             ((MeetNewActivity) getActivity()).stopWhiteBoard();
         } else {
-            AppBaseActivity.showToast("你不是共享发起人，无权操作");
+            AppBaseActivity.showToast(getString(R.string.meet_wuquanxian_caozuo));
         }
     }
 
@@ -1065,7 +1051,7 @@ public class SpeakerFragment extends AppBaseFragment {
         @Override
         public void onShareImg() {
             if (whiteboardStatus != null) {
-                AppBaseActivity.showToast("白板已开启");
+                AppBaseActivity.showToast(getString(R.string.meet_whiteboard_success));
                 return;
             }
             startWhiteBoard(1, 2);
@@ -1080,7 +1066,7 @@ public class SpeakerFragment extends AppBaseFragment {
         @Override
         public void onShareFile() {
             if (whiteboardStatus != null) {
-                AppBaseActivity.showToast("白板已开启");
+                AppBaseActivity.showToast(getString(R.string.meet_whiteboard_success));
                 return;
             }
             startWhiteBoard(1, 1);
@@ -1125,7 +1111,7 @@ public class SpeakerFragment extends AppBaseFragment {
                                             ChoosedContactsNew.get().clear();
                                             ChoosedContactsNew.get().setContacts(ConvertContacts.ConvertMeetUserInfoToContacts(data));
                                             Intent intent = new Intent(getActivity(), ContactsChoiceByAllFriendActivity.class);
-                                            intent.putExtra("titleName", "邀请参会");
+                                            intent.putExtra("titleName", getString(R.string.title_notice3));
                                             getActivity().startActivityForResult(intent, 1000);
 
                                             mMorePopupWindow.dismiss();
@@ -1271,7 +1257,6 @@ public class SpeakerFragment extends AppBaseFragment {
     }
 
     private void notifyMicState(boolean isOpen) {
-        Log.d("VIMApp", "notifyMicState");
         if (mCGetMeetingInfoRsp == null) {
             return;
         }
@@ -1283,12 +1268,10 @@ public class SpeakerFragment extends AppBaseFragment {
 
             @Override
             public void onSuccess(CUpdateMicStatusRsp cUpdateMicStatusRsp) {
-                Log.d("VIMApp", "notifyMicState success");
             }
 
             @Override
             public void onError(ErrorInfo errorInfo) {
-                Log.d("VIMApp", "notifyMicState error");
             }
         });
     }

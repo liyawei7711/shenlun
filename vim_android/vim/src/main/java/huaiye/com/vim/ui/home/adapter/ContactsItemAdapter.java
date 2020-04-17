@@ -32,9 +32,16 @@ public class ContactsItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private OnItemClickLinstener mOnItemClickLinstener;
     private char mLetter;
     private boolean mIsChoice;
+    private boolean isMainContct;
+    private boolean isLast;
     private ArrayList<User> mChoicedContacts;
     private int nJoinStatus;
     private RequestOptions requestOptions;
+
+    public void setMainContct(boolean mainContct, boolean isLast) {
+        this.isMainContct = mainContct;
+        this.isLast = isLast;
+    }
 
     public interface OnLoadMoreListener {
         void onLoadMore(char letter);
@@ -140,11 +147,26 @@ public class ContactsItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             mOnLoadMoreListener.onLoadMore(mLetter);
         }
 
-        if(position == getItemCount() - 1) {
+        if (position == getItemCount() - 1) {
             viewHolder.view_divider.setVisibility(View.GONE);
+            if (isLast) {
+                viewHolder.tv_notice.setVisibility(View.GONE);
+            } else {
+                viewHolder.tv_notice.setVisibility(View.GONE);
+            }
         } else {
-            viewHolder.view_divider.setVisibility(View.VISIBLE);
+            viewHolder.view_divider.setVisibility(View.GONE);
+            viewHolder.tv_notice.setVisibility(View.GONE);
         }
+
+        if (isMainContct) {
+            viewHolder.iv_main_ioc.setVisibility(View.VISIBLE);
+            viewHolder.item_content.setVisibility(View.VISIBLE);
+        } else {
+            viewHolder.iv_main_ioc.setVisibility(View.GONE);
+            viewHolder.item_content.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
@@ -160,6 +182,9 @@ public class ContactsItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         private TextView tv_user_master;
         private TextView tv_choose_added;
         private View view_divider;
+        private View tv_notice;
+        private View iv_main_ioc;
+        private View item_content;
 
         CustomViewHolder(View itemView) {
             super(itemView);
@@ -170,6 +195,9 @@ public class ContactsItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             tv_user_master = (TextView) itemView.findViewById(R.id.tv_user_master);
             tv_choose_added = (TextView) itemView.findViewById(R.id.tv_choose_added);
             view_divider = (View) itemView.findViewById(R.id.view_divider);
+            tv_notice = (View) itemView.findViewById(R.id.tv_notice);
+            iv_main_ioc = (View) itemView.findViewById(R.id.iv_main_ioc);
+            item_content = (View) itemView.findViewById(R.id.iv_main_ioc);
         }
     }
 }

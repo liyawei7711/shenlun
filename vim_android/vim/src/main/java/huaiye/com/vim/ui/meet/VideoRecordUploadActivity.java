@@ -144,8 +144,6 @@ public class VideoRecordUploadActivity extends AppBaseActivity implements VideoR
         videoRecordBtn.setOnClickListener(new CircleButtonView.OnClickListener() {
             @Override
             public void onClick() {
-                Logger.debug("onClick");
-
             }
         });
         videoRecordBtn.setOnLongClickListener(new CircleButtonView.OnLongClickListener() {
@@ -208,11 +206,11 @@ public class VideoRecordUploadActivity extends AppBaseActivity implements VideoR
         mZeusLoadView.loadingText(AppUtils.getString(R.string.is_upload_ing)).setLoading();
         final File file = new File(presenter.getFilePath());
         if(!file.exists()) {
-            showToast("视频录制失败");
+            showToast(getString(R.string.media_txt_1));
             return;
         }
         if(file.length() <= 0) {
-            showToast("视频录制失败");
+            showToast(getString(R.string.media_txt_1));
             return;
         }
         if (HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
@@ -226,7 +224,7 @@ public class VideoRecordUploadActivity extends AppBaseActivity implements VideoR
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("文件加密失败");
+                            showToast(getString(R.string.jiami_notice6));
                             mZeusLoadView.dismiss();
                         }
                     }

@@ -94,7 +94,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp"
-
                     android:drawableRight="@drawable/bt_next_press"
                     android:drawablePadding="16dp"
                     android:gravity="center_vertical"

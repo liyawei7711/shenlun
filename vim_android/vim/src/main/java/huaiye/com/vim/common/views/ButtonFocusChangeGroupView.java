@@ -214,14 +214,14 @@ public class ButtonFocusChangeGroupView extends RelativeLayout {
                 } else if (tempNowX >= leftXX && tempNowX <= leftXX + leftWidth && tempNowY >= leftYY && tempNowY <= leftYY + leftHeigh) {
                     leftView0.setEnabled(true);
                     isTouchLeftView = true;
-                    isTouchRightView = false;
-                    middleView0.setText("松开取消发送");
+                    isTouchRightView =false;
+                    middleView0.setText(getContext().getString(R.string.songkai_cancel));
 
                 } else if (tempNowX >= rightXX && tempNowX <= rightXX + rightWidth && tempNowY >= rightYY && tempNowY <= rightYY + rightHeigh) {
                     rightView0.setEnabled(true);
                     isTouchLeftView = false;
-                    isTouchRightView = true;
-                    middleView0.setText("松开阅后即焚");
+                    isTouchRightView =true;
+                    middleView0.setText(getContext().getString(R.string.songkai_destrory));
 
                 } else {
                     leftView0.setEnabled(false);

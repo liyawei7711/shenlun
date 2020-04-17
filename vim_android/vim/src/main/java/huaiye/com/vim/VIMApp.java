@@ -1,6 +1,7 @@
 package huaiye.com.vim;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.multidex.MultiDexApplication;
@@ -121,6 +122,7 @@ public class VIMApp extends MultiDexApplication {
         super.onCreate();
 
         instance = this;
+
         HYClient.initSdk(this);
         SP.init(this);
         AppDatas.init(this);
@@ -381,6 +383,14 @@ public class VIMApp extends MultiDexApplication {
         }
     }
 
+    Activity current;
+    public Context getCurrentActivity() {
+        if(current == null){
+            return instance;
+        } else {
+            return current;
+        }
+    }
     class ActivityLifecycleListener implements ActivityLifecycleCallbacks {
 
         private int refCount = 0;
@@ -391,6 +401,7 @@ public class VIMApp extends MultiDexApplication {
 
         @Override
         public void onActivityStarted(Activity activity) {
+            current = activity;
             refCount++;
 //            WindowManagerUtils.justReShow();
             if (AppUtils.isHide) {

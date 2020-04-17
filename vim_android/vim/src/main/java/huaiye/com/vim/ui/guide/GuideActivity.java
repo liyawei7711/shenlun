@@ -113,7 +113,7 @@ public class GuideActivity extends AppBaseActivity {
 
     @OnClick(R.id.btn_next)
     void onNextBtnClicked() {
-        startActivity(new Intent(this, StartActivity.class).putExtra("from", ""));
+        startActivity(new Intent(this, StartActivity.class));
         finish();
     }
 

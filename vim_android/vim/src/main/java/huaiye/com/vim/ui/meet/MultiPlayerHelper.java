@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 import huaiye.com.vim.R;
+import huaiye.com.vim.VIMApp;
 import huaiye.com.vim.common.AppUtils;
 import huaiye.com.vim.common.SP;
 import huaiye.com.vim.common.constant.SPConstant;
@@ -463,7 +464,6 @@ public class MultiPlayerHelper {
         final CGetMeetingInfoRsp.UserInfo userInfo = userInfoWrapper.userInfo;
         if (userInfo.strUserID.equals(AppAuth.get().getUserID() + "")) {
             if (userInfoWrapper.showVideo) {
-                Log.d("test", "multiPlayerHelper setPreviewWindow textureView " + textureView.getWidth());
                 HYClient.getHYCapture().setPreviewWindow(textureView);
                 resizePreview((View) textureView.getParent(), textureView);
                 ivNoVideo.setVisibility(View.GONE);
@@ -482,10 +482,8 @@ public class MultiPlayerHelper {
                     public void onVideoStatusChanged(VideoParams param, SdpMessageBase msg) {
                         super.onVideoStatusChanged(param, msg);
                         userInfoWrapper.videoParams = param;
-                        Logger.debug("MultiPlayerHelper onVideoStatusChanged " + msg.getClass().getName());
                         if (msg instanceof SdkMsgNotifyStreamStatus) {
                             SdkMsgNotifyStreamStatus streamStatus = (SdkMsgNotifyStreamStatus) msg;
-                            Logger.debug("MultiPlayerHelper " + userInfo.strUserName + " isAudioOn " + streamStatus.isAudioOn + " videoOn " + streamStatus.isVideoOn);
                             putMapStatus(userInfo.strUserID, streamStatus.isVideoOn, "onVideoStatusChanged");
                             if (streamStatus.isVideoOn) {
                                 HYClient.getHYPlayer().setPreviewWindow(param, textureView);//必须主动渲染一次,否则直接在当前页面的话 可能不会展示视频
@@ -506,13 +504,11 @@ public class MultiPlayerHelper {
                         } else {
                             HYClient.getHYPlayer().setPreviewWindow(param, null);
                         }
-                        Logger.debug("MultiPlayerHelper successd " + userInfo.strUserName);
                     }
 
                     @Override
                     public void onError(VideoParams param, SdkCallback.ErrorInfo errorInfo) {
                         super.onError(param, errorInfo);
-                        Logger.debug("MultiPlayerHelper error " + errorInfo.getMessage() + "  name" + userInfo.strUserName);
                     }
                 });
 
@@ -639,12 +635,12 @@ public class MultiPlayerHelper {
             this.headPic = getHeadPic(userInfo);
             if (userInfo.nUserRole == 1) {
                 needShowDesc = true;
-                desc = "主持人";
+                desc = AppUtils.getString(R.string.meet_notice2);
             }
             if (!TextUtils.isEmpty(speakUserTokenIdFromServer)) {
                 if (this.userInfo.strUserTokenID.equals(speakUserTokenIdFromServer)) {
                     needShowDesc = true;
-                    desc = "主讲人";
+                    desc = AppUtils.getString(R.string.meet_notice1);
                 }
             }
         }

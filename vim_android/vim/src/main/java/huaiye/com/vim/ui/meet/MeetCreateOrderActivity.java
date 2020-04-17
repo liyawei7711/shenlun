@@ -60,14 +60,14 @@ public class MeetCreateOrderActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText("创建预约会议")
+        getNavigate().setTitlText(getString(R.string.create_order_meeting))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         onBackPressed();
                     }
                 })
-                .setRightText("创建")
+                .setRightText(getString(R.string.group_notice13))
                 .setRightTextColor(Color.RED)
                 .setRightClickListener(new View.OnClickListener() {
                     @Override
@@ -146,24 +146,24 @@ public class MeetCreateOrderActivity extends AppBaseActivity {
     void createMeet() {
 
         if (TextUtils.isEmpty(header.getMeetName())) {
-            showToast("会议名称不能为空");
+            showToast(getString(R.string.meet_notice11));
             return;
         }
         if (TextUtils.isEmpty(header.getMeetStartTime())) {
-            showToast("请选择开会时间");
+            showToast(getString(R.string.meet_notice12));
             return;
         }
         if (header.getMeetLong() <= 0) {
-            showToast("请输入会议时长");
+            showToast(getString(R.string.meet_time_duration));
             return;
         }
         if (header.getMeetLong() > 24 * 60 * 60) {
-            showToast("会议时长不能大于24小时");
+            showToast(getString(R.string.meet_notice13));
             return;
         }
 
         if (MbeConfigParaValue != -1 && adapter.getDatasCount() - adapter.getHeaderViewsCount() > MbeConfigParaValue) {
-            showToast("参会人员上限为" + MbeConfigParaValue + "人");
+            showToast(getString(R.string.meet_notice15, MbeConfigParaValue));
             return;
         }
 
@@ -187,7 +187,7 @@ public class MeetCreateOrderActivity extends AppBaseActivity {
                         ChoosedContacts.get().clearTemp();
                         ChoosedContacts.get().clear();
 
-                        showToast("创建成功");
+                        showToast(getString(R.string.meet_create_success));
                         pushNotify(info.nMeetingID, info.strMeetingDomainCode);
                         finish();
                     }
@@ -195,7 +195,7 @@ public class MeetCreateOrderActivity extends AppBaseActivity {
                     @Override
                     public void onError(ErrorInfo errorInfo) {
                         if (errorInfo.getCode() == 1720410011) {
-                            showToast("会议时间必须大于当前时间");
+                            showToast(getString(R.string.meet_notice16));
                         } else {
                             showToast(ErrorMsg.getMsg(ErrorMsg.create_meet_err_code));
                         }

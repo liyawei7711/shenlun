@@ -60,6 +60,7 @@ import huaiye.com.vim.models.contacts.bean.ContactsGroupUserListBean;
 import huaiye.com.vim.models.contacts.bean.GroupInfo;
 import ttyy.com.jinnetwork.core.work.HTTPResponse;
 
+import static huaiye.com.vim.common.AppUtils.getString;
 import static huaiye.com.vim.common.AppBaseActivity.showToast;
 import static huaiye.com.vim.common.AppUtils.nEncryptIMEnable;
 
@@ -205,7 +206,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("对方未开启加密,无法发送");
+                            showToast(getString(R.string.send_notice3));
                         }
                     }
             );
@@ -255,7 +256,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                     @Override
                     public void onFailure(HTTPResponse httpResponse) {
                         super.onFailure(httpResponse);
-                        showToast("文件上传失败");
+                        showToast(getString(R.string.file_upload_false));
                     }
 
                     @Override
@@ -269,14 +270,14 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
     }
 
     private void sendVideo() {
-        ((AppBaseActivity) mContext).mZeusLoadView.loadingText(AppUtils.getString(R.string.is_upload_ing)).setLoading();
+        ((AppBaseActivity) mContext).mZeusLoadView.loadingText(getString(R.string.is_upload_ing)).setLoading();
 
         String fileLocal = "";
         if (null != data && !TextUtils.isEmpty(data.localFilePath) && new File(data.localFilePath).exists()) {
             fileLocal = data.localFilePath;
         } else {
-            if ("文件上传失败".equals(data.fileUrl)) {
-                showToast("文件加载失败");
+            if (getString(R.string.file_upload_false).equals(data.fileUrl)) {
+                showToast(getString(R.string.file_load_false));
                 dismiss();
                 return;
             }
@@ -299,7 +300,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("文件加密失败");
+                            AppBaseActivity.showToast(getString(R.string.jiami_notice6));
                             ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
                             dismiss();
                         }
@@ -316,7 +317,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
     }
 
     private void sendFile() {
-        ((AppBaseActivity) mContext).mZeusLoadView.loadingText(AppUtils.getString(R.string.is_upload_ing)).setLoading();
+        ((AppBaseActivity) mContext).mZeusLoadView.loadingText(getString(R.string.is_upload_ing)).setLoading();
 
         String localFilePath = "";
         if (null != data && !TextUtils.isEmpty(data.localFilePath) && new File(data.localFilePath).exists()) {
@@ -330,7 +331,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
         File file = new File(EncryptUtil.getNewFile(localFilePath));
         File fileun = new File(EncryptUtil.getNewFile(file.getAbsolutePath()));
         if (!fileun.exists()) {
-            showToast("文件下载失败，请重试");
+            showToast(getString(R.string.common_notice61));
             ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
             dismiss();
             return;
@@ -347,7 +348,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
                             ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                            showToast("文件加密失败");
+                            showToast(getString(R.string.jiami_notice6));
                         }
                     }
             );
@@ -411,7 +412,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                     @Override
                     public void onFailure(HTTPResponse httpResponse) {
                         super.onFailure(httpResponse);
-                        ((AppBaseActivity) mContext).showToast("文件上传失败");
+                        showToast(getString(R.string.file_upload_false));
                         dismiss();
                     }
 
@@ -431,7 +432,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
     }
 
     private void sendAudio() {
-        ((AppBaseActivity) mContext).mZeusLoadView.loadingText(AppUtils.getString(R.string.is_upload_ing)).setLoading();
+        ((AppBaseActivity) mContext).mZeusLoadView.loadingText(getString(R.string.is_upload_ing)).setLoading();
         String fileLocal = "";
         try {
             fileLocal = fC + data.fileUrl.substring(data.fileUrl.lastIndexOf("/"));
@@ -444,7 +445,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
         File file = new File(EncryptUtil.getNewFile(fileLocal));
         File fileun = new File(EncryptUtil.getNewFile(file.getAbsolutePath()));
         if (!fileun.exists()) {
-            showToast("文件下载失败，请重试");
+            showToast(getString(R.string.common_notice61));
             return;
         }
         if (HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
@@ -458,7 +459,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("对方未开启加密,无法发送");
+                            showToast(getString(R.string.send_notice3));
                             if (((AppBaseActivity) mContext).mZeusLoadView != null && ((AppBaseActivity) mContext).mZeusLoadView.isShowing())
                                 ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
                         }
@@ -487,7 +488,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                                     ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
 
                                 if (upload.file1_name == null) {
-                                    ((AppBaseActivity) mContext).showToast(AppUtils.getString(R.string.file_upload_false));
+                                    showToast(getString(R.string.file_upload_false));
                                     return;
                                 }
 
@@ -515,7 +516,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                     @Override
                     public void onFailure(HTTPResponse httpResponse) {
                         super.onFailure(httpResponse);
-                        ((AppBaseActivity) mContext).showToast(AppUtils.getString(R.string.file_upload_false));
+                        showToast(getString(R.string.file_upload_false));
                     }
 
                     @Override
@@ -582,7 +583,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                         @Override
                         public void onError(ErrorInfo sessionRsp) {
-//                            AppBaseActivity.showToast("对方未开启加密,无法发送");
+//                            showToast("对方未开启加密,无法发送");
                         }
                     });
         } else {
@@ -621,7 +622,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-//                            AppBaseActivity.showToast("对方未开启加密,无法发送");
+//                            showToast(getString(R.string.send_notice3));
                         }
                     });
         } else {
@@ -731,7 +732,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                         public void onError(ErrorInfo errorInfo) {
                             if (sessionRsp.m_lstData.indexOf(temp) == sessionRsp.m_lstData.size() - 1) {
                                 ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                                showToast("发送失败" + errorInfo.getMessage());
+                                showToast(getString(R.string.send_notice1) + errorInfo.getMessage());
                                 dismiss();
                             }
 
@@ -792,7 +793,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                         public void onError(ErrorInfo errorInfo) {
                             if (sessionRsp.m_lstData.indexOf(temp) == sessionRsp.m_lstData.size() - 1) {
                                 ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                                showToast("分享失败" + errorInfo.getMessage());
+                                showToast(AppUtils.getString(R.string.share_txt_1) + errorInfo.getMessage());
                                 dismiss();
                             }
 
@@ -853,7 +854,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                         public void onError(ErrorInfo errorInfo) {
                             if (sessionRsp.m_lstData.indexOf(temp) == sessionRsp.m_lstData.size() - 1) {
                                 ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                                showToast("分享失败" + errorInfo.getMessage());
+                                showToast(AppUtils.getString(R.string.share_txt_1) + errorInfo.getMessage());
                                 dismiss();
                             }
 
@@ -906,7 +907,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                         }
 
                         ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                        showToast("分享成功");
+                        showToast(getString(R.string.share_txt_2));
                         dismiss();
                         EventBus.getDefault().post(new CloseZhuanFa());
                     }
@@ -914,7 +915,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                     @Override
                     public void onError(ErrorInfo errorInfo) {
                         ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                        showToast("分享失败" + errorInfo.getMessage());
+                        showToast(AppUtils.getString(R.string.share_txt_1) + errorInfo.getMessage());
                         dismiss();
                     }
                 }
@@ -942,7 +943,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
             huaiye.com.vim.dao.msgs.ChatUtil.get().saveChangeMsg(vimMessageBean, true);
 
             ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-            showToast("转发成功");
+            showToast(getString(R.string.common_notice62));
             dismiss();
             EventBus.getDefault().post(new CloseZhuanFa());
         }
@@ -991,7 +992,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                         }
 
                         ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                        showToast("转发成功");
+                        showToast(getString(R.string.common_notice62));
                         dismiss();
                         EventBus.getDefault().post(new CloseZhuanFa());
                     }
@@ -999,7 +1000,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                     @Override
                     public void onError(ErrorInfo errorInfo) {
                         ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                        showToast("发送失败" + errorInfo.getMessage());
+                        showToast(getString(R.string.send_notice1) + errorInfo.getMessage());
                         dismiss();
                     }
                 }
@@ -1024,7 +1025,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
             iv_content.setVisibility(View.GONE);
             tv_content.setVisibility(View.VISIBLE);
             if (data.bEncrypt == 1 && !data.isUnEncrypt) {
-                tv_content.setText("信息已加密");
+                tv_content.setText(getString(R.string.jiami_notice3));
             } else {
                 tv_content.setText(data.msgTxt);
             }
@@ -1046,14 +1047,14 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
             ll_share.setVisibility(View.GONE);
             iv_content.setVisibility(View.GONE);
             tv_content.setVisibility(View.VISIBLE);
-            tv_content.setText("转发语音信息:" + WeiXinDateFormat.getChatTime(data.time));
+            tv_content.setText(getString(R.string.common_notice63) + WeiXinDateFormat.getChatTimeYingWen(data.time));
             loadAudio();
         } else if (AppUtils.MESSAGE_TYPE_VIDEO_FILE == data.type) {
             fl_common.setVisibility(View.VISIBLE);
             ll_share.setVisibility(View.GONE);
             iv_content.setVisibility(View.GONE);
             tv_content.setVisibility(View.VISIBLE);
-            tv_content.setText("转发视频信息:" + WeiXinDateFormat.getChatTime(data.time));
+            tv_content.setText(getString(R.string.common_notice64) + WeiXinDateFormat.getChatTimeYingWen(data.time));
             loadVideo();
         } else if (AppUtils.MESSAGE_TYPE_SHARE == data.type) {
             fl_common.setVisibility(View.GONE);
@@ -1070,7 +1071,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
             iv_content.setVisibility(View.GONE);
             tv_content.setVisibility(View.VISIBLE);
             if (data.bEncrypt == 1 && !data.isUnEncrypt) {
-                tv_content.setText("信息已加密");
+                tv_content.setText(getString(R.string.jiami_notice3));
             } else {
                 tv_content.setText(data.msgTxt);
             }
@@ -1111,7 +1112,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("文件解密失败");
+                            showToast(getString(R.string.jiami_notice5));
                         }
                     }
             );
@@ -1142,7 +1143,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                             @Override
                             public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                showToast("文件解密失败");
+                                showToast(getString(R.string.jiami_notice5));
                             }
                         }
                 );
@@ -1174,7 +1175,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                             @Override
                                             public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                                showToast("文件解密失败");
+                                                showToast(getString(R.string.jiami_notice5));
                                             }
                                         }
                                 );
@@ -1183,7 +1184,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("文件解密失败");
+                            showToast(getString(R.string.jiami_notice5));
                         }
                     }
             );
@@ -1204,7 +1205,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
                     data.localFilePath = ffLocal.getAbsolutePath();
                     unEncryptImage2();
                 } else {
-                    if ("文件上传失败".equals(data.fileUrl)) {
+                    if (getString(R.string.file_upload_false).equals(data.fileUrl)) {
                         return;
                     }
                     String finalFileLocal = fileLocal;
@@ -1246,8 +1247,8 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
         if (null != data && !TextUtils.isEmpty(data.localFilePath) && new File(data.localFilePath).exists()) {
             go2PlayVideo2(data.localFilePath, data.bEncrypt);
         } else {
-            if ("文件上传失败".equals(data.fileUrl)) {
-                showToast("文件加载失败");
+            if (getString(R.string.file_upload_false).equals(data.fileUrl)) {
+                showToast(getString(R.string.file_load_false));
                 return;
             }
             String fileLocal = "";
@@ -1287,7 +1288,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                 @Override
                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                    showToast("文件解密失败");
+                                    showToast(getString(R.string.jiami_notice5));
                                 }
                             }
                     );
@@ -1317,7 +1318,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                     @Override
                                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                        showToast("文件解密失败");
+                                        showToast(getString(R.string.jiami_notice5));
                                     }
                                 }
                         );
@@ -1340,7 +1341,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                                     @Override
                                                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                                        showToast("文件解密失败");
+                                                        showToast(getString(R.string.jiami_notice5));
                                                     }
                                                 }
                                         );
@@ -1349,7 +1350,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                 @Override
                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                    showToast("文件解密失败");
+                                    showToast(getString(R.string.jiami_notice5));
                                 }
                             }
                     );
@@ -1367,7 +1368,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
         if (null != data && !TextUtils.isEmpty(data.localFilePath) && new File(data.localFilePath).exists()) {
             openFile2(data.localFilePath, data.bEncrypt, data.fileName);
         } else {
-            if ("文件上传失败".equals(data.fileUrl)) {
+            if (getString(R.string.file_upload_false).equals(data.fileUrl)) {
                 return;
             }
             String fileLocal = "";
@@ -1408,13 +1409,13 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                 @Override
                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                    showToast("文件解密失败");
+                                    showToast(getString(R.string.jiami_notice5));
                                 }
                             }
                     );
                 }
             } else {
-                showToast("文件解密失败");
+                showToast(getString(R.string.jiami_notice5));
             }
         }
     }
@@ -1435,7 +1436,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                     @Override
                                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                        showToast("文件解密失败");
+                                        showToast(getString(R.string.jiami_notice5));
                                     }
                                 }
                         );
@@ -1457,7 +1458,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                                     @Override
                                                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                                        showToast("文件解密失败");
+                                                        showToast(getString(R.string.jiami_notice5));
                                                     }
                                                 }
                                         );
@@ -1466,13 +1467,13 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                 @Override
                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                    showToast("文件解密失败");
+                                    showToast(getString(R.string.jiami_notice5));
                                 }
                             }
                     );
                 }
             } else {
-                showToast("文件解密失败");
+                showToast(getString(R.string.jiami_notice5));
             }
         }
     }
@@ -1522,13 +1523,13 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                 @Override
                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                    showToast("文件解密失败");
+                                    showToast(getString(R.string.jiami_notice5));
                                 }
                             }
                     );
                 }
             } else {
-                showToast("文件解密失败");
+                showToast(getString(R.string.jiami_notice5));
             }
         }
     }
@@ -1549,7 +1550,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                     @Override
                                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                        showToast("文件解密失败");
+                                        showToast(getString(R.string.jiami_notice5));
                                     }
                                 }
                         );
@@ -1571,7 +1572,7 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                                     @Override
                                                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                                        showToast("文件解密失败");
+                                                        showToast(getString(R.string.jiami_notice5));
                                                     }
                                                 }
                                         );
@@ -1580,13 +1581,13 @@ public class ZhuanFaGroupPopupWindow extends PopupWindow {
 
                                 @Override
                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                    showToast("文件解密失败");
+                                    showToast(getString(R.string.jiami_notice5));
                                 }
                             }
                     );
                 }
             } else {
-                showToast("文件解密失败");
+                showToast(getString(R.string.jiami_notice5));
             }
         }
     }

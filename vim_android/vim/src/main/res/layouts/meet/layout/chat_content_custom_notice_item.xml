@@ -16,6 +16,6 @@
         android:background="@drawable/shape_notice_bg"
         android:textSize="13sp"
         android:textColor="@color/black999"
-        android:text="xxxx"/>
+        android:text=""/>
 
 </LinearLayout>

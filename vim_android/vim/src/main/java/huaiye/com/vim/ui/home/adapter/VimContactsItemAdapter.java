@@ -20,6 +20,8 @@ import huaiye.com.vim.common.views.CheckableLinearLayout;
 import huaiye.com.vim.dao.AppDatas;
 import huaiye.com.vim.dao.msgs.User;
 
+import static huaiye.com.vim.common.AppUtils.getString;
+
 /**
  * Created by ywt on 2019/2/25.
  */
@@ -99,7 +101,7 @@ public class VimContactsItemAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }
         }
         if(nJoinStatus == 2){
-            viewHolder.tv_choose_added.setText("已添加");
+            viewHolder.tv_choose_added.setText(getString(R.string.label_txt124));
             viewHolder.tv_choose_added.setVisibility(View.GONE);
             viewHolder.iv_choice.setVisibility(View.VISIBLE);
             viewHolder.iv_choice.setImageResource(R.drawable.shijian_xuanze_unclick);

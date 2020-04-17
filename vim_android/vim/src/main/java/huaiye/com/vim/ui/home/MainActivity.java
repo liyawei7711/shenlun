@@ -11,6 +11,7 @@ import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -63,6 +64,7 @@ import huaiye.com.vim.push.MessageReceiver;
 import huaiye.com.vim.services.MusicService;
 import huaiye.com.vim.ui.Capture.CaptureGuanMoOrPushActivity;
 import huaiye.com.vim.ui.auth.ActivationActivity;
+import huaiye.com.vim.ui.auth.SettingAddressSafeActivity;
 import huaiye.com.vim.ui.auth.StartActivity;
 import huaiye.com.vim.ui.chat.dialog.CustomTipDialog;
 import huaiye.com.vim.ui.contacts.sharedata.VimChoosedContacts;
@@ -91,6 +93,12 @@ public class MainActivity extends AppBaseActivity {
     FragmentContacts fgContacts;
     FragmentSettings fgSettings;
 
+    @BindView(R.id.view1)
+    View view1;
+    @BindView(R.id.view2)
+    View view2;
+    @BindView(R.id.view3)
+    View view3;
     @BindView(R.id.rg_menu)
     RadioGroup rg_menu;
     @BindView(R.id.rbtn_home)
@@ -152,6 +160,10 @@ public class MainActivity extends AppBaseActivity {
                         fts.show(fgContacts);
                         changeIsRead();
                         currentFragment = fgContacts;
+
+                        view1.setVisibility(View.INVISIBLE);
+                        view2.setVisibility(View.INVISIBLE);
+                        view3.setVisibility(View.VISIBLE);
                         break;
                     /*case R.id.rbtn_messages:
                         fts.show(fgMessages);
@@ -161,11 +173,19 @@ public class MainActivity extends AppBaseActivity {
                         fts.show(fgSettings);
                         changeIsRead();
                         currentFragment = fgSettings;
+
+                        view1.setVisibility(View.INVISIBLE);
+                        view2.setVisibility(View.VISIBLE);
+                        view3.setVisibility(View.INVISIBLE);
                         break;
                     case R.id.rbtn_home:
                         fts.show(fgMessages);
                         changeIsRead();
                         currentFragment = fgMessages;
+
+                        view1.setVisibility(View.VISIBLE);
+                        view2.setVisibility(View.INVISIBLE);
+                        view3.setVisibility(View.INVISIBLE);
                         break;
                 }
 
@@ -199,7 +219,7 @@ public class MainActivity extends AppBaseActivity {
 
     private void clearSafe() {
         MessageReceiver.destoryKey(null, true);
-        showToast("当前处于安全模式");
+        showToast(getString(R.string.notice_txt_3));
     }
 
     private void resetPopWindow() {
@@ -216,9 +236,45 @@ public class MainActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setVisibility(View.GONE);
         locationService = ((VIMApp) getApplication()).locationService;
         locationService.start();
+
+        getNavigate().hideLeftIcon()
+                .hideRightIcon()
+                .showTopSearch()
+                .showTopAdd()
+                .setReserveStatusbarPlace()
+                .setTitlText(getString(R.string.app_name))
+                .setTitleLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+                        startActivity(new Intent(MainActivity.this, SettingAddressSafeActivity.class));
+                        return false;
+                    }
+                })
+                .setTopSearchClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(currentFragment instanceof  FragmentMessages) {
+                            fgMessages.onClickSearch();
+                        } else if(currentFragment instanceof  FragmentContacts) {
+                            fgContacts.onClickSearch();
+                        } else if(currentFragment instanceof  FragmentSettings) {
+//                            fgSettings.onClickSearch();
+                        }
+                    }
+                }).setTopAddClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isSOS) {
+                    return;
+                }
+                currentFragment.setIsSoS(isSOS);
+                currentFragment.changeMenu(currentFragment instanceof  FragmentSettings);
+                currentFragment.showChatMoreStylePopupWindow(v);
+            }
+        });
+
     }
 
     @Override
@@ -263,7 +319,7 @@ public class MainActivity extends AppBaseActivity {
             fgMessages = new FragmentMessages();
             fgMessages.setSos(isSOS);
             fgSettings = new FragmentSettings();
-            fgSettings.setSos(isSOS);
+//            fgSettings.setSos(isSOS);
 
             fts.add(R.id.content, fgContacts, FragmentContacts.class.getSimpleName())
                     .hide(fgContacts)
@@ -275,15 +331,18 @@ public class MainActivity extends AppBaseActivity {
 
         switch (rg_menu.getCheckedRadioButtonId()) {
             case R.id.rbtn_contacts:
+                currentFragment = fgContacts;
                 fts.show(fgContacts);
                 break;
             case R.id.rbtn_home:
+                currentFragment = fgMessages;
                 fts.show(fgMessages);
                 break;
             /*case R.id.rbtn_messages:
                 fts.show(fgMessages);
                 break;*/
             case R.id.rbtn_settings:
+                currentFragment = fgSettings;
                 fts.show(fgSettings);
                 break;
         }
@@ -363,8 +422,8 @@ public class MainActivity extends AppBaseActivity {
             return;
         }
 
-        if (!HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
-            AppBaseActivity.showToast("加密模块未初始化完成，被观摩失败");
+        if(!HYClient.getSdkOptions().encrypt().isEncryptBind() && nEncryptIMEnable) {
+            AppBaseActivity.showToast(getString(R.string.common_notice67));
             return;
         }
 
@@ -426,10 +485,10 @@ public class MainActivity extends AppBaseActivity {
             if (bean.arg0 == -15 || bean.arg0 == -4) {
                 SP.putBoolean("actived", false);
             }
-            showExitWarning(bean.arg0, "初始化失败");
+            showExitWarning(bean.arg0, getString(R.string.device_notice5));
         } else if (null != bean && bean.what == AppUtils.EVENT_INIT_KITOUT) {
             SP.putBoolean("actived", false);
-            showExitWarning(bean.arg0, "设备已解绑，服务不可用，请退出");
+            showExitWarning(bean.arg0, getString(R.string.device_notice4));
         }
     }
 
@@ -502,8 +561,7 @@ public class MainActivity extends AppBaseActivity {
 //                return super.onKeyDown(keyCode, event);
 //            }
 //
-//            showToast("再按一次退出应用程序");
-
+//            showToast(getString(R.string.login_error8));
             AppUtils.goToDesktop(this);
             return true;
         }

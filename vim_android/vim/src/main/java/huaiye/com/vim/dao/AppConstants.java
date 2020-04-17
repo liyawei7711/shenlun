@@ -16,7 +16,7 @@ import huaiye.com.vim.common.constant.SPConstant;
 
 public class AppConstants {
 
-    String strAddress = VIMApp.getInstance().getString(R.string.default_server_ip);
+    String strAddress = AppUtils.getString(R.string.default_server_ip);
     int nPort = 8000;
     int nFilePort = 80;
     //    String strEnd = "ecs-war";
@@ -120,7 +120,7 @@ public class AppConstants {
         return "http://" + fileServerIp + ":" + fileServerPort + "/" + keyFileUploadUri + "/" + SP.getString(AppUtils.mDeviceIM) + "/" + str;
     }
     public String getAppUpdateUri() {
-        return "http://" + fileServerIp + ":" + fileServerPort + "/" + uploadUri+ "/android.version";
+        return "http://" + fileServerIp + ":" + fileServerPort + "/" + uploadUri+ "/android_whatsapp.version";
     }
 
     public String getFileUploadUri() {

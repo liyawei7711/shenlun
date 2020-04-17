@@ -105,7 +105,7 @@ public class YueHouJiFengVideoActivity extends AppBaseActivity {
                         finish();
                         return;
                     }
-                    showToast("文件解密失败");
+                    showToast(getString(R.string.jiami_notice5));
                 }
             } else {
                 startPlay(chatMessage.localFilePath);
@@ -178,7 +178,7 @@ public class YueHouJiFengVideoActivity extends AppBaseActivity {
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            showToast("文件解密失败");
+                            showToast(getString(R.string.jiami_notice5));
                         }
                     }
             );

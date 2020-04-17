@@ -89,7 +89,7 @@ public class GroupDetailActivity extends AppBaseActivity {
 
     @Override
     protected void initActionBar() {
-        getNavigate().setTitlText("群组信息")
+        getNavigate().setTitlText(getString(R.string.group_notice14))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -134,7 +134,7 @@ public class GroupDetailActivity extends AppBaseActivity {
                     }
 
                     Intent intent = new Intent(getSelf(), ContactsChoiceByAllFriendActivity.class);
-                    intent.putExtra("titleName", "创建群组");
+                    intent.putExtra("titleName", getString(R.string.group_notice12));
                     intent.putExtra("isSelectUser", true);
                     startActivityForResult(intent, 1000);
                 }
@@ -142,9 +142,9 @@ public class GroupDetailActivity extends AppBaseActivity {
         });
 
         if (createUserId.equals(AppDatas.Auth().getUserID())) {
-            tv_quit_group.setText("删除群聊");
+            tv_quit_group.setText(getString(R.string.group_notice15));
         } else {
-            tv_quit_group.setText("退出群聊");
+            tv_quit_group.setText(getString(R.string.group_notice16));
         }
 
         tv_group_name.setText(groupName);
@@ -156,7 +156,7 @@ public class GroupDetailActivity extends AppBaseActivity {
             @Override
             public void onSuccess(GroupContacts groupContacts) {
                 mGroupContacts = groupContacts;
-                tv_all.setText("全部成员 (" + groupContacts.result.size() + "人)");
+                tv_all.setText(getString(R.string.user_detail_group_user_count_num, groupContacts.result.size()));
                 refreshMembers();
             }
 
@@ -173,7 +173,7 @@ public class GroupDetailActivity extends AppBaseActivity {
             ModelApis.Contacts().delGroup(groupId, new ModelCallback<Boolean>() {
                 @Override
                 public void onSuccess(Boolean aBoolean) {
-                    showToast("删除成功");
+                    showToast(getString(R.string.common_notice2));
                     new RxUtils().doDelay(500, new RxUtils.IMainDelay() {
                         @Override
                         public void onMainDelay() {
@@ -193,7 +193,7 @@ public class GroupDetailActivity extends AppBaseActivity {
             ModelApis.Contacts().quitGroup(groupId, new ModelCallback<Boolean>() {
                 @Override
                 public void onSuccess(Boolean aBoolean) {
-                    showToast("退出成功");
+                    showToast(getString(R.string.common_notice3));
                     new RxUtils().doDelay(500, new RxUtils.IMainDelay() {
                         @Override
                         public void onMainDelay() {
@@ -219,7 +219,7 @@ public class GroupDetailActivity extends AppBaseActivity {
             public void onSuccess(Boolean aBoolean) {
                 mUsersAdapter.views.clear();
 
-                tv_all.setText("全部成员 (" + GroupDeleteChoosedContacts.get().getContacts().size() + "人)");
+                tv_all.setText(getString(R.string.user_detail_group_user_count_num, GroupDeleteChoosedContacts.get().getContacts().size()));
 
                 for (ContactData tmp : GroupDeleteChoosedContacts.get().getContacts()) {
                     GroupMemberView memberView = new GroupMemberView(getSelf());
@@ -291,7 +291,7 @@ public class GroupDetailActivity extends AppBaseActivity {
 
         String strMeetName = edt_meet_name.getText().toString();
         if (TextUtils.isEmpty(strMeetName)) {
-            showToast("会议名称不能空");
+            showToast(getString(R.string.group_notice17));
             return;
         }
 

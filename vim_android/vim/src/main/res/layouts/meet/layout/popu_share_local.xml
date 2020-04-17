@@ -25,7 +25,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:paddingTop="15dp"
-            android:text="分享图片"
+            android:text="@string/label_txt105"
             android:textColor="@color/white"
             android:textSize="13sp" />
 
@@ -45,7 +45,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:paddingTop="15dp"
-            android:text="打开白板"
+            android:text="@string/label_txt106"
             android:textColor="@color/white"
             android:textSize="13sp" />
 
@@ -65,7 +65,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:paddingTop="15dp"
-            android:text="分享文档"
+            android:text="@string/label_txt107"
             android:textColor="@color/white"
             android:textSize="13sp" />
 

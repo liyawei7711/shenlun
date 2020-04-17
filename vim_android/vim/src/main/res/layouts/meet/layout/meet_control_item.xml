@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:text="B 同事"
+        android:text=""
         android:textColor="@color/black333"
         android:textSize="17sp" />
 
@@ -48,7 +48,7 @@
         android:layout_marginLeft="7dp"
         android:background="@drawable/icon_zhujiang"
         android:gravity="center"
-        android:text="主讲人"
+        android:text="@string/meet_notice1"
         android:textColor="@color/black333"
         android:textSize="14sp" />
 

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="25dp"
-        android:text="服务器地址"
+        android:text="@string/label_txt23"
         android:textColor="@color/black666"
         android:textSize="14sp" />
 
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="30dp"
-        android:text="服务器端口"
+        android:text="@string/label_txt24"
         android:textColor="@color/black666"
         android:textSize="14sp" />
 
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="7dp"
-        android:text="输入样例： 8000"
+        android:text="@string/label_txt25"
         android:textColor="@color/blue_3280FE"
         android:textSize="12dp" />
 
@@ -98,7 +98,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="网络配置"
+            android:text="@string/label_txt26"
             android:textColor="@color/black666"
             android:textSize="14sp" />
 
@@ -126,23 +126,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="输入样例： ecs-war"
+            android:text="@string/label_txt28"
             android:textColor="@color/blue_3280FE"
             android:textSize="12dp" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="50dp"/>
 
-    <TextView
-        android:id="@+id/setting_ok"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_50"
-        android:background="@color/blue_3280FE"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:text="确定"/>
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/setting_ok"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_green_board"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="@string/makesure"/>
+    </FrameLayout>
+
 </LinearLayout>

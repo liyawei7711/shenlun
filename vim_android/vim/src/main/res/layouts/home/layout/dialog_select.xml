@@ -12,7 +12,7 @@
         android:layout_height="50dp"
         android:background="@drawable/shape_dialog_logic_back"
         android:gravity="center"
-        android:text="筛选"
+        android:text="@string/label_txt62"
         android:textColor="@color/blue"
         android:textSize="18sp" />
 
@@ -30,7 +30,7 @@
         android:drawableLeft="@drawable/ic_rilikaishi"
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
-        android:hint="请选择起始时间"
+        android:hint="@string/label_txt63"
         android:textColor="@color/black333" />
 
 
@@ -48,7 +48,7 @@
         android:drawableLeft="@drawable/ic_rilijieshu"
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
-        android:hint="请选择结束时间"
+        android:hint="@string/label_txt64"
         android:textColor="@color/black333" />
 
 
@@ -70,7 +70,7 @@
             android:layout_weight="1"
 
             android:gravity="center"
-            android:text="取消"
+            android:text="@string/cancel"
             android:textColor="@color/black333"
             android:textSize="16sp" />
 
@@ -85,7 +85,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="清空"
+            android:text="@string/label_txt65"
             android:textColor="@color/black333"
             android:textSize="16sp" />
 
@@ -100,7 +100,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="确认"
+            android:text="@string/confirm"
             android:textColor="@color/red"
             android:textSize="16sp" />
 

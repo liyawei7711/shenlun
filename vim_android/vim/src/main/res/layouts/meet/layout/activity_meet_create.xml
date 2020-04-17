@@ -24,7 +24,7 @@
             android:layout_weight="1"
             android:background="@color/red"
             android:gravity="center"
-            android:text="删除会商"
+            android:text="@string/label_txt75"
             android:textColor="@color/white"
             android:visibility="gone" />
 
@@ -36,7 +36,7 @@
             android:layout_weight="1"
             android:background="@color/blue"
             android:gravity="center"
-            android:text="保存修改"
+            android:text="@string/label_txt76"
             android:textColor="@color/white"
             android:visibility="gone" />
 
@@ -48,7 +48,7 @@
             android:layout_weight="1"
             android:background="@color/blue_send"
             android:gravity="center"
-            android:text="发送提醒"
+            android:text="@string/label_txt77"
             android:textColor="@color/white"
             android:visibility="gone" />
 
@@ -59,7 +59,7 @@
             android:layout_weight="1"
             android:background="@color/blue"
             android:gravity="center"
-            android:text="进入会商"
+            android:text="@string/label_txt78"
             android:textColor="@color/white"
             android:visibility="gone" />
 
@@ -70,7 +70,7 @@
             android:layout_weight="1"
             android:background="@color/blue"
             android:gravity="center"
-            android:text="会商录像"
+            android:text="@string/label_txt79"
             android:textColor="@color/white"
             android:visibility="gone" />
 

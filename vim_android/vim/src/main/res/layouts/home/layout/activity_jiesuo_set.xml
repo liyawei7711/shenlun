@@ -13,7 +13,7 @@
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:visibility="gone"
-        android:text="请设置解锁密码"
+        android:text="@string/label_txt57"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -93,7 +93,7 @@
             android:layout_width="112dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:text="请绘制解锁图案"
+            android:text="@string/common_notice13"
             android:textColor="#ff55a2fd"
             android:textSize="16sp"
             />
@@ -117,7 +117,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="重新绘制解锁图案"
+            android:text="@string/label_txt56"
             android:textColor="#ff55a2fd"
             android:textSize="14sp"
             />

@@ -52,6 +52,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 import huaiye.com.vim.EncryptUtil;
+import huaiye.com.vim.R;
 import huaiye.com.vim.VIMApp;
 import huaiye.com.vim.bus.MessageEvent;
 import huaiye.com.vim.bus.NewChatMessage;
@@ -94,6 +95,7 @@ import huaiye.com.vim.ui.auth.StartActivity;
 import ttyy.com.jinnetwork.core.work.HTTPResponse;
 
 import static com.huaiye.sdk.sdkabi._params.SdkBaseParams.ConnectionStatus.Disconnected;
+import static huaiye.com.vim.common.AppUtils.getString;
 import static huaiye.com.vim.common.AppUtils.nEncryptIMEnable;
 import static huaiye.com.vim.ui.meet.adapter.ChatContentAdapter.CHAT_CONTENT_CUSTOM_NOTICE_ITEM;
 
@@ -542,7 +544,7 @@ public class MessageReceiver {
                             str.append(temp.strUserName + ",");
                         }
                         String content = str.toString().substring(0, str.length() - 1);
-                        me.msgContent = content + "等人加入群组";
+                        me.msgContent = content + getString(R.string.group_notice1);
                     } else {
                         GroupDealMessage groupDealMessage = gson.fromJson(chatMessageBean.content, GroupDealMessage.class);
                         sessionID = groupDealMessage.getStrGroupDomainCode() + groupDealMessage.getStrGroupID();
@@ -558,7 +560,7 @@ public class MessageReceiver {
                             str.append(temp.strUserName + ",");
                         }
                         String content = str.toString().substring(0, str.length() - 1);
-                        me.msgContent = content + "等人被踢出群组";
+                        me.msgContent = content + getString(R.string.group_notice2);
                     }
                     addGroupNotice(me.msgContent, sessionID, groupID, groupDomain, sessionName);
                     EventBus.getDefault().post(me);
@@ -638,8 +640,8 @@ public class MessageReceiver {
         if (!observers.isEmpty()) {
             AppBaseActivity activity = (AppBaseActivity) observers.get(0);
 
-            if (isKitOut) {
-                activity.showToast("你已被踢出登录");
+            if(isKitOut) {
+                activity.showToast(getString(R.string.login_error7));
             }
 
             observers.get(0).onTalkInvite(null, 0);
@@ -693,7 +695,7 @@ public class MessageReceiver {
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            AppBaseActivity.showToast("信息加密失败");
+                            AppBaseActivity.showToast(getString(R.string.jiami_notice1));
                         }
                     });
         } else {
@@ -790,7 +792,7 @@ public class MessageReceiver {
 
                     @Override
                     public void onError(ErrorInfo errorInfo) {
-                        AppBaseActivity.showToast("发送失败" + errorInfo.getMessage());
+                        AppBaseActivity.showToast(getString(R.string.send_notice1) + errorInfo.getMessage());
                     }
                 }
         );
@@ -842,14 +844,14 @@ public class MessageReceiver {
 
                 if (!TextUtils.isEmpty(nContactsGroupUserListBeanNew.strGroupName)) {
                     if (!nContactsGroupUserListBeanNew.strGroupName.equals(currentContactsGroupUserListBean.strGroupName)) {
-                        event.argStr1 = "群名称修改为:" + nContactsGroupUserListBeanNew.strGroupName;
+                        event.argStr1 = getString(R.string.group_notice3) + nContactsGroupUserListBeanNew.strGroupName;
                     }
                     currentContactsGroupUserListBean.strGroupName = nContactsGroupUserListBeanNew.strGroupName;
                 }
 
                 if (!TextUtils.isEmpty(nContactsGroupUserListBeanNew.strAnnouncement)) {
                     if (!nContactsGroupUserListBeanNew.strAnnouncement.equals(currentContactsGroupUserListBean.strAnnouncement)) {
-                        event.argStr1 = "群公告修改为:" + nContactsGroupUserListBeanNew.strAnnouncement;
+                        event.argStr1 = getString(R.string.group_notice4) + nContactsGroupUserListBeanNew.strAnnouncement;
                     }
                     currentContactsGroupUserListBean.strAnnouncement = nContactsGroupUserListBeanNew.strAnnouncement;
                 }
@@ -859,7 +861,7 @@ public class MessageReceiver {
                 currentContactsGroupUserListBean.nTeamMemberLimit = nContactsGroupUserListBeanNew.nTeamMemberLimit;
                 if (!TextUtils.isEmpty(nContactsGroupUserListBeanNew.strHeadUrl)) {
                     currentContactsGroupUserListBean.strHeadUrl = nContactsGroupUserListBeanNew.strHeadUrl;
-                    event.argStr1 = "群头像已修改";
+                    event.argStr1 = getString(R.string.group_notice5);
                 }
 
                 GroupInfo groupInfo = AppDatas.MsgDB().getGroupListDao().getGroupInfo(nContactsGroupUserListBeanNew.strGroupID, nContactsGroupUserListBeanNew.strGroupDomainCode);

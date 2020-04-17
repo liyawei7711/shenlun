@@ -69,7 +69,7 @@ public class ShareGroupListActivity extends AppBaseActivity {
 
     private void initNavigateView() {
         getNavigate().setVisibility(View.VISIBLE);
-        getNavigate().setTitlText("群组")
+        getNavigate().setTitlText(getString(R.string.group_txt_content))
                 .setLeftClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

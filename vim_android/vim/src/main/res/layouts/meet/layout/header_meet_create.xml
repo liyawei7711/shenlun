@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="会商名称"
+            android:text="@string/label_txt33"
             android:textColor="#333"
             android:textSize="16sp" />
 
@@ -58,7 +58,7 @@
             android:layout_toLeftOf="@id/iv_next"
             android:layout_toRightOf="@id/tv_label"
             android:gravity="center_vertical|right"
-            android:hint="请输入会商时长"
+            android:hint="@string/label_txt95"
             android:singleLine="true"
             android:textColor="#333"
             android:textSize="16sp" />
@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="会商模式"
+                android:text="@string/label_txt94"
                 android:textColor="#333"
                 android:textSize="16sp" />
 
@@ -102,7 +102,7 @@
                 android:layout_weight="4"
                 android:background="@color/white"
                 android:gravity="right|center_vertical"
-                android:hint="请选择会商模式"
+                android:hint="@string/label_txt96"
                 android:singleLine="true"
                 android:textColor="#333"
                 android:textSize="16sp" />
@@ -128,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="开始时间"
+                android:text="@string/label_txt97"
                 android:textColor="#333"
                 android:textSize="16sp" />
 
@@ -141,7 +141,7 @@
                 android:layout_weight="4"
                 android:background="@color/white"
                 android:gravity="right|center_vertical"
-                android:hint="请选择开始时间"
+                android:hint="@string/label_txt98"
                 android:singleLine="true"
                 android:textColor="#333"
                 android:textSize="16sp" />
@@ -167,7 +167,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="会商时长(时)"
+                android:text="@string/label_txt99"
                 android:textColor="#333"
                 android:textSize="16sp" />
 
@@ -179,7 +179,7 @@
                 android:layout_weight="4"
                 android:background="@color/white"
                 android:gravity="center_vertical|right"
-                android:hint="请输入会商时长"
+                android:hint="@string/label_txt95"
                 android:singleLine="true"
                 android:textColor="#333"
                 android:textSize="16sp" />
@@ -220,7 +220,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="录像存储"
+            android:text="@string/label_txt38"
             android:textColor="#333"
             android:textSize="16sp" />
 
@@ -251,7 +251,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="参会人"
+            android:text="@string/meet_people"
             android:textColor="#333"
             android:textSize="16sp" />
 

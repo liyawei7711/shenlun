@@ -1,5 +1,6 @@
 package huaiye.com.vim.ui.meet.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -85,6 +86,7 @@ import huaiye.com.vim.ui.showfile.ExcelActivity;
 import huaiye.com.vim.ui.showfile.WebPageFileActivity;
 import huaiye.com.vim.ui.zhuanfa.ZhuanFaChooseActivity;
 
+import static huaiye.com.vim.common.AppUtils.getString;
 import static huaiye.com.vim.common.AppUtils.nEncryptIMEnable;
 
 /**
@@ -460,7 +462,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealLeftCustomShareViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         LeftCustomShareViewHolder viewHolder = (LeftCustomShareViewHolder) holder;
-        viewHolder.left_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.left_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.left_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -486,7 +488,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealLeftCustomAddressViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         LeftCustomAddressViewHolder viewHolder = (LeftCustomAddressViewHolder) holder;
-        viewHolder.left_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.left_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.left_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
         showUserName(viewHolder.left_name);
@@ -511,7 +513,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     data.localFilePath = ffLocal.getAbsolutePath();
                     unEncryptImage2(viewHolder.address_img, data, true);
                 } else {
-                    if ("文件上传失败".equals(data.fileUrl)) {
+                    if (getString(R.string.file_upload_false).equals(data.fileUrl)) {
                         return;
                     }
                     data.downloadState = AppUtils.CHAT_DOWNLOAD_FILE_STATE_DOWNLOADING;
@@ -566,7 +568,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealRightCustomShareViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         RightCustomShareViewHolder viewHolder = (RightCustomShareViewHolder) holder;
-        viewHolder.right_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.right_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.right_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -592,7 +594,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealRightCustomAddressViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         RightCustomAddressViewHolder viewHolder = (RightCustomAddressViewHolder) holder;
-        viewHolder.right_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.right_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.right_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
         showUserName(viewHolder.right_name);
@@ -616,7 +618,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     data.localFilePath = ffLocal.getAbsolutePath();
                     unEncryptImage2(viewHolder.address_img, data, true);
                 } else {
-                    if ("文件上传失败".equals(data.fileUrl)) {
+                    if (getString(R.string.file_upload_false).equals(data.fileUrl)) {
                         return;
                     }
                     data.downloadState = AppUtils.CHAT_DOWNLOAD_FILE_STATE_DOWNLOADING;
@@ -684,7 +686,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealLeftCustomYueHouJiFengViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         LeftCustomYueHouJiFengViewHolder viewHolder = (LeftCustomYueHouJiFengViewHolder) holder;
-        viewHolder.left_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.left_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.left_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -702,7 +704,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealRightCustomYueHouJiFengViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         RightCustomYueHouJiFengViewHolder viewHolder = (RightCustomYueHouJiFengViewHolder) holder;
-        viewHolder.right_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.right_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.right_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -732,7 +734,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealRightCustomFileViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         RightCustomFileViewHolder viewHolder = (RightCustomFileViewHolder) holder;
-        viewHolder.right_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.right_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.right_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -746,7 +748,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealRightCustomVoiceViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         final RightCustomVoiceViewHolder viewHolder = (RightCustomVoiceViewHolder) holder;
-        viewHolder.right_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.right_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.right_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -767,7 +769,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealRightCustomVideoViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         RightCustomVideoViewHolder viewHolder = (RightCustomVideoViewHolder) holder;
-        viewHolder.right_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.right_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.right_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -780,7 +782,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealRightCustomImageViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         RightCustomImageViewHolder viewHolder = (RightCustomImageViewHolder) holder;
-        viewHolder.right_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.right_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.right_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -805,7 +807,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     data.localFilePath = ffLocal.getAbsolutePath();
                     unEncryptImage2(viewHolder.right_content_image, data, false);
                 } else {
-                    if ("文件上传失败".equals(data.fileUrl)) {
+                    if (getString(R.string.file_upload_false).equals(data.fileUrl)) {
                         return;
                     }
                     data.downloadState = AppUtils.CHAT_DOWNLOAD_FILE_STATE_DOWNLOADING;
@@ -870,7 +872,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealRightCustomTextViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         RightCustomTextViewHolder viewHolder = (RightCustomTextViewHolder) holder;
-        viewHolder.right_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.right_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.right_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -887,7 +889,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealLeftCustomFileViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         LeftCustomFileViewHolder viewHolder = (LeftCustomFileViewHolder) holder;
-        viewHolder.left_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.left_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.left_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -900,7 +902,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealLeftCustomVoiceViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         final LeftCustomVoiceViewHolder viewHolder = (LeftCustomVoiceViewHolder) holder;
-        viewHolder.left_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.left_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.left_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -920,7 +922,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealLeftCustomVideoViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         LeftCustomVideoViewHolder viewHolder = (LeftCustomVideoViewHolder) holder;
-        viewHolder.left_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.left_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.left_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -932,7 +934,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealLeftCustomImageViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick) {
         LeftCustomImageViewHolder viewHolder = (LeftCustomImageViewHolder) holder;
-        viewHolder.left_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.left_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.left_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
 
@@ -957,7 +959,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     data.localFilePath = ffLocal.getAbsolutePath();
                     unEncryptImage2(viewHolder.left_content_image, data, false);
                 } else {
-                    if ("文件上传失败".equals(data.fileUrl)) {
+                    if (getString(R.string.file_upload_false).equals(data.fileUrl)) {
                         return;
                     }
                     data.downloadState = AppUtils.CHAT_DOWNLOAD_FILE_STATE_DOWNLOADING;
@@ -1018,7 +1020,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealLeftCustomTextViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick) {
         LeftCustomTextViewHolder viewHolder = (LeftCustomTextViewHolder) holder;
-        viewHolder.left_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.left_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.left_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
         showUserName(viewHolder.left_name);
@@ -1041,7 +1043,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealCustomMeetViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick) {
         CustomMeetViewHolder viewHolder = (CustomMeetViewHolder) holder;
-        viewHolder.chat_content_custom_meet_item_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.chat_content_custom_meet_item_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.chat_content_custom_meet_item_time.setOnLongClickListener(onLongClick);
         viewHolder.chat_content_custom_meet_item.setText(data.msgTxt);
         if (data.needShowTime) {
@@ -1058,7 +1060,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void dealCustomQiuJiuViewHolder(RecyclerView.ViewHolder holder, ChatMessageBase data, OnChatItemLongClickListener onLongClick, int position) {
         QiuJiuViewHolder viewHolder = (QiuJiuViewHolder) holder;
-        viewHolder.left_time.setText(WeiXinDateFormat.getChatTime(data.time));
+        viewHolder.left_time.setText(WeiXinDateFormat.getChatTimeYingWen(data.time));
         viewHolder.left_name.setText(data.fromUserName);
         setHeadImage(viewHolder.chat_head, data);
         showUserName(viewHolder.left_name);
@@ -1086,6 +1088,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
+    @SuppressLint("StringFormatInvalid")
     private void dealTextContentView(TextView text, ChatMessageBase data, boolean isRight) {
         Drawable drawableShipin = mContext.getResources().getDrawable(R.drawable.liaotian_shipin);
         drawableShipin.setBounds(0, 0, drawableShipin.getMinimumWidth(), drawableShipin.getMinimumHeight());
@@ -1095,18 +1098,18 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             case AppUtils.MESSAGE_TYPE_SINGLE_CHAT_VOICE:
                 if (isRight) {
                     if (data.nCallState == 1) {
-                        text.setText(AppUtils.getString(R.string.single_chat_video_voice_refuse_other));
+                        text.setText(getString(R.string.single_chat_video_voice_refuse_other));
                     } else if (data.nCallState == 0) {
-                        text.setText(AppUtils.getString(R.string.single_chat_video_voice_cancle));
+                        text.setText(getString(R.string.single_chat_video_voice_cancle));
                     } else {
                         text.setText(mContext.getString(R.string.single_chat_video_voice_connection, data.msgTxt));
                     }
                     text.setCompoundDrawables(null, null, drawableyuyin, null);
                 } else {
                     if (data.nCallState == 1) {
-                        text.setText(AppUtils.getString(R.string.single_chat_video_voice_refuse));
+                        text.setText(getString(R.string.single_chat_video_voice_refuse));
                     } else if (data.nCallState == 0) {
-                        text.setText(AppUtils.getString(R.string.single_chat_video_voice_cancle_other));
+                        text.setText(getString(R.string.single_chat_video_voice_cancle_other));
                     } else {
                         text.setText(mContext.getString(R.string.single_chat_video_voice_connection, data.msgTxt));
                     }
@@ -1116,18 +1119,18 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             case AppUtils.MESSAGE_TYPE_SINGLE_CHAT_VIDEO:
                 if (isRight) {
                     if (data.nCallState == 1) {
-                        text.setText(AppUtils.getString(R.string.single_chat_video_voice_refuse_other));
+                        text.setText(getString(R.string.single_chat_video_voice_refuse_other));
                     } else if (data.nCallState == 0) {
-                        text.setText(AppUtils.getString(R.string.single_chat_video_voice_cancle));
+                        text.setText(getString(R.string.single_chat_video_voice_cancle));
                     } else {
                         text.setText(mContext.getString(R.string.single_chat_video_voice_connection, data.msgTxt));
                     }
                     text.setCompoundDrawables(null, null, drawableShipin, null);
                 } else {
                     if (data.nCallState == 1) {
-                        text.setText(AppUtils.getString(R.string.single_chat_video_voice_refuse));
+                        text.setText(getString(R.string.single_chat_video_voice_refuse));
                     } else if (data.nCallState == 0) {
-                        text.setText(AppUtils.getString(R.string.single_chat_video_voice_cancle_other));
+                        text.setText(getString(R.string.single_chat_video_voice_cancle_other));
                     } else {
                         text.setText(mContext.getString(R.string.single_chat_video_voice_connection, data.msgTxt));
                     }
@@ -1136,7 +1139,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 break;
             default:
                 if (data.bEncrypt == 1 && !data.isUnEncrypt) {
-                    text.setText("信息已加密");
+                    text.setText(getString(R.string.jiami_notice3));
                 } else {
                     text.setText(data.msgTxt);
                 }
@@ -1232,8 +1235,8 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     if (null != data && !TextUtils.isEmpty(data.localFilePath) && new File(data.localFilePath).exists()) {
                         go2YueHouJiFengAudio(data);
                     } else {
-                        if ("文件上传失败".equals(data.fileUrl)) {
-//                            AppBaseActivity.showToast("文件加载失败");
+                        if (getString(R.string.file_upload_false).equals(data.fileUrl)) {
+//                            AppUtils.showToast(getString(R.string.file_load_false));
                             return;
                         }
                         data.downloadState = AppUtils.CHAT_DOWNLOAD_FILE_STATE_DOWNLOADING;
@@ -1269,7 +1272,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                                             data.localFilePath = "";
                                             updateDownloadState(data);
                                             changeItem();
-                                            AppBaseActivity.showToast(AppUtils.getString(R.string.update_download_error));
+                                            AppBaseActivity.showToast(getString(R.string.update_download_error));
                                         }
                                     }, "yuehoujifengVoiceFailed");
                                 }
@@ -1281,8 +1284,8 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     if (null != data && !TextUtils.isEmpty(data.localFilePath) && new File(data.localFilePath).exists()) {
                         go2YueHouJiFengVideo(data);
                     } else {
-                        if ("文件上传失败".equals(data.fileUrl)) {
-//                            AppBaseActivity.showToast("文件加载失败");
+                        if (getString(R.string.file_upload_false).equals(data.fileUrl)) {
+//                            AppBaseActivity.showToast(getString(R.string.file_load_false));
                             return;
                         }
                         data.downloadState = AppUtils.CHAT_DOWNLOAD_FILE_STATE_DOWNLOADING;
@@ -1318,7 +1321,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                                             data.localFilePath = "";
                                             updateDownloadState(data);
                                             changeItem();
-                                            AppBaseActivity.showToast(AppUtils.getString(R.string.update_download_error));
+                                            AppBaseActivity.showToast(getString(R.string.update_download_error));
                                         }
                                     }, "yuehoujifengVideoFailed");
                                 }
@@ -1388,7 +1391,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         public void onClick(View v) {
 
             if (data.bEncrypt == 1 && !data.isUnEncrypt) {
-                AppBaseActivity.showToast("信息尚未解密");
+                AppBaseActivity.showToast(getString(R.string.notice_txt_10));
                 return;
             }
 
@@ -1415,7 +1418,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         @Override
         public void onClick(View v) {
             if (data.bEncrypt == 1 && !data.isUnEncrypt) {
-                AppBaseActivity.showToast("信息尚未解密");
+                AppBaseActivity.showToast(getString(R.string.notice_txt_10));
                 return;
             }
             Intent intent = new Intent(mContext, MapLocationActivity.class);
@@ -1436,7 +1439,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         @Override
         public void onClick(View v) {
             if (data.bEncrypt == 1 && !data.isUnEncrypt) {
-                AppBaseActivity.showToast("信息尚未解密");
+                AppBaseActivity.showToast(getString(R.string.notice_txt_10));
                 return;
             }
 
@@ -1503,7 +1506,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         @Override
         public void onClick(View v) {
             if (data.bEncrypt == 1 && !data.isUnEncrypt) {
-                AppBaseActivity.showToast("信息尚未解密");
+                AppBaseActivity.showToast(getString(R.string.notice_txt_10));
                 return;
             }
 
@@ -1511,7 +1514,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 File localFile = new File(data.localFilePath);
                 openFile2(data.localFilePath, data.bEncrypt, data.fileName, data);
             } else {
-                if ("文件上传失败".equals(data.fileUrl)) {
+                if (getString(R.string.file_upload_false).equals(data.fileUrl)) {
                     return;
                 }
                 data.downloadState = AppUtils.CHAT_DOWNLOAD_FILE_STATE_DOWNLOADING;
@@ -1634,7 +1637,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             }
 
             if (data.bEncrypt == 1 && !data.isUnEncrypt) {
-                AppBaseActivity.showToast("信息尚未解密");
+                AppBaseActivity.showToast(getString(R.string.notice_txt_10));
                 return;
             }
 
@@ -1765,15 +1768,15 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         @Override
         public void onClick(View v) {
             if (data.bEncrypt == 1 && !data.isUnEncrypt) {
-                AppBaseActivity.showToast("信息尚未解密");
+                AppBaseActivity.showToast(getString(R.string.notice_txt_10));
                 return;
             }
 
             if (null != data && !TextUtils.isEmpty(data.localFilePath) && new File(data.localFilePath).exists()) {
                 go2PlayVideo2(data.localFilePath, data.bEncrypt, data);
             } else {
-                if ("文件上传失败".equals(data.fileUrl)) {
-//                    showToast("文件加载失败");
+                if (getString(R.string.file_upload_false).equals(data.fileUrl)) {
+//                    showToast(getString(R.string.file_load_false));
                     return;
                 }
                 data.downloadState = AppUtils.CHAT_DOWNLOAD_FILE_STATE_DOWNLOADING;
@@ -1863,7 +1866,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                         @Override
                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                            AppBaseActivity.showToast("文件解密失败");
+                            AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                         }
                     }
             );
@@ -1913,7 +1916,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                 @Override
                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                    AppBaseActivity.showToast("文件解密失败");
+                                    AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                 }
                             }
                     );
@@ -1952,7 +1955,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                                 @Override
                                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                                    AppBaseActivity.showToast("文件解密失败");
+                                                    AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                                 }
                                             }
                                     );
@@ -1961,7 +1964,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                             @Override
                             public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                AppBaseActivity.showToast("文件解密失败");
+                                AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                             }
                         }
                 );
@@ -1989,13 +1992,13 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                 @Override
                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                    AppBaseActivity.showToast("文件解密失败");
+                                    AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                 }
                             }
                     );
                 }
             } else {
-                AppBaseActivity.showToast("文件解密失败");
+                AppBaseActivity.showToast(getString(R.string.jiami_notice5));
             }
         } else {
             openFileReal(localFilePath, name);
@@ -2020,7 +2023,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                     @Override
                                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                        AppBaseActivity.showToast("文件解密失败");
+                                        AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                     }
                                 }
                         );
@@ -2044,7 +2047,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                                     @Override
                                                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                                        AppBaseActivity.showToast("文件解密失败");
+                                                        AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                                     }
                                                 }
                                         );
@@ -2053,13 +2056,13 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                 @Override
                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                    AppBaseActivity.showToast("文件解密失败");
+                                    AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                 }
                             }
                     );
                 }
             } else {
-                AppBaseActivity.showToast("文件解密失败");
+                AppBaseActivity.showToast(getString(R.string.jiami_notice5));
             }
         } else {
             openFileReal(localFilePath, name);
@@ -2099,7 +2102,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             intent.putExtra("name", name);
             mContext.startActivity(intent);
         } else {
-            AppBaseActivity.showToast("不支持该格式文件");
+            AppBaseActivity.showToast(getString(R.string.file_getshicuowu));
 //            Intent intent = new Intent(Intent.ACTION_VIEW);
 //            intent.addCategory(Intent.CATEGORY_DEFAULT);
 //            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -2176,13 +2179,13 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                         @Override
                                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                            AppBaseActivity.showToast("文件解密失败");
+                                            AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                         }
                                     }
                             );
                         }
                     } else {
-                        AppBaseActivity.showToast("文件解密失败");
+                        AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                     }
                 } else {
                     playVoiceReal(path, path, data, position, view);
@@ -2212,7 +2215,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                             @Override
                                             public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                                AppBaseActivity.showToast("文件解密失败");
+                                                AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                             }
                                         }
                                 );
@@ -2236,7 +2239,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                                             @Override
                                                             public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                                                AppBaseActivity.showToast("文件解密失败");
+                                                                AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                                             }
                                                         }
                                                 );
@@ -2245,13 +2248,13 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                         @Override
                                         public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                            AppBaseActivity.showToast("文件解密失败");
+                                            AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                         }
                                     }
                             );
                         }
                     } else {
-                        AppBaseActivity.showToast("文件解密失败");
+                        AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                     }
                 } else {
                     playVoiceReal(path, path, data, position, view);
@@ -2348,13 +2351,13 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                 @Override
                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                    AppBaseActivity.showToast("文件解密失败");
+                                    AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                 }
                             }
                     );
                 }
             } else {
-                AppBaseActivity.showToast("文件解密失败");
+                AppBaseActivity.showToast(getString(R.string.jiami_notice5));
             }
         } else {
             playVideoReal(localFilePath);
@@ -2379,7 +2382,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                     @Override
                                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                        AppBaseActivity.showToast("文件解密失败");
+                                        AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                     }
                                 }
                         );
@@ -2403,7 +2406,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                                     @Override
                                                     public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                                        AppBaseActivity.showToast("文件解密失败");
+                                                        AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                                     }
                                                 }
                                         );
@@ -2412,13 +2415,13 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                                 @Override
                                 public void onError(SdkCallback.ErrorInfo sessionRsp) {
-                                    AppBaseActivity.showToast("文件解密失败");
+                                    AppBaseActivity.showToast(getString(R.string.jiami_notice5));
                                 }
                             }
                     );
                 }
             } else {
-                AppBaseActivity.showToast("文件解密失败");
+                AppBaseActivity.showToast(getString(R.string.jiami_notice5));
             }
         } else {
             playVideoReal(localFilePath);
@@ -2911,7 +2914,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                 } else {
                     isShow = true;
-//                    showToast("文件加载失败");
+//                    showToast(getString(R.string.file_load_false));
                 }
                 return false;
             }
@@ -3001,9 +3004,9 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private void showPopWindows(boolean isShow, View view, ChatMessageBase data) {
         final List<String> dataList = new ArrayList<>();
         if (isShow) {
-            dataList.add(AppUtils.getString(R.string.user_detail_zhuanfa_perple));
+            dataList.add(getString(R.string.user_detail_zhuanfa_perple));
         }
-        dataList.add(AppUtils.getString(R.string.user_detail_del_perple));
+        dataList.add(getString(R.string.user_detail_del_perple));
         mPopupWindowList = new PopupWindowList(view.getContext());
         mPopupWindowList.setAnchorView(view);
         mPopupWindowList.setItemData(dataList);
@@ -3018,7 +3021,7 @@ public class ChatContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                         delZhuanFaMessage(data);
                     } else if (1 == position) {//转发
                         if (data.bEncrypt == 1 && !data.isUnEncrypt) {
-                            AppBaseActivity.showToast("信息尚未解密");
+                            AppBaseActivity.showToast(getString(R.string.notice_txt_10));
                         } else {
                             deleChatRecord(data);
                         }

@@ -47,7 +47,7 @@ public class MeetHolder extends LiteViewHolder {
 
         tv_meet_name.setText(bean.strMeetingName);
         tv_meet_date.setText(bean.strStartTime);
-        tv_meet_id.setText("会议号:" + bean.nMeetingID);
+        tv_meet_id.setText(context.getString(R.string.meet_num) + bean.nMeetingID);
 
         if (bean.nStatus == 1) {
             view_badger.setImageResource(R.drawable.icon_jingzingzhong);

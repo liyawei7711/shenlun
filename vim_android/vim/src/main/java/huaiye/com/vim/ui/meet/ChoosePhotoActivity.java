@@ -76,22 +76,22 @@ public class ChoosePhotoActivity extends AppBaseActivity {
                         onBackPressed();
                     }
                 })
-                .setTitlText("共享图片")
-                .setRightText("确定")
+                .setTitlText(getString(R.string.title_notice5))
+                .setRightText(getString(R.string.makesure))
                 .setRightTextColor(Color.parseColor("#4D48AE"))
                 .setRightClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (currentBean == null) {
-                            showToast("请选择要分享的图片");
+                            showToast(getString(R.string.common_notice18));
                             return;
                         }
                         File file = new File(new String(currentBean.data, 0, currentBean.data.length - 1));
                         if (file.length() > 1028 * 1028 * 50) {
-                            showToast("文档大于50M");
+                            showToast(getString(R.string.send_notice2));
                             return;
                         }
-                        mZeusLoadView.loadingText("正在上传").setLoading();
+                        mZeusLoadView.loadingText(getString(R.string.is_upload_ing)).setLoading();
                         ModelApis.Download().upload(new ModelCallback<Upload>() {
                             @Override
                             public void onSuccess(Upload upload) {
@@ -107,7 +107,7 @@ public class ChoosePhotoActivity extends AppBaseActivity {
                             @Override
                             public void onFailure(HTTPResponse httpResponse) {
                                 super.onFailure(httpResponse);
-                                showToast("文件上传失败");
+                                showToast(getString(R.string.file_upload_false));
                             }
 
                             @Override

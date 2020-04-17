@@ -47,6 +47,7 @@ import huaiye.com.vim.dao.msgs.UserInfo;
 import huaiye.com.vim.dao.msgs.VimMessageBean;
 import huaiye.com.vim.ui.meet.ChatSingleActivity;
 
+import static huaiye.com.vim.common.AppUtils.getString;
 import static huaiye.com.vim.common.AppUtils.nEncryptIMEnable;
 
 public class SharePopupWindow extends PopupWindow {
@@ -160,7 +161,7 @@ public class SharePopupWindow extends PopupWindow {
                         @Override
                         public void onError(ErrorInfo sessionRsp) {
                             ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                            AppBaseActivity.showToast("对方未开启加密,无法发送");
+                            AppBaseActivity.showToast(getString(R.string.notice_txt_9));
                             dismiss();
                         }
                     });
@@ -229,7 +230,7 @@ public class SharePopupWindow extends PopupWindow {
                     @Override
                     public void onError(ErrorInfo errorInfo) {
                         ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-                        AppBaseActivity.showToast("分享失败" + errorInfo.getMessage());
+                        AppBaseActivity.showToast(AppUtils.getString(R.string.share_txt_1) + errorInfo.getMessage());
                         dismiss();
                     }
                 }
@@ -248,7 +249,7 @@ public class SharePopupWindow extends PopupWindow {
         huaiye.com.vim.dao.msgs.ChatUtil.get().saveChangeMsg(vimMessageBean, true);
 
         ((AppBaseActivity) mContext).mZeusLoadView.dismiss();
-        AppBaseActivity.showToast("分享成功");
+        AppBaseActivity.showToast(getString(R.string.share_txt_2));
         dismiss();
 
         jumpToChat();

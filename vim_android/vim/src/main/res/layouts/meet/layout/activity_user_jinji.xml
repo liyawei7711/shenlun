@@ -12,7 +12,7 @@
             android:layout_marginBottom="31dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="从通讯录里选择2位朋友添加成应急联系人。"
+            android:text="@string/label_txt85"
             android:textColor="#ff999999"
             android:textSize="14sp"
             />

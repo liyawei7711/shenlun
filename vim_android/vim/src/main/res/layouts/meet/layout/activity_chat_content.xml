@@ -135,7 +135,7 @@
                 android:focusable="true"
                 android:focusableInTouchMode="false"
                 android:gravity="center"
-                android:text="发送"
+                android:text="@string/send"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -187,7 +187,7 @@
             android:background="@drawable/selector_chat_voice_btn"
             android:gravity="center"
             android:paddingLeft="5dp"
-            android:text="按住说话" />
+            android:text="@string/press_speak" />
 
         <ImageView
             android:id="@+id/chat_more"

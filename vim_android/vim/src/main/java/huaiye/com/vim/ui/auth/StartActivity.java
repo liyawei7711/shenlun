@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Rect;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -13,7 +14,9 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ttyy.commonanno.anno.BindLayout;
@@ -52,21 +55,44 @@ import static huaiye.com.vim.common.AppUtils.ctx;
 
 @BindLayout(R.layout.activity_start)
 public class StartActivity extends AppBaseActivity {
+    @BindView(R.id.rl_root)
+    RelativeLayout rl_root;
     @BindView(R.id.edt_account)
     EditText edt_account;
     @BindView(R.id.edt_password)
     EditText edt_password;
-    @BindView(R.id.tv_title)
-    View tv_title;
-    @BindView(R.id.ll_settings)
-    View ll_settings;
     @BindView(R.id.view_load)
     View view_load;
+    @BindView(R.id.ll_login)
+    View ll_login;
     @BindView(R.id.config_server)
     TextView start_config_service;
+    @BindView(R.id.view1)
+    View view1;
+    @BindView(R.id.view2)
+    View view2;
+    @BindView(R.id.ll_btn_account)
+    View ll_btn_account;
+    @BindView(R.id.ll_btn_pwd)
+    View ll_btn_pwd;
 
     private AlertDialog nAlertDialog;
     private LocationService locationService;
+
+    RelativeLayout.LayoutParams lp;
+    /**
+     * 虚拟键盘高度
+     */
+    int virtualKeyboardHeight;
+    /**
+     * 屏幕高度
+     */
+    int screenHeight;
+    /**
+     * 屏幕6分之一的高度，作用是防止获取到虚拟键盘的高度
+     */
+    int screenHeight6;
+    View rootView;
 
     @Override
     protected void onDestroy() {
@@ -83,11 +109,55 @@ public class StartActivity extends AppBaseActivity {
 //        ConfigApi.get().getAllConfig(null);
         locationService = ((VIMApp) getApplication()).locationService;
         locationService.start();
+
+        screenHeight = getResources().getDisplayMetrics().heightPixels;
+        screenHeight6 = screenHeight / 6;
+        rootView = getWindow().getDecorView();
     }
 
     @Override
     public void doInitDelay() {
         SP.putBoolean(STRING_KEY_jiami, true);
+
+        lp = (RelativeLayout.LayoutParams) ll_login.getLayoutParams();
+        rootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                /**
+                 * 回调该方法时rootView还未绘制，需要设置绘制完成监听
+                 */
+                rootView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Rect rect = new Rect();
+                        /**
+                         * 获取屏幕底部坐标
+                         */
+                        rootView.getWindowVisibleDisplayFrame(rect);
+                        /**
+                         * 获取键盘的高度
+                         */
+                        int heightDifference = screenHeight - rect.bottom;
+                        if (heightDifference < screenHeight6) {
+                            virtualKeyboardHeight = heightDifference;
+                            lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                                lp.removeRule(RelativeLayout.BELOW);
+                            }
+                        } else {
+                            lp.addRule(RelativeLayout.BELOW, R.id.ll_view);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                                lp.removeRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+                            }
+                        }
+                        ll_login.setLayoutParams(lp);
+                    }
+                });
+            }
+        });
+
+        view1.setOnLongClickListener(olcl);
+        view2.setOnLongClickListener(olcl);
         start_config_service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,35 +183,36 @@ public class StartActivity extends AppBaseActivity {
             }
         });
 
-        tv_title.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if (ll_settings.getVisibility() == View.VISIBLE) {
-                    ll_settings.setVisibility(View.INVISIBLE);
-                } else {
-                    ll_settings.setVisibility(View.VISIBLE);
-                }
-                return false;
-            }
-        });
         checkPermission();
     }
 
-    @OnClick({R.id.ll_login, R.id.login_account_clear, R.id.config_server})
+    @OnClick({R.id.ll_login,
+//            R.id.login_account_clear,
+            R.id.tv_back,
+            R.id.config_server})
     void onBtnClicked(View view) {
         if (view_load.getVisibility() == View.VISIBLE) {
-            showToast("正在登录 ");
+            showToast(getString(R.string.logining));
             return;
         }
 
         switch (view.getId()) {
             case R.id.ll_login:
-                // 登录
-                login();
+                if (ll_btn_account.getVisibility() == View.VISIBLE) {
+                    ll_btn_pwd.setVisibility(View.VISIBLE);
+                    ll_btn_account.setVisibility(View.GONE);
+                } else {
+                    // 登录
+                    login();
+                }
                 break;
-            case R.id.login_account_clear:
-                edt_account.setText("");
+            case R.id.tv_back:
+                ll_btn_account.setVisibility(View.VISIBLE);
+                ll_btn_pwd.setVisibility(View.GONE);
                 break;
+//            case R.id.login_account_clear:
+//                edt_account.setText("");
+//                break;
             case R.id.config_server:
                 //设置服务器
                 startActivity(new Intent(getSelf(), SettingAddressActivity.class));
@@ -154,7 +225,7 @@ public class StartActivity extends AppBaseActivity {
     void login() {
         if (TextUtils.isEmpty(edt_account.getText())
                 || TextUtils.isEmpty(edt_password.getText())) {
-            showToast("账户或密码不能为空");
+            showToast(getString(R.string.account_pwd_empty));
             return;
         }
 
@@ -253,6 +324,7 @@ public class StartActivity extends AppBaseActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
+
 //            long currentMillions = System.currentTimeMillis();
 //            long delta = currentMillions - lastMillions;
 //            lastMillions = currentMillions;
@@ -262,14 +334,13 @@ public class StartActivity extends AppBaseActivity {
 //                return super.onKeyDown(keyCode, event);
 //            }
 //
-//            showToast("再按一次退出应用程序");
+//            showToast(getString(R.string.login_error8));
             AppUtils.goToDesktop(this);
             return true;
         }
 
         return super.onKeyDown(keyCode, event);
     }
-
 
     @Override
     protected void onResume() {
@@ -308,5 +379,17 @@ public class StartActivity extends AppBaseActivity {
             }
         }
     }
+
+    View.OnLongClickListener olcl = new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View view) {
+            if (start_config_service.getVisibility() == View.VISIBLE) {
+                start_config_service.setVisibility(View.GONE);
+            } else {
+                start_config_service.setVisibility(View.VISIBLE);
+            }
+            return false;
+        }
+    };
 
 }

@@ -175,11 +175,9 @@ public class MeetBoardFragment extends AppBaseFragment {
                     } else {
                         scale = oldScale;
                     }
-                    Logger.log("MeetBoardFragment dddddddddddddddddddddddddddddd  onPageFinished " + scale);
                 }
                 float webViewContentWidth = webviewContentWidth * wv_view.getScale();
                 int screenWidth = AppUtils.getScreenWidth();
-                Logger.log("MeetBoardFragment dddddddddddddddddddddddddddddd  onScaleChanged " + webViewContentWidth + "   " + screenWidth + "   " + (webViewContentWidth / screenWidth));
                 wv_view.loadUrl("javascript:mobileFingers('" + (webViewContentWidth / screenWidth) + "')");
             }
 
@@ -188,7 +186,6 @@ public class MeetBoardFragment extends AppBaseFragment {
                 super.onPageFinished(view, url);
                 scalePreNex = wv_view.getScale();
                 isPageFinish = true;
-                Logger.log("MeetBoardFragment dddddddddddddddddddddddddddddd onPageFinished");
                 wv_view.loadUrl("javascript:window.JSBridge.getContentWidth(document.getElementsByTagName('html')[0].scrollWidth);");
             }
 

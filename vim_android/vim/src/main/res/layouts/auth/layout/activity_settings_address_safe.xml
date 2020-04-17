@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="25dp"
-        android:text="服务器地址"
+        android:text="@string/label_txt23"
         android:textColor="@color/black666"
         android:textSize="14sp" />
 
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="30dp"
-        android:text="服务器端口"
+        android:text="@string/label_txt24"
         android:textColor="@color/black666"
         android:textSize="14sp" />
 
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="7dp"
-        android:text="输入样例： 8000"
+        android:text="@string/label_txt25"
         android:textColor="@color/blue_3280FE"
         android:textSize="12dp" />
 
@@ -100,7 +100,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="网络配置"
+            android:text="@string/label_txt26"
             android:textColor="@color/black666"
             android:textSize="14sp" />
 
@@ -127,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="输入样例： ecs-war"
+            android:text="@string/label_txt28"
             android:textColor="@color/blue_3280FE"
             android:textSize="12dp" />
     </LinearLayout>
@@ -146,5 +146,5 @@
         android:visibility="gone"
         android:textSize="16sp"
         android:textColor="@color/white"
-        android:text="确定"/>
+        android:text="@string/makesure"/>
 </LinearLayout>
