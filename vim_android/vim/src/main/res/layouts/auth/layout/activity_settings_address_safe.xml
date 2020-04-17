@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:text="服务器地址"
+        android:textColor="@color/black666"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/edt_address_ip"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="25dp"
+        android:background="@null"
+        android:enabled="false"
+        android:gravity="center_vertical"
+        android:inputType="textPassword"
+        android:hint="@string/activity_input_url_address_hint"
+        android:maxLength="15"
+        android:singleLine="true"
+        android:textColor="@color/black333"
+        android:textColorHint="@color/blackccc"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="25dp"
+        android:background="@color/blackccc" />
+
+    <TextView
+        android:id="@+id/server_ip_sample"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="7dp"
+        android:text=""
+        android:textColor="@color/blue_3280FE"
+        android:textSize="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30dp"
+        android:text="服务器端口"
+        android:textColor="@color/black666"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/edt_address_port"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="25dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="@string/activity_input_url_path_hint"
+        android:textColorHint="@color/blackccc"
+        android:enabled="false"
+        android:inputType="numberPassword"
+        android:maxLength="4"
+        android:singleLine="true"
+        android:text="8000"
+        android:textColor="@color/black333"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="25dp"
+        android:background="@color/blackccc" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="7dp"
+        android:text="输入样例： 8000"
+        android:textColor="@color/blue_3280FE"
+        android:textSize="12dp" />
+
+    <LinearLayout
+        android:id="@+id/input_server_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="网络配置"
+            android:textColor="@color/black666"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edt_address_end"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/activity_input_url_address_end"
+            android:textColorHint="@color/blackccc"
+            android:singleLine="true"
+            android:text="ecs-war"
+            android:textColor="@color/black333"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/blackccc" />
+
+        <TextView
+            android:id="@+id/input_server_end_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="输入样例： ecs-war"
+            android:textColor="@color/blue_3280FE"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/setting_ok"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/blue_3280FE"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="确定"/>
+</LinearLayout>

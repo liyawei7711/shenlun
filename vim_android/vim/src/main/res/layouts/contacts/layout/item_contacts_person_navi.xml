@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="50dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingBottom="6dp"
+    android:paddingLeft="9dp"
+    android:paddingTop="6dp">
+
+    <TextView
+        android:id="@+id/tv_navi_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="9dp"
+        android:paddingRight="9dp"
+        android:text="123"
+        android:textColor="@color/black333"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/iv_navi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9dp"
+        android:src="@drawable/ic_arrow_right" />
+
+</LinearLayout>

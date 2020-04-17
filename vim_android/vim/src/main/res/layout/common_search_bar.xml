@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contacts_header_search"
+    android:layout_width="match_parent"
+    android:layout_height="35dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="17dp"
+    android:layout_marginRight="17dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/search_bar_bg"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/common_icon_search"
+        android:drawablePadding="6dp"
+        android:text="搜索"
+        android:textColor="@color/black999"
+        android:textSize="15sp" />
+</LinearLayout>

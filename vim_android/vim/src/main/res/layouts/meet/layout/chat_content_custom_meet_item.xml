@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/chat_content_custom_meet_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textSize="13sp"
+        android:textColor="@color/black999"
+        android:text="xxxx"/>
+
+    <TextView
+        android:id="@+id/chat_content_custom_meet_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="28dp"
+        android:textSize="13sp"
+        android:textColor="@color/black999"
+        android:text="骄傲和撒娇是滴哈是的哈首单还是"/>
+
+
+</LinearLayout>

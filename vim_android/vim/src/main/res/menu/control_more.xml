@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/control_jingyan"
+        android:title="@string/jingyan"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/control_zhujiangren"
+        android:title="@string/zhujiangren"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/control_kick_out"
+        android:title="@string/kick_out"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+</menu>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_CC000000"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/audio_yuehoujifeng_content"
+        android:layout_width="wrap_content"
+        android:background="@color/transparent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:src="@drawable/level_voice_loud"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/audio_yuehoujifeng_time"
+        android:layout_width="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginRight="20dp"
+        android:minWidth="30dp"
+        android:background="@color/black"
+        android:gravity="center"
+        android:layout_marginTop="21dp"
+        android:textColor="@color/white"
+        android:layout_gravity="right|top"
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/audio_loading"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
+
+
+</FrameLayout>

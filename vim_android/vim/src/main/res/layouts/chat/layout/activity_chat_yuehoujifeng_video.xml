@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_CC000000"
+    android:orientation="vertical">
+
+    <TextureView
+        android:id="@+id/video_texture_yuehoujifeng_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/video_yuehoujifeng_time"
+        android:layout_width="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginRight="20dp"
+        android:minWidth="30dp"
+        android:background="@color/black"
+        android:gravity="center"
+        android:layout_marginTop="21dp"
+        android:textColor="@color/white"
+        android:layout_gravity="right|top"
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/video_loading"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
+
+
+</FrameLayout>

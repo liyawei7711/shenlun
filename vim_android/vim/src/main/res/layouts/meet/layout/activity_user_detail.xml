@@ -1,0 +1,299 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/color_F2F2F2"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_F2F2F2"
+        android:gravity="center_horizontal"
+        android:paddingBottom="18dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingTop="25dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="25dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/user_detail_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_EAEAEA"/>
+
+        <RelativeLayout
+            android:id="@+id/user_detail_group_user_count_rel"
+            android:layout_width="match_parent"
+            android:visibility="visible"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:visibility="visible"
+                android:background="@drawable/selector_user_detail_function_bg"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:drawableRight="@drawable/bt_next_press"
+                android:text="@string/user_detail_group_user_count"
+                android:textColor="@color/black333"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/user_detail_group_user_count"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="34dp"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:ellipsize="end"
+                android:maxWidth="100dp"
+                android:text="6人"
+                android:layout_height="49dp" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/user_detail_buttom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/user_detail_group_name_rel"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/user_detail_group_name_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="49dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
+                        android:text="@string/user_detail_group_name"
+                        android:textColor="@color/black333"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/user_detail_group_name"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|right"
+                        android:ellipsize="end"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
+                        android:drawableRight="@drawable/bt_next_press"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="-1dp"
+                    android:layout_marginLeft="55dp"
+                    android:background="@color/color_EAEAEA" />
+
+                <RelativeLayout
+                    android:id="@+id/user_detail_group_notice_rel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/user_detail_group_notice_tip"
+                        android:layout_width="match_parent"
+                        android:layout_height="49dp"
+                        android:background="@drawable/selector_user_detail_function_bg"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
+                        android:visibility="visible"
+                        android:text="@string/user_detail_group_notice"
+                        android:textColor="@color/black333"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/user_detail_group_notice"
+                        android:layout_width="match_parent"
+                        android:paddingLeft="28dp"
+                        android:layout_below="@+id/user_detail_group_notice_tip"
+                        android:layout_marginRight="34dp"
+                        android:layout_toLeftOf="@+id/user_detail_group_notice_point"
+                        android:text=""
+                        android:layout_marginEnd="34dp"
+                        android:visibility="gone"
+                        android:gravity="center_vertical"
+                        android:maxWidth="100dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/user_detail_group_notice_point"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="18dp"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/bt_next_press"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/user_detail_group_notice"
+                        android:layout_marginLeft="55dp"
+                        android:background="@color/color_EAEAEA" />
+                </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/user_detail_message_untouch_layout"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/user_detail_message_untouch"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="49dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/selector_user_detail_function_bg"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
+                        android:text="@string/user_detail_do_not_touch"
+                        android:textColor="@color/black333"
+                        android:textSize="16sp" />
+
+                    <CheckBox
+                        android:id="@+id/user_detail_message_untouch_checkbox"
+                        android:layout_width="33dp"
+                        android:layout_height="20dp"
+                        android:checked="false"
+                        android:button="@null"
+                        android:background="@drawable/selector_user_detail_switch"
+                        android:layout_marginRight="15dp" />
+                </LinearLayout>
+
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="55dp"
+                    android:background="@color/color_EAEAEA" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/user_detail_message_set_top"
+                        android:layout_width="01dp"
+                        android:layout_weight="1"
+                        android:layout_height="49dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/selector_user_detail_function_bg"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
+                        android:text="@string/user_detail_set_top"
+                        android:textColor="@color/black333"
+                        android:textSize="16sp" />
+                    <CheckBox
+                        android:id="@+id/user_detail_message_set_top_check_box"
+                        android:layout_marginRight="15dp"
+                        android:layout_width="33dp"
+                        android:checked="false"
+                        android:button="@null"
+                        android:background="@drawable/selector_user_detail_switch"
+                        android:layout_height="20dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/user_detail_modify_group_head_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/selector_user_detail_function_bg"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="18dp"
+                    android:paddingRight="18dp"
+                    android:drawableRight="@drawable/bt_next_press"
+                    android:text="@string/user_detail_modify_group_head"
+                    android:textColor="@color/black333"
+                    android:textSize="16sp" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="55dp"
+                    android:background="@color/color_EAEAEA" />
+                <TextView
+                    android:id="@+id/user_detail_message_clear"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/selector_user_detail_function_bg"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="18dp"
+                    android:paddingRight="18dp"
+                    android:drawableRight="@drawable/bt_next_press"
+                    android:text="@string/user_detail_clear"
+                    android:textColor="@color/black333"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/user_detail_group_del"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/selector_user_detail_function_bg"
+                android:drawablePadding="16dp"
+                android:gravity="center"
+                android:paddingLeft="18dp"
+                android:visibility="gone"
+                android:textStyle="bold"
+                android:paddingRight="18dp"
+                android:text="@string/user_detail_group_del"
+                android:textColor="@color/red"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
