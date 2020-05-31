@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/yinliang1" android:minLevel="0"
+        android:maxLevel="20" />
+    <item android:drawable="@drawable/yinliang2" android:minLevel="21"
+        android:maxLevel="40" />
+    <item android:drawable="@drawable/yinliang3" android:minLevel="41"
+        android:maxLevel="60" />
+    <item android:drawable="@drawable/yinliang4" android:minLevel="61"
+        android:maxLevel="80" />
+    <item android:drawable="@drawable/yinliang5" android:minLevel="81"
+        android:maxLevel="100" />
+</level-list>

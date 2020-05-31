@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="huaiye.com.vim">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 显示系统窗口权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 在 屏幕最顶部显示addview-->
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+
+    <uses-sdk tools:overrideLibrary="ttyy.com.recyclerexts" />
+
+    <application
+        android:name=".VIMApp"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:usesCleartextTraffic="true"
+        android:icon="@drawable/guanyu_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.guide.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/WelcomeTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.auth.StartActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.auth.ActivationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.about.AboutActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.guide.GuideActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.jiesuo.JieSuoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.jiesuo.JieSuoResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.jiesuo.JieSuoSetActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.showfile.FileOpenActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.showfile.ExcelActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.showfile.WebPageFileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.showfile.PIOOpenActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.meet.ChoosePhotoAndScreenActivity"
+            android:configChanges="screenSize|orientation|screenLayout|smallestScreenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.auth.SettingAddressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.auth.SettingAddressSafeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.auth.ChangePwdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.home.MeetControlActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.home.MeetLayoutActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.meet.InviteAlarmActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.meet.ImageShowActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.home.SearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.home.SearchChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.home.SearchGroupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.contacts.ContactDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.contacts.ContactsChoiceByAllFriendActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.contacts.ContactsSearchActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.meet.ChatGroupActivityNew"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.meet.MeetCreateByAllFriendActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.contacts.GroupDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.contacts.GroupListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.fenxiang.ShareGroupListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.fenxiang.ShareChooseActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" /><!-- 获取文本 -->
+                <data android:mimeType="text/html" /><!-- 获取url -->
+                <data android:mimeType="image/jpeg" /><!-- 获取图片 -->
+                <data android:mimeType="image/jif" /><!-- 获取图片 -->
+                <data android:mimeType="image/bmp" /><!-- 获取图片 -->
+                <data android:mimeType="image/png" /><!-- 获取图片 -->
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.zhuanfa.ZhuanFaChooseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.zhuanfa.ZhuanFaGroupListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.chat.ModifyGroupNameActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.chat.ModifyGroupAnnouncementActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".ui.contacts.GroupCreateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.AudioSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.contacts.ContactsListOperationActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.meet.VideoPushLookActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.meet.NoticeChooseActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.home.transfile.ChooseEncryptFileActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".ui.meet.NickJoinMeetActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <data android:scheme="huaiyemc" />
+                <!--下面这几行也必须得设置-->
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+
+
+
+        <activity
+            android:name=".ui.meet.MeetCreateByGroupUserActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.contacts.ContactsChoiceByGroupUserActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.meet.OrderMeetDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.meet.MeetDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.meet.MeetCreateOrderActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.meet.MeetJoineActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.meet.CodeScanActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.meet.MeetPlaybackActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation"
+            android:screenOrientation="landscape" />
+        <!--<activity
+            android:name=".ui.meet.MeetActivity"
+            android:configChanges="screenSize|orientation|screenLayout|smallestScreenSize"
+            android:screenOrientation="landscape" />-->
+        <activity
+            android:name=".ui.meet.MeetNewActivity"
+            android:configChanges="screenSize|orientation|screenLayout|smallestScreenSize" />
+        <activity
+            android:name=".ui.meet.MeetWatchActivity"
+            android:configChanges="screenSize|orientation|screenLayout|smallestScreenSize"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.meet.ChoosePhotoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.meet.ChooseFilesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.meet.MediaLocalVideoPlayActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.contacts.UserDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.contacts.ContactsAddOrDelActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".ui.meet.VideoRecordUploadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.talk.TalkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.talk.TalkVoiceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".models.download.InstallDialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/time_dialog" />
+        <activity
+            android:name=".models.download.ErrorDialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".ui.meet.MeetDetailEditActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.contacts.ContactsFrequentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.meet.MeetControlActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.contacts.ContactDetailNewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.meet.ChatSingleActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.sendBaiduLocation.function.activity.MapActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sendBaiduLocation.function.activity.MapLocationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sendBaiduLocation.function.activity.MapSearchActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.setting.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.setting.SetLianXiRenActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.setting.SettingChatActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".ui.chat.YueHouJiFengTextActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+
+        <activity
+            android:name=".ui.chat.YueHouJiFengImgActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+
+        <activity
+            android:name=".ui.chat.YueHouJiFengVideoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".ui.Capture.CaptureGuanMoOrPushActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+
+
+        <activity
+            android:name=".ui.chat.YueHouJiFengAudioActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+
+
+        <activity
+            android:name=".ui.setting.ModifyHeadPicActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+
+
+        <!-- 声明service组件 -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <!-- AK鉴权 -->
+        <!-- meta-data需要写在application中 -->
+        <!-- ws 的地图key  Sg0yUYK86IFMDFiErYTrxAq9pU2M7mqY -->
+        <!-- vvs 的地图key BbNFnkDS7jUnQ5MlQ5hixHGvIwDiWy9G -->
+        <!-- vss 的地图key dlNuyRt5oV0PXM0b6DRoAec3E5cUxWqr -->
+        <!--VIM 的地图key sj7oXU2qeDg523jEotbVfx1GjPVThqpc-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="sj7oXU2qeDg523jEotbVfx1GjPVThqpc" /> <!-- http://lbsyun.baidu.com/apiconsole/key -->
+        <!-- 2SApsBELro3HsawhxcnjI0fVTchTMdvO -->
+        <!-- BbNFnkDS7jUnQ5MlQ5hixHGvIwDiWy9G -->
+
+        <service android:name="com.huaiye.sdk.sdkabi.common.PushService" />
+
+        <service android:name=".services.UpdateService" />
+        <service android:name=".models.download.DownloadService" />
+        <service
+            android:name=".services.MusicService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote" />
+
+        <receiver android:name=".services.PhoneReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".services.PackageInstallReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_CHANGED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <action android:name="android.intent.action.PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.PACKAGE_RESTARTED"/>
+                <action android:name="android.intent.action.PACKAGE_INSTALL"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="huaiye.com.vim.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <receiver android:name=".push.MobileRingingReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

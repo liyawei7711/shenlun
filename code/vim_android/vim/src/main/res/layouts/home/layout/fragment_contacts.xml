@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><!--<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refresh_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">-->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/img_empty_contacts"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/rct_view_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_letter_high_fidelity_item"
+            android:layout_width="90dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_rectangle_letter"
+            android:gravity="center"
+            android:text="A"
+            android:textColor="#FFFFFFFF"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/tv_group"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:drawableLeft="@drawable/qunzu"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:text="群聊"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refresh_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tv_group">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rct_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <huaiye.com.vim.common.views.FastRetrievalBar
+            android:id="@+id/contacts_retrieval_bar"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/transparent" />
+    </RelativeLayout>
+</FrameLayout><!--</android.support.v4.widget.SwipeRefreshLayout>-->

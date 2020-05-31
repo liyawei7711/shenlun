@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_gray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/fl_search"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/shape_black_board"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/zhilingdiaodu_search"
+            android:drawablePadding="5dp"
+            android:text="@string/seach_with_emptyh"
+            android:textColor="@color/black999"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/message_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/back_gray" />
+
+    <LinearLayout
+        android:id="@+id/ll_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/image_zanwuxiaoxi"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/image_zanwuxiaoxi"
+            android:text="@string/has_no_data"
+            android:textColor="@color/black333"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>
