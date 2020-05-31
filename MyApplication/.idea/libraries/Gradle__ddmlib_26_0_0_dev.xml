@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: ddmlib-26.0.0-dev">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libddd/libs/ddmlib-26.0.0-dev.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
